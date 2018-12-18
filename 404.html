@@ -3,12 +3,22 @@ layout: default
 permalink: /404.html
 title: 404 Not Found
 ---
-<header>
-  <h1 class="header-small">
-    <a href="{{site.url}}{{site.baseurl}}">{{ site.name }}</a>
-  </h1>
+<header class="header">
+  <div class="header-title">
+    <a href="{{ site.url }}{{ site.baseurl }}">{{ site.name }}</a>
+  </div>
+  <nav class="header-nav">
+    {% for nav in site.nav %}
+    {% if nav.url contains 'http://' or nav.url contains 'https://' %}
+    <a href="{{ nav.url }}">{{ nav.name }}</a>
+    {% else %}
+    <a href="{{ nav.url | prepend: site.baseurl }}">{{ nav.name }}</a>
+    {% endif %}
+    {% endfor %}
+  </nav>
 </header>
-<div class="page">
+
+<div class="page, container-content">
   <h1 class="page-title">{{ page.title }}</h1>
   <span>Sorry, but the page you were trying to view does not exist.</span>
 </div>

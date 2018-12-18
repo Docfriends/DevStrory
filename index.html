@@ -17,7 +17,7 @@ layout: default
   </nav>
 </header>
 
-<div class="list">
+<div class="list, container-content">
 {% if site.posts.size == 0 %}
   <h2>No post found</h2>
 {% else %}
@@ -28,9 +28,17 @@ layout: default
     <a href="{{ post.link }}">
     {% else %}
     <a href="{{ post.url | prepend: site.baseurl }}">
-    {% endif %}  
+    {% endif %}
       <div class="list-post-date">
         <time>{{ post.date | date_to_string }}</time>
+        {% for writer in site.writers %}
+        {% if post.writer == writer.member.id %}
+        <!-- <div> -->
+          <span class="post-writer" >, {{ writer.member.name }} </span>
+          <img class="post-profile" src="{{ site.url }}{{ site.baseurl }}{{ writer.member.image }}" onerror="this.src='{{ site.url }}{{ site.baseurl }}{{ site.writer.defaultImage }}'">
+        <!-- </div> -->
+        {% endif %}
+        {% endfor %}
       </div>
       <div class="list-post-title">
         {{ post.title }}

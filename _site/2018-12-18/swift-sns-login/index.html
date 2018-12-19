@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swift로 SNS Login 연동</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/DevStrory/assets/css/main.css" type="text/css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Docfriends 기술 블로그" href="/DevStrory/feed.xml" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://docfriends-dev.github.io/DevStrory/assets/images/favicon.ico" />
+  <link rel="icon" type="image/png" href="https://docfriends-dev.github.io/DevStrory/assets/images/logo.png" />
+
+
+  <meta name="apple-mobile-web-app-title" content="DocfriendsTec" />
+  <meta name="description" content="닥프렌즈의 기술 블로그"/>
+  <meta property="og:title" content="닥프렌즈">
+  <meta property="og:url" content="https://docfriends-dev.github.io/DevStrory/">
+  <meta property="og:image" content="https://docfriends-dev.github.io/DevStrory/assets/images/logo.png">
+  <meta property="og:description" content="닥프렌즈의 기술 블로그"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:url" content="https://docfriends-dev.github.io/DevStrory/">
+  <meta name="twitter:image" content="https://docfriends-dev.github.io/DevStrory/assets/images/logo.png">
+  <meta name="twitter:description" content="닥프렌즈의 기술 블로그"/>
+
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Swift로 SNS Login 연동 | Docfriends 기술 블로그</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Swift로 SNS Login 연동" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Facebook, Kakao, Google, Naver 로그인 연동하기" />
+<meta property="og:description" content="Facebook, Kakao, Google, Naver 로그인 연동하기" />
+<link rel="canonical" href="http://localhost:4000/DevStrory/2018-12-18/swift-sns-login/" />
+<meta property="og:url" content="http://localhost:4000/DevStrory/2018-12-18/swift-sns-login/" />
+<meta property="og:site_name" content="Docfriends 기술 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-18T00:00:00+09:00" />
+<script type="application/ld+json">
+{"description":"Facebook, Kakao, Google, Naver 로그인 연동하기","@type":"BlogPosting","url":"http://localhost:4000/DevStrory/2018-12-18/swift-sns-login/","headline":"Swift로 SNS Login 연동","dateModified":"2018-12-18T00:00:00+09:00","datePublished":"2018-12-18T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2018-12-18/swift-sns-login/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+  <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-131153272-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="content-container">
+    <header class="header">
+  <div class="header-title">
+    <a href="http://localhost:4000/DevStrory">Docfriends 기술 블로그</a>
+  </div>
+  <nav class="header-nav">
+    
+    
+    <a href="/DevStrory/">Post</a>
+    
+    
+    
+    <a href="/DevStrory/member">Member</a>
+    
+    
+    
+    <a href="/DevStrory/archive">Archive</a>
+    
+    
+    
+    <a href="/DevStrory/tags">Tags</a>
+    
+    
+    
+    <a href="https://github.com/Docfriends-Dev">Github</a>
+    
+    
+  </nav>
+</header>
+
+<div class="post, container-content">
+  <div class="post-title">Swift로 SNS Login 연동</div>
+
+
+
+
+<div class="post-writergroup">
+  <a class="post-writerselect" href="https://github.com/pikachu987" title="https://github.com/pikachu987">
+    <span class="post-writer" >Writer: 김관호 </span>
+    <img class="post-profile" src="http://localhost:4000/DevStrory/assets/images/member/pikachu987.png" onerror="this.src='http://localhost:4000/DevStrory/assets/images/member/defaultProfile.png'">
+  </a>
+</div>
+
+
+  <span class="post-date">
+    <time>18 Dec 2018</time>
+  </span>
+  <div class="post-tag">
+    <ul>
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#sns">
+          <span>sns</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#login">
+          <span>login</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#facebook">
+          <span>facebook</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#kakao">
+          <span>kakao</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#google">
+          <span>google</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#naver">
+          <span>naver</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  <p>앱에서 자주 사용하는 Facebook, Kakao, Google, Naver 로그인 예제를 만들어 봅니다.</p>
+
+<p><br /></p>
+
+<h3 id="index">Index</h3>
+
+<ul>
+  <li>
+    <p><a href="#1facebook">Facebook</a></p>
+  </li>
+  <li>
+    <p><a href="#2kakao">Kakao</a></p>
+  </li>
+  <li>
+    <p><a href="#3google">Google</a></p>
+  </li>
+  <li>
+    <p><a href="#4naver">Naver</a></p>
+  </li>
+  <li>
+    <p><a href="#5all-code">All Code</a></p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="1facebook">1.Facebook</h3>
+
+<h5 id="1페이스북에서-내앱-만들기">1)페이스북에서 내앱 만들기</h5>
+
+<p><a href="https://developers.facebook.com/docs/facebook-login/ios">Facebook 참조</a></p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/facebookAppID.png" alt="FacebookAppID" /></p>
+
+<p>설정 - 기본설정에서 앱ID를 복사해 놓습니다.<br />
+개인정보처리방침 URL과 앱아이콘등을 입력합니다.</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/facebookFlatform.png" alt="FacebookAppID" /></p>
+
+<p>플랫폼 추가를 한뒤 번들을 입력합니다.</p>
+
+<h5 id="2fbsdkloginkit-설치">2)FBSDKLoginKit 설치</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'FBSDKLoginKit'
+</code></pre></div></div>
+
+<p><a href="https://cocoapods.org/">Cocoapods</a>로 FBSDKLoginKit을 install 합니다.</p>
+
+<h5 id="3infoplist-설정">3)info.plist 설정</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+&lt;array&gt;
+    &lt;dict&gt;
+        &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
+        &lt;array&gt;
+            &lt;string&gt;fb앱ID&lt;/string&gt;
+        &lt;/array&gt;
+    &lt;/dict&gt;
+&lt;/array&gt;
+&lt;key&gt;FacebookAppID&lt;/key&gt;
+&lt;string&gt;앱ID&lt;/string&gt;
+&lt;key&gt;FacebookDisplayName&lt;/key&gt;
+&lt;string&gt;앱네임&lt;/string&gt;
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt;
+&lt;array&gt;
+    &lt;string&gt;fbapi&lt;/string&gt;
+    &lt;string&gt;fb-messenger-share-api&lt;/string&gt;
+    &lt;string&gt;fbauth2&lt;/string&gt;
+    &lt;string&gt;fbshareextension&lt;/string&gt;
+&lt;/array&gt;
+</code></pre></div></div>
+
+<p>info.plist에 추가를 합니다. 앱ID와 앱네임은 자기꺼로 바꿔서 하면 됩니다.</p>
+
+<h5 id="4appdelegate-설정">4)AppDelegate 설정</h5>
+
+<p><code class="highlighter-rouge">AppDelegate.swift</code> 파일에서 FBSDKLoginKit를 임포트 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">FBSDKLoginKit</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.</span>
+
+    <span class="kt">FBSDKApplicationDelegate</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="nv">didFinishLaunchingWithOptions</span><span class="p">:</span> <span class="n">launchOptions</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">applicationDidBecomeActive(_:)</code> 함수에 <code class="highlighter-rouge">FBSDKAppEvents.activateApp()</code>를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationDidBecomeActive</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</span>
+
+    <span class="kt">FBSDKAppEvents</span><span class="o">.</span><span class="nf">activateApp</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><a href="https://developers.facebook.com/docs/reference/ios/current/class/FBSDKAppEvents/">FBSDKAppEvents</a> 참조</p>
+</blockquote>
+
+<p>그리고 로그인 또는 공유 액션을 수행할때 SDK에서 네이티브 Facebook 앱의 결과를 처리할수 있게 코드를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">app</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">scheme</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="kd">#available(iOS 9.0, *)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">sourceApplication</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span><span class="o">.</span><span class="n">sourceApplication</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+        <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"fb"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kt">FBSDKApplicationDelegate</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="nv">open</span><span class="p">:</span> <span class="n">url</span><span class="o">.</span><span class="n">absoluteURL</span><span class="p">,</span> <span class="nv">sourceApplication</span><span class="p">:</span> <span class="n">sourceApplication</span><span class="p">,</span> <span class="nv">annotation</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">sourceApplication</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">annotation</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">scheme</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"fb"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">FBSDKApplicationDelegate</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="nv">open</span><span class="p">:</span> <span class="n">url</span><span class="o">.</span><span class="n">absoluteURL</span><span class="p">,</span> <span class="nv">sourceApplication</span><span class="p">:</span> <span class="n">sourceApplication</span><span class="p">,</span> <span class="nv">annotation</span><span class="p">:</span> <span class="n">annotation</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><code class="highlighter-rouge">application(_:open:sourceApplication:annotation:)</code> 함수는 iOS 9.0버전 이후에는 Deprecated 되었습니다.<br />
+자신의 앱이 iOS 9.0버전 이상만 지원한다면 <code class="highlighter-rouge">application(_:open:sourceApplication:annotation:)</code> 함수를 적지 않아도 되지만 9.0 이전 버전을 지원한다면 함수를 적어야 합니다.
+<a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623073-application">Apple</a></p>
+</blockquote>
+
+<h5 id="5facebook-login">5)Facebook login</h5>
+
+<p>페이스북 버튼 등을 터치했을때 메서드에</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">FBSDKLoginManager</span><span class="p">()</span><span class="o">.</span><span class="nf">logIn</span><span class="p">(</span><span class="nv">withReadPermissions</span><span class="p">:</span> <span class="p">[</span><span class="s">"public_profile"</span><span class="p">,</span> <span class="s">"email"</span><span class="p">,</span> <span class="s">"user_birthday"</span><span class="p">,</span> <span class="s">"user_gender"</span><span class="p">],</span> <span class="nv">from</span><span class="p">:</span> <span class="k">self</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">,</span> <span class="n">error</span> <span class="o">==</span> <span class="kc">nil</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">result</span><span class="o">.</span><span class="n">isCancelled</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"error: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="c1">// 로그인 취소/에러</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="kt">FBSDKGraphRequest</span><span class="p">(</span><span class="nv">graphPath</span><span class="p">:</span> <span class="s">"me"</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">"fields"</span><span class="p">:</span> <span class="s">"id, name, email, picture, birthday, gender"</span><span class="p">])</span><span class="o">.</span><span class="nf">start</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"error: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 로그인 에러</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">facebook</span> <span class="o">=</span> <span class="n">result</span> <span class="k">as?</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+        <span class="k">let</span> <span class="nv">token</span> <span class="o">=</span> <span class="n">facebook</span><span class="p">[</span><span class="s">"id"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+        <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="n">facebook</span><span class="p">[</span><span class="s">"name"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+        <span class="k">let</span> <span class="nv">email</span> <span class="o">=</span> <span class="n">facebook</span><span class="p">[</span><span class="s">"email"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+        <span class="k">var</span> <span class="nv">profile</span> <span class="o">=</span> <span class="s">""</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">picture</span> <span class="o">=</span> <span class="n">facebook</span><span class="p">[</span><span class="s">"picture"</span><span class="p">]</span> <span class="k">as?</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">],</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">picture</span><span class="p">[</span><span class="s">"data"</span><span class="p">]</span> <span class="k">as?</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]</span> <span class="p">{</span>
+            <span class="n">profile</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">"url"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span> <span class="p">??</span> <span class="s">""</span>
+        <span class="p">}</span>
+        <span class="k">let</span> <span class="nv">largeProfile</span> <span class="o">=</span> <span class="s">"https://graph.facebook.com/</span><span class="se">\(</span><span class="p">(</span><span class="n">token</span> <span class="p">??</span> <span class="s">""</span><span class="p">)</span><span class="se">)</span><span class="s">/picture?type=large"</span>
+        <span class="k">let</span> <span class="nv">gender</span> <span class="o">=</span> <span class="n">facebook</span><span class="p">[</span><span class="s">"gender"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+        <span class="k">var</span> <span class="nv">birthdayDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">birthday</span> <span class="o">=</span> <span class="n">facebook</span><span class="p">[</span><span class="s">"birthday"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span><span class="p">,</span> <span class="n">birthday</span> <span class="o">!=</span> <span class="s">""</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">dateFormatter</span> <span class="o">=</span> <span class="kt">DateFormatter</span><span class="p">()</span>
+            <span class="n">dateFormatter</span><span class="o">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">"MM/dd/yyyy"</span>
+            <span class="n">birthdayDate</span> <span class="o">=</span> <span class="n">dateFormatter</span><span class="o">.</span><span class="nf">date</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="n">birthday</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="nf">print</span><span class="p">(</span><span class="s">"token: </span><span class="se">\(</span><span class="n">token</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"name: </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"email: </span><span class="se">\(</span><span class="n">email</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"profile: </span><span class="se">\(</span><span class="n">profile</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"largeProfile: </span><span class="se">\(</span><span class="n">largeProfile</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"gender: </span><span class="se">\(</span><span class="n">gender</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"birthdayDate: </span><span class="se">\(</span><span class="n">birthdayDate</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>token: Optional("***********")
+name: Optional("Kim Gwan Ho")
+email: Optional("pikachu77769@gmail.com")
+profile: https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1081468991941206&amp;height=50&amp;width=50&amp;ext=1547718902&amp;hash=AeRuZEjoxS7zHkkb
+largeProfile: https://graph.facebook.com/1081468991941206/picture?type=large
+gender: Optional("male")
+</code></pre></div></div>
+
+<p>withReadPermissions의 user_birthday랑 user_gender<br />
+parameters의 birthday, gender는 페이스북의</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/facebookPermission1.png" alt="Permission1" /></p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/facebookPermission2.png" alt="Permission2" /></p>
+
+<p>추가 권한을 획득하여야 일반 사용자들이 사용할수 있습니다.(관리자나 개발자, 테스터는 사용가능.)</p>
+
+<h3 id="2kakao">2.Kakao</h3>
+
+<h5 id="1카카오에서-앱-만들기">1)카카오에서 앱 만들기</h5>
+
+<p><a href="https://developers.kakao.com/docs/ios/getting-started">Kakao 참조</a></p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/kakaoAppKey.png" alt="FacebookAppID" /></p>
+
+<p>설정 - 일반에서 플랫폼 추가로 iOS를 추가한뒤 네이티브 앱 키를 복사해 놓습니다.<br /></p>
+
+<h5 id="2sdk-설치">2)SDK 설치</h5>
+
+<p><a href="https://developers.kakao.com/docs/sdk">iOS SDK</a> 에서 Full SDK Binary &amp; Samples를 다운받고 알집을 푼 뒤 KakaoOpenSDK.framework를 프로젝트에 추가합니다.</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/kakaoSDK.png" alt="kakao SDK" /></p>
+
+<p>Bridging-Header를 추가합니다.<br />
+추가하는 방법은 NewFile에서</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/bridgingHeader1.png" alt="kakao SDK" /></p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/bridgingHeader2.png" alt="kakao SDK" /></p>
+
+<p>Language를 Objective-C를 하고 Next를 하면</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/bridgingHeader3.png" alt="kakao SDK" /></p>
+
+<p>이 창이 나오는데 Create Bridging Header 를 누르면 간편하게 만들수 있습니다.<br />
+Bridging Header파일에서</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#import &lt;KakaoOpenSDK/KakaoOpenSDK.h&gt;
+</code></pre></div></div>
+
+<p>를 적어줍니다.</p>
+
+<h5 id="3infoplist-설정-1">3)info.plist 설정</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+&lt;array&gt;
+    &lt;dict&gt;
+        &lt;key&gt;CFBundleTypeRole&lt;/key&gt;
+        &lt;string&gt;Editor&lt;/string&gt;
+        &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
+        &lt;array&gt;
+            &lt;string&gt;kakao네이티브앱키&lt;/string&gt;
+        &lt;/array&gt;
+    &lt;/dict&gt;
+&lt;/array&gt;
+&lt;key&gt;KAKAO_APP_KEY&lt;/key&gt;
+&lt;string&gt;네이티브앱키&lt;/string&gt;
+&lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt;
+&lt;array&gt;
+    &lt;string&gt;kakao네이티브앱키&lt;/string&gt;
+    &lt;string&gt;kakaokompassauth&lt;/string&gt;
+    &lt;string&gt;storykompassauth&lt;/string&gt;
+    &lt;string&gt;kakaolink&lt;/string&gt;
+    &lt;string&gt;kakaotalk-5.9.7&lt;/string&gt;
+    &lt;string&gt;storylink&lt;/string&gt;
+&lt;/array&gt;
+</code></pre></div></div>
+
+<p>info.plist에 추가를 합니다. 네이티브앱키는 자기꺼로 바꿔서 하면 됩니다.</p>
+
+<h5 id="4appdelegate-설정-1">4)AppDelegate 설정</h5>
+
+<p><code class="highlighter-rouge">applicationDidBecomeActive(_:)</code> 함수에 <code class="highlighter-rouge">KOSession.handleDidBecomeActive()</code>를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationDidBecomeActive</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</span>
+
+    <span class="kt">KOSession</span><span class="o">.</span><span class="nf">handleDidBecomeActive</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>그리고 로그인 또는 공유 액션을 수행할때 SDK에서 Kakao 앱의 결과를 처리할수 있게 코드를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">app</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">scheme</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="kt">KOSession</span><span class="o">.</span><span class="nf">isKakaoAccountLoginCallback</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">absoluteURL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">KOSession</span><span class="o">.</span><span class="nf">handleOpen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">sourceApplication</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">annotation</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">scheme</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="kt">KOSession</span><span class="o">.</span><span class="nf">isKakaoAccountLoginCallback</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">absoluteURL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">KOSession</span><span class="o">.</span><span class="nf">handleOpen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>KOSession 코드를 넣고 실행을 했다가
+<img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/kakaoAppKeyError.png" alt="Error" />
+이런 에러를 볼수 있습니다.
+<img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/kakaoOtherLinkerFlags.png" alt="OtherLinkerFlags" />
+Build Settings에서 OtherLinkerFlags에 -all_load를 추가하면 됩니다.</p>
+</blockquote>
+
+<h5 id="5kakao-login">5)Kakao login</h5>
+
+<p>카카오 버튼 등을 터치했을때 메서드에</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="kt">KOSession</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">isOpen</span><span class="p">()</span> <span class="p">{</span> <span class="kt">KOSession</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">close</span><span class="p">()</span> <span class="p">}</span>
+<span class="kt">KOSession</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">presentingViewController</span> <span class="o">=</span> <span class="k">self</span>
+
+<span class="kd">func</span> <span class="nf">profile</span><span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?,</span> <span class="nv">user</span><span class="p">:</span> <span class="kt">KOUserMe</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">user</span> <span class="o">=</span> <span class="n">user</span><span class="p">,</span>
+        <span class="n">error</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">token</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">nickname</span> <span class="p">??</span> <span class="s">""</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">gender</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">account</span><span class="p">?</span><span class="o">.</span><span class="n">gender</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">gender</span> <span class="o">==</span> <span class="kt">KOUserGender</span><span class="o">.</span><span class="n">male</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"male"</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">gender</span> <span class="o">==</span> <span class="kt">KOUserGender</span><span class="o">.</span><span class="n">female</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"female"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="nv">email</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">account</span><span class="p">?</span><span class="o">.</span><span class="n">email</span> <span class="p">??</span> <span class="s">""</span>
+    <span class="k">let</span> <span class="nv">profile</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">profileImageURL</span><span class="p">?</span><span class="o">.</span><span class="n">absoluteString</span> <span class="p">??</span> <span class="s">""</span>
+    <span class="k">let</span> <span class="nv">thumbnail</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">thumbnailImageURL</span><span class="p">?</span><span class="o">.</span><span class="n">absoluteString</span> <span class="p">??</span> <span class="s">""</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">thumbnail</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kt">KOSession</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">open</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">||</span> <span class="o">!</span><span class="kt">KOSession</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">isOpen</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="kt">KOSessionTask</span><span class="o">.</span><span class="nf">userMeTask</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">account</span> <span class="o">=</span> <span class="n">user</span><span class="p">?</span><span class="o">.</span><span class="n">account</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nv">updateScopes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">]()</span>
+            <span class="k">if</span> <span class="n">account</span><span class="o">.</span><span class="nf">needsScopeAccountEmail</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">updateScopes</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"account_email"</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">account</span><span class="o">.</span><span class="nf">needsScopeGender</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">updateScopes</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"gender"</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">account</span><span class="o">.</span><span class="nf">needsScopeGender</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">updateScopes</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"birthday"</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="kt">KOSession</span><span class="o">.</span><span class="nf">shared</span><span class="p">()?</span><span class="o">.</span><span class="nf">updateScopes</span><span class="p">(</span><span class="n">updateScopes</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+                <span class="k">guard</span> <span class="n">error</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">return</span>
+                <span class="p">}</span>
+                <span class="kt">KOSessionTask</span><span class="o">.</span><span class="nf">userMeTask</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span> <span class="k">in</span>
+                    <span class="nf">profile</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">})</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nf">profile</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>male
+********
+김관호
+pikachu987@naver.com
+http://mud-kage.kakao.co.kr/14/dn/btqeCxDLpgU/DpCl6YYgNzSwWKz2CU8dO1/o.jpg
+http://mud-kage.kakao.co.kr/14/dn/btqeCdyElA4/3i8HMTQfSdCkjXo3rb2PI1/o.jpg
+</code></pre></div></div>
+
+<p>email과 gender, birthday는 카카오의</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/kakaoPermission2.png" alt="Permission2" /></p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/kakaoPermission1.png" alt="Permission1" /></p>
+
+<p>추가 권한을 획득하여야 일반 사용자들이 사용할수 있습니다.<br />
+추가권한을 요청하는 부분은 <code class="highlighter-rouge">KOSession.shared()?.updateScopes</code> 입니다.</p>
+
+<h3 id="3google">3.Google</h3>
+
+<h5 id="1구글에서-내앱-만들기">1)구글에서 내앱 만들기</h5>
+
+<p><a href="https://developers.google.com/identity/sign-in/ios/start-integrating">Google 참조</a></p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/googleCreate.png" alt="GoogleCreate" /></p>
+
+<p>CREATE AN AUTH CLIENT ID를 누르고 프로젝트를 설정합니다.</p>
+
+<p><a href="https://console.developers.google.com/apis/dashboard">Google Console</a></p>
+
+<p>콘솔에서 사용자 인증 정보에서 OAuth 2.0 클라이언트 ID를 복사합니다.</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/googleOauth.png" alt="GoogleCreate" /></p>
+
+<h5 id="2googlesignin-설치">2)GoogleSignIn 설치</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'GoogleSignIn'
+</code></pre></div></div>
+
+<p><a href="https://cocoapods.org/">Cocoapods</a>로 GoogleSignIn을 install 합니다.</p>
+
+<h5 id="3infoplist-설정-2">3)info.plist 설정</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+&lt;array&gt;
+  &lt;dict&gt;  
+    &lt;key&gt;CFBundleTypeRole&lt;/key&gt;
+    &lt;string&gt;Editor&lt;/string&gt;
+    &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
+    &lt;array&gt;
+      &lt;string&gt;com.googleusercontent.apps.clientID&lt;/string&gt;
+    &lt;/array&gt;
+  &lt;/dict&gt;
+&lt;/array&gt;
+</code></pre></div></div>
+
+<p>info.plist에 추가를 합니다. clientID는 자기꺼로 바꿔서 하면 됩니다.<br />
+(com.googleusercontent.apps.<strong>**</strong><strong>**</strong><strong>**</strong><strong>**</strong>***)</p>
+
+<h5 id="4appdelegate-설정-2">4)AppDelegate 설정</h5>
+
+<p><code class="highlighter-rouge">AppDelegate.swift</code> 파일에서 GoogleSignIn를 임포트 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">GoogleSignIn</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.</span>
+
+    <span class="kt">GIDSignIn</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="n">clientID</span> <span class="o">=</span> <span class="s">"clientID"</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>clientID는 자기꺼로 바꿔서 하면 됩니다.<br />
+(<strong>**</strong><strong>**</strong><strong>**</strong><strong>**</strong>***.apps.googleusercontent.com)</p>
+
+<p>그리고 로그인 또는 공유 액션을 수행할때 SDK에서 네이티브 Facebook 앱의 결과를 처리할수 있게 코드를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">app</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">scheme</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="kd">#available(iOS 9.0, *)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"com.googleusercontent.apps"</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="kt">GIDSignIn</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">handle</span><span class="p">(</span><span class="n">url</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">?,</span>
+                                                       <span class="nv">sourceApplication</span><span class="p">:</span> <span class="n">options</span><span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span><span class="o">.</span><span class="n">sourceApplication</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span><span class="p">,</span>
+                                                       <span class="nv">annotation</span><span class="p">:</span> <span class="n">options</span><span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span><span class="o">.</span><span class="n">annotation</span><span class="p">])</span>
+          <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">sourceApplication</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">annotation</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">scheme</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"com.googleusercontent.apps"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">GIDSignIn</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">handle</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nv">sourceApplication</span><span class="p">:</span> <span class="n">sourceApplication</span><span class="p">,</span> <span class="nv">annotation</span><span class="p">:</span> <span class="n">annotation</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="5google-login">5)Google login</h5>
+
+<p>구글 버튼 등을 터치했을때 메서드에</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">GIDSignIn</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()?</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<span class="kt">GIDSignIn</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()?</span><span class="o">.</span><span class="n">uiDelegate</span> <span class="o">=</span> <span class="k">self</span>
+<span class="kt">GIDSignIn</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()?</span><span class="o">.</span><span class="nf">signIn</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>GIDSignIn.sharedInstance의 delegate와 uiDelegate을 연결한 클래스에</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">GIDSignInDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">sign</span><span class="p">(</span><span class="n">_</span> <span class="nv">signIn</span><span class="p">:</span> <span class="kt">GIDSignIn</span><span class="o">!</span><span class="p">,</span> <span class="n">didSignInFor</span> <span class="nv">user</span><span class="p">:</span> <span class="kt">GIDGoogleUser</span><span class="o">!</span><span class="p">,</span> <span class="n">withError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"사용자가 로그인 취소, </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">user</span> <span class="o">=</span> <span class="n">user</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"userID: </span><span class="se">\(</span><span class="n">user</span><span class="o">.</span><span class="n">userID</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"idToken: </span><span class="se">\(</span><span class="n">user</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">idToken</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"name: </span><span class="se">\(</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">name</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"email: </span><span class="se">\(</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">email</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">GIDSignInUIDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">sign</span><span class="p">(</span><span class="n">_</span> <span class="nv">signIn</span><span class="p">:</span> <span class="kt">GIDSignIn</span><span class="o">!</span><span class="p">,</span> <span class="n">dismiss</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">viewController</span><span class="o">.</span><span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">sign</span><span class="p">(</span><span class="n">_</span> <span class="nv">signIn</span><span class="p">:</span> <span class="kt">GIDSignIn</span><span class="o">!</span><span class="p">,</span> <span class="n">present</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>userID: Optional("**********")
+idToken: Optional("***********")
+name: Optional("김관호")
+email: Optional("pikachu77769@gmail.com")
+</code></pre></div></div>
+
+<p>만약 사용자가 구글로그인을 다른아이디로 변경하고 싶거나 구글 로그아웃을 하려면 <code class="highlighter-rouge">GIDSignIn.sharedInstance()?.signOut()</code> 코드를 호출하면 됩니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">GIDSignIn</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()?</span><span class="o">.</span><span class="nf">signOut</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="4naver">4.Naver</h3>
+
+<h5 id="1네이버에서-내앱-만들기">1)네이버에서 내앱 만들기</h5>
+
+<p><a href="https://developers.naver.com/docs/login/ios/">Naver 참조</a></p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/naverApp.png" alt="NaverApp" /></p>
+
+<p>앱을 만듭니다.<br />
+Client ID와 Client Secret는 프로젝트에서 사용되니 기억하고 있습니다.</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/naverAPISet.png" alt="NaverAPI" /></p>
+
+<p>API설정에서 다운로드 URL과 Scheme를 입력합니다.<br />
+다운로드 URL은 itunesConnect에서 id를 이용해 id뒤에 적으면 됩니다.<br />
+Scheme는 원하는 글자를 적으면 됩니다. (남들과 겹치지 않게 긴 글자로 합니다.)</p>
+
+<h5 id="2naveridlogin-sdk-ios-설치">2)naveridlogin-sdk-ios 설치</h5>
+
+<blockquote>
+  <p>2017.11.10부터 SDK를 다운로드해서 설치하지 않고 cocoapods으로 설치가 가능합니다.<br />
+iOS 9.0 버전 이상부터 지원을 합니다.</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>platform :ios, '9.0
+
+pod 'naveridlogin-sdk-ios'
+</code></pre></div></div>
+
+<p><a href="https://cocoapods.org/">Cocoapods</a>로 naveridlogin-sdk-ios을 install 합니다.</p>
+
+<h5 id="3infoplist-설정-3">3)info.plist 설정</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;array&gt;
+    &lt;dict&gt;
+        &lt;key&gt;CFBundleTypeRole&lt;/key&gt;
+        &lt;string&gt;Editor&lt;/string&gt;
+        &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
+        &lt;array&gt;
+            &lt;string&gt;naver&lt;/string&gt;
+        &lt;/array&gt;
+    &lt;/dict&gt;
+&lt;/array&gt;
+
+&lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt;
+&lt;array&gt;
+    &lt;string&gt;naversearchapp&lt;/string&gt;
+    &lt;string&gt;naversearchthirdlogin&lt;/string&gt;
+&lt;/array&gt;
+</code></pre></div></div>
+
+<p>info.plist에 추가를 합니다.<br />
+CFBundleURLSchemes는 네이버 개발자 사이트에서 적었는 글자로 합니다.</p>
+
+<h5 id="4appdelegate-설정-3">4)AppDelegate 설정</h5>
+
+<p><code class="highlighter-rouge">AppDelegate.swift</code> 파일에서 NaverThirdPartyLogin을 임포트 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">NaverThirdPartyLogin</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.</span>
+
+    <span class="k">let</span> <span class="nv">naverThirdPartyLoginInstance</span> <span class="o">=</span> <span class="kt">NaverThirdPartyLoginConnection</span><span class="o">.</span><span class="nf">getSharedInstance</span><span class="p">()</span>
+    <span class="c1">// 네이버 앱으로 인증하는 방식을 활성화하려면 앱 델리게이트에 다음 코드를 추가합니다.</span>
+    <span class="n">naverThirdPartyLoginInstance</span><span class="p">?</span><span class="o">.</span><span class="n">isNaverAppOauthEnable</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="c1">// SafariViewContoller에서 인증하는 방식을 활성화하려면 앱 델리게이트에 다음 코드를 추가합니다.</span>
+    <span class="n">naverThirdPartyLoginInstance</span><span class="p">?</span><span class="o">.</span><span class="n">isInAppOauthEnable</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="c1">// 인증 화면을 iPhone의 세로 모드에서만 사용하려면 다음 코드를 추가합니다.</span>
+    <span class="n">naverThirdPartyLoginInstance</span><span class="p">?</span><span class="o">.</span><span class="nf">setOnlyPortraitSupportInIphone</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="c1">// 애플리케이션 이름</span>
+    <span class="n">naverThirdPartyLoginInstance</span><span class="p">?</span><span class="o">.</span><span class="n">appName</span> <span class="o">=</span> <span class="p">(</span><span class="kt">Bundle</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">infoDictionary</span><span class="p">?[</span><span class="n">kCFBundleNameKey</span> <span class="k">as</span> <span class="kt">String</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span><span class="p">)</span> <span class="p">??</span> <span class="s">""</span>
+    <span class="c1">// 콜백을 받을 URL Scheme</span>
+    <span class="n">naverThirdPartyLoginInstance</span><span class="p">?</span><span class="o">.</span><span class="n">serviceUrlScheme</span> <span class="o">=</span> <span class="s">"naver"</span>
+    <span class="c1">// 애플리케이션에서 사용하는 클라이언트 아이디</span>
+    <span class="n">naverThirdPartyLoginInstance</span><span class="p">?</span><span class="o">.</span><span class="n">consumerKey</span> <span class="o">=</span> <span class="s">"********"</span>
+    <span class="c1">// 애플리케이션에서 사용하는 클라이언트 시크릿</span>
+    <span class="n">naverThirdPartyLoginInstance</span><span class="p">?</span><span class="o">.</span><span class="n">consumerSecret</span> <span class="o">=</span> <span class="s">"********"</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>consumerKey와 consumerSecret는 자기꺼로 바꿔서 하면 됩니다.<br />
+serviceUrlScheme는 네이버 개발자 사이트에서 적었는 글자로 합니다.<br />
+그리고 로그인 또는 공유 액션을 수행할때 SDK에서 네이티브 Facebook 앱의 결과를 처리할수 있게 코드를 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">app</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">OpenURLOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">scheme</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"naver"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="kt">NaverThirdPartyLoginConnection</span><span class="o">.</span><span class="nf">getSharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">receiveAccessToken</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="kt">CANCELBYUSER</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"result: </span><span class="se">\(</span><span class="n">result</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>scheme.contains의 naver글자는 네이버 개발자 사이트에서 적었는 글자로 합니다.</p>
+
+<h5 id="5naver-login">5)Naver login</h5>
+
+<p>네이버 버튼 등을 터치했을때 메서드에</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">naverConnection</span> <span class="o">=</span> <span class="kt">NaverThirdPartyLoginConnection</span><span class="o">.</span><span class="nf">getSharedInstance</span><span class="p">()</span>
+<span class="n">naverConnection</span><span class="p">?</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<span class="n">naverConnection</span><span class="p">?</span><span class="o">.</span><span class="nf">requestThirdPartyLogin</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>NaverThirdPartyLoginConnection.getSharedInstance()의 delegate를 연결한 클래스에</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">NaverThirdPartyLoginConnectionDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">oauth20ConnectionDidFinishRequestACTokenWithAuthCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 로그인 성공 (로그인된 상태에서 requestThirdPartyLogin()를 호출하면 이 메서드는 불리지 않는다.)</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">naverDataFetch</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">oauth20ConnectionDidFinishRequestACTokenWithRefreshToken</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 로그인된 상태(로그아웃이나 연동해제 하지않은 상태)에서 로그인 재시도</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">naverDataFetch</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">oauth20Connection</span><span class="p">(</span><span class="n">_</span> <span class="nv">oauthConnection</span><span class="p">:</span> <span class="kt">NaverThirdPartyLoginConnection</span><span class="o">!</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//  접근 토큰, 갱신 토큰, 연동 해제등이 실패</span>
+
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">oauth20ConnectionDidFinishDeleteToken</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 연동해제 콜백</span>
+
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">oauth20ConnectionDidOpenInAppBrowser</span><span class="p">(</span><span class="n">forOAuth</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="kt">NLoginThirdPartyOAuth20InAppBrowserViewController</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="n">request</span><span class="p">),</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">naverDataFetch</span><span class="p">(){</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">naverConnection</span> <span class="o">=</span> <span class="kt">NaverThirdPartyLoginConnection</span><span class="o">.</span><span class="nf">getSharedInstance</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">accessToken</span> <span class="o">=</span> <span class="n">naverConnection</span><span class="o">.</span><span class="n">accessToken</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="k">let</span> <span class="nv">authorization</span> <span class="o">=</span> <span class="s">"Bearer </span><span class="se">\(</span><span class="n">accessToken</span><span class="se">)</span><span class="s">"</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://openapi.naver.com/v1/nid/me"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">URLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
+        <span class="n">request</span><span class="o">.</span><span class="nf">setValue</span><span class="p">(</span><span class="n">authorization</span><span class="p">,</span> <span class="nv">forHTTPHeaderField</span><span class="p">:</span> <span class="s">"Authorization"</span><span class="p">)</span>
+
+        <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+            <span class="k">guard</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">data</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+            <span class="k">do</span> <span class="p">{</span>
+                <span class="k">guard</span> <span class="k">let</span> <span class="nv">json</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">JSONSerialization</span><span class="o">.</span><span class="nf">jsonObject</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[])</span> <span class="k">as?</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+                <span class="k">guard</span> <span class="k">let</span> <span class="nv">response</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"response"</span><span class="p">]</span> <span class="k">as?</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+                <span class="k">let</span> <span class="nv">id</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"id"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+                <span class="k">let</span> <span class="nv">email</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"email"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+                <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"name"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+                <span class="k">let</span> <span class="nv">nickname</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"nickname"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+                <span class="k">let</span> <span class="nv">profileImage</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"profile_image"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+                <span class="k">let</span> <span class="nv">birthday</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"birthday"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+                <span class="k">let</span> <span class="nv">gender</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"gender"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"id: </span><span class="se">\(</span><span class="n">id</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"email: </span><span class="se">\(</span><span class="n">email</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"name: </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"nickname: </span><span class="se">\(</span><span class="n">nickname</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"profileImage: </span><span class="se">\(</span><span class="n">profileImage</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"birthday: </span><span class="se">\(</span><span class="n">birthday</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"gender: </span><span class="se">\(</span><span class="n">gender</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="k">let</span> <span class="nv">error</span> <span class="k">as</span> <span class="kt">NSError</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="p">}</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>id: Optional("*******")
+email: Optional("pikachu987@naver.com")
+name: Optional("김관호")
+nickname: Optional("pikach****")
+profileImage: Optional("https://ssl.pstatic.net/static/pwe/address/img_profile.png")
+birthday: Optional("06-21")
+gender: Optional("M")
+</code></pre></div></div>
+
+<p>로그아웃 하려면 아래 코드를 넣습니다.<br />
+로그아웃 하면 네이버으로 이동이 되지만 바로 다시 앱으로 돌아옵니다.</p>
+
+<blockquote>
+  <p>로그아웃하지않고 다시 <code class="highlighter-rouge">requestThirdPartyLogin()</code>를 호출하면 네이버로 이동하지 않고 <code class="highlighter-rouge">oauth20ConnectionDidFinishRequestACTokenWithRefreshToken</code> 딜리게이트 메서드가 호출이 됩니다.</p>
+</blockquote>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">NaverThirdPartyLoginConnection</span><span class="o">.</span><span class="nf">getSharedInstance</span><span class="p">()?</span><span class="o">.</span><span class="nf">resetToken</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>연동해제 하려면 아래 코드를 넣습니다.<br />
+연동해제를 하면 다시 네이버 로그인을 하게됩니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">NaverThirdPartyLoginConnection</span><span class="o">.</span><span class="nf">getSharedInstance</span><span class="p">()?</span><span class="o">.</span><span class="nf">requestDeleteToken</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>gender, birthday, email 등의 정보는</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/naverPermission.png" alt="Permission" /></p>
+
+<p>API설정에서 권한을 선택하셔야 일반 사용자들이 사용할수 있습니다.<br /></p>
+
+<h3 id="5all-code">5.All Code</h3>
+
+<p>Facebook, Kakao, Google, Naver 의 sns 연동 정리</p>
+
+<script src="https://gist.github.com/pikachu987/92a896d1dbeed503e99b057841437e55.js"></script>
+
+<script src="https://gist.github.com/pikachu987/108e8769ed4c388ea5891400900b2682.js"></script>
+
+<script src="https://gist.github.com/pikachu987/d88ad3b776ec345b6f4958e2af4e6385.js"></script>
+
+<script src="https://gist.github.com/pikachu987/bea6f98335ec1f3588e8972cbb463223.js"></script>
+
+<script src="https://gist.github.com/pikachu987/c4305754cc96d58083eb35db76303d61.js"></script>
+
+<script src="https://gist.github.com/pikachu987/ed1ac0427bdfe53cfa3267df9d73ddb3.js"></script>
+
+<script src="https://gist.github.com/pikachu987/fad902103a62d1aaea4f212f4ad78f26.js"></script>
+
+<script src="https://gist.github.com/pikachu987/4749113198b9e265ad77950453db2db9.js"></script>
+
+
+
+  <!-- Disqus -->
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//devstrory.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  </div>
+  
+
+</div>
+
+
+    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
+<div class="footer">
+  <hr />
+  <div class="footer-link">
+    
+    <a href="https://www.facebook.com/groups/docfriends/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    
+	
+	
+    <a href="https://www.youtube.com/user/Docairs"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+    
+	
+	
+
+    
+
+    
+    <a href="https://github.com/Docfriends-Dev"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+	
+	
+	
+	
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+
+    
+
+    
+
+    
+    <a href="mailto:apps@docfriends.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+
+  </div>
+  © 2018 Docfriends. All rights reserved.
+</div>
+
+  </div>
+</body>
+</html>

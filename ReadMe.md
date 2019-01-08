@@ -2,7 +2,7 @@
 
 ### Website
 
-[Blog](https://docfriends-dev.github.io/DevStrory/)
+[Blog](https://docfriends.github.io/DevStrory/)
 
 [Doctalk](http://doctalk.co.kr/)
 
@@ -11,6 +11,6 @@
 [iOS](https://itunes.apple.com/kr/app/id1220724684)
 
 
-### [License](https://docfriends-dev.github.io/DevStrory/LICENSE.md)
+### [License](https://docfriends.github.io/DevStrory/LICENSE.md)
 
 https://github.com/AWEEKJ/Kiko-plus by. [@AWEEKJ](https://github.com/AWEEKJ)

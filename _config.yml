@@ -23,7 +23,7 @@ writers:
 author:
   facebook:         groups/docfriends/
   youtubeUser:      Docairs
-  github:           Docfriends-Dev
+  github:           Docfriends
   email:            apps@docfriends.com
 
 copyright:
@@ -39,7 +39,7 @@ disqus:
   id:               "devstrory"
 
 # URL
-url:                "https://docfriends-dev.github.io" # the base hostname & protocol for your site
+url:                "https://docfriends.github.io" # the base hostname & protocol for your site
 # url:                "http://localhost:4000" # use this url when you develop
 baseurl:            "/DevStrory" # the subpath of your site, e.g. /blog
 

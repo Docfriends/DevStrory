@@ -2,7 +2,7 @@
 layout: post
 title: "Migrating to AndroidX"
 description: "AndroidX를 Migrate 하면서 겪은 이슈 공유"
-date: 2018-12-19
+date: 2019-01-09
 tags: [AndroidX, Migrating, Glide, Lottie]
 writer: leaf9016
 category: etc

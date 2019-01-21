@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Migrating to AndroidX</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/DevStrory/assets/css/main.css" type="text/css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Docfriends 기술 블로그" href="/DevStrory/feed.xml" />
+    <link href="https://docfriends.github.io/DevStrory/assets/images/favicon.ico" rel="shortcut icon"
+          type="image/x-icon"/>
+    <link href="https://docfriends.github.io/DevStrory/assets/images/logo.png" rel="icon" type="image/png"/>
+
+
+  <meta name="apple-mobile-web-app-title" content="DocfriendsTec" />
+  <meta name="description" content="닥프렌즈의 기술 블로그"/>
+  <meta property="og:title" content="닥프렌즈">
+    <meta content="https://docfriends.github.io/DevStrory/" property="og:url">
+    <meta content="https://docfriends.github.io/DevStrory/assets/images/logo.png" property="og:image">
+  <meta property="og:description" content="닥프렌즈의 기술 블로그"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="">
+    <meta content="https://docfriends.github.io/DevStrory/" name="twitter:url">
+    <meta content="https://docfriends.github.io/DevStrory/assets/images/logo.png" name="twitter:image">
+  <meta name="twitter:description" content="닥프렌즈의 기술 블로그"/>
+
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Migrating to AndroidX | Docfriends 기술 블로그</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Migrating to AndroidX" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="AndroidX를 Migrate 하면서 겪은 이슈 공유" />
+<meta property="og:description" content="AndroidX를 Migrate 하면서 겪은 이슈 공유" />
+<link rel="canonical" href="http://localhost:4000/DevStrory/2019-01-09/androidx-upgrade/" />
+<meta property="og:url" content="http://localhost:4000/DevStrory/2019-01-09/androidx-upgrade/" />
+<meta property="og:site_name" content="Docfriends 기술 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-09T00:00:00+09:00" />
+<script type="application/ld+json">
+{"description":"AndroidX를 Migrate 하면서 겪은 이슈 공유","@type":"BlogPosting","url":"http://localhost:4000/DevStrory/2019-01-09/androidx-upgrade/","headline":"Migrating to AndroidX","dateModified":"2019-01-09T00:00:00+09:00","datePublished":"2019-01-09T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2019-01-09/androidx-upgrade/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+  <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-131153272-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="content-container">
+    <header class="header">
+  <div class="header-title">
+    <a href="http://localhost:4000/DevStrory">Docfriends 기술 블로그</a>
+  </div>
+  <nav class="header-nav">
+    
+    
+    <a href="/DevStrory/">Post</a>
+    
+    
+    
+    <a href="/DevStrory/member">Member</a>
+    
+    
+    
+    <a href="/DevStrory/archive">Archive</a>
+    
+    
+    
+    <a href="/DevStrory/tags">Tags</a>
+    
+    
+    
+    <a href="https://github.com/Docfriends-Dev">Github</a>
+    
+    
+  </nav>
+</header>
+
+<div class="post, container-content">
+  <div class="post-title">Migrating to AndroidX</div>
+
+
+<div class="post-writergroup">
+  <a class="post-writerselect" href="https://github.com/NoteJGPak" title="https://github.com/NoteJGPak">
+    <span class="post-writer" >Writer: 박준걸 </span>
+    <img class="post-profile" src="http://localhost:4000/DevStrory/assets/images/member/leaf9016.png" onerror="this.src='http://localhost:4000/DevStrory/assets/images/member/defaultProfile.png'">
+  </a>
+</div>
+
+
+
+
+  <span class="post-date">
+    <time>09 Jan 2019</time>
+  </span>
+  <div class="post-tag">
+    <ul>
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#AndroidX">
+          <span>AndroidX</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#Migrating">
+          <span>Migrating</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#Glide">
+          <span>Glide</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#Lottie">
+          <span>Lottie</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  <h1 id="androidx-migration-적용기">AndroidX Migration 적용기</h1>
+
+<h3 id="androidx가-나온-이유">AndroidX가 나온 이유</h3>
+
+<p>Android는 기기 파편화 및 OS 파편화로 인해 동일한 디자인 패턴 적용이 어려웠습니다.  또한 OS 파편화로 좋은 기능조차 하위버전에 쓸수가 없게 되어서 신규기능 사용이 어려워 졌습니다.
+그래서 Support Library가 생겨났고, v4, v7 v8, v17 등 많은 Support Library가 생성되었습니다.
+하지만 그로인해 새로운 파편화가 진행 되었고 파편화를 줄이기 위해 AndroidX가 나왔습니다.</p>
+
+<h3 id="도입-이유">도입 이유</h3>
+
+<p>닥톡 서비스에 Lottie를 적용해서 애니메이션을 넣는 중에 2.8.0 은 AndroidX 대응으로만 되어 있고, 기존 Support Library를 쓰는 프로젝트는 모두 2.7.0 으로 사용이 가능합니다.
+그래서 도입할 시기가 왔다고 판단해서 도입을 했습니다.</p>
+
+<h3 id="androidx-적용-방법">AndroidX 적용 방법</h3>
+
+<ol>
+  <li>
+    <p>Android Studio 3.2 이상이 설치되어야 합니다.</p>
+  </li>
+  <li>
+    <p>Refactor -&gt; Migrate to AndroidX… 를 클릭 합니다.
+<img src="http://localhost:4000/DevStrory/images/2018/androidx-upgrade/screen-shot-01.png" alt="Android Studio 3.2 Menu" /></p>
+  </li>
+  <li>
+    <p>아래와 같은 내용이 나오면 꼭! <strong>Backup project as Zip file</strong>을 체크해주세요.<br />해당 내용은 아래에서 더 설명 드리겠습니다.
+<img src="http://localhost:4000/DevStrory/images/2018/androidx-upgrade/screen-shot-02.png" alt="Migration" /></p>
+  </li>
+  <li>
+    <p>백업 파일은 잘 보관해주세요.</p>
+  </li>
+  <li>
+    <p>충돌나는 부분이나 확인이 필요한 부분을 최종 물어볼 때 확인 후 OK를 누르면 완료 됩니다.</p>
+  </li>
+  <li>
+    <p>끝!</p>
+  </li>
+</ol>
+
+<h3 id="백업이-필요한-이유">백업이 필요한 이유</h3>
+
+<p>위 적용한 방법으로 확인 후 <strong>Rebuild Project</strong> 를 하면 문제 없이 Build가 되고 실행 시 실행도 정상적으로 됩니다.<br />
+하지만 실제로 어플리케이션을 실행해서 사용하다 보면 강제종료 혹은 정상 작동을 안하는 기능들이 확인 됩니다.<br />
+<br />
+그래서 해당 클래스를 열어보면 아래 스크린샷 처럼(참고를 위해 강제로 만든 화면입니다. 실제론 더 처참했어요.)
+<br />
+<img src="http://localhost:4000/DevStrory/images/2018/androidx-upgrade/screen-shot-03.png" alt="Error" />
+이렇게 클래스들이 에러가 났었습니다.</p>
+
+<p>이유는 제가 사용하는 <strong>Open Source Library 에서 AndroidX 대응이 되지 않아 오류</strong>가 발생하는 것인데, 그걸 Android Studio에서는 그냥 빌드가 되었던 것입니다.
+이때는 벌써 정상인줄 알고 commit도 하고, 다른 기능 수정까지 한 상태였습니다. 그래서 다시 백업파일 본으로 복구 시키고(혹은 형상관리툴을 사용하시면 롤백) 돌아가는 작업이 필요합니다.</p>
+
+<h3 id="androidx-대응-방법">AndroidX 대응 방법</h3>
+
+<ol>
+  <li>Open Source Library 중 Support Library 는 Library를 사용하지 않는다.
+    <ul>
+      <li>전 그럴 수 있는 상황이 아니라서 패스 했습니다.</li>
+    </ul>
+  </li>
+  <li>Open Source Library 를 Fork 하여 AndroidX 대응 후 Pull Request 하기
+    <ul>
+      <li>AndroidX 혹은 Support Library 28 이상 사용 시엔 최소 SDK는 14 입니다.  일부 Library는 9 버전도 있어서, 수정해서 Pull Request를 해도 안될 수도 있고, 개발자가 이제 작업을 안해서 Merge 가 안될 수도 있습니다.</li>
+      <li>반응이 없는 프로젝트는 Fork한 Library를  jitpack 에 올려서 사용</li>
+      <li>하지만 하다보면 이것도 노가다라 Open Source를 많이 사용하는 프로젝트일 경우 시간이 오래 걸림</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>제가 찾은 대응 방법이였고 실제로 그렇게 시도는 했지만 모두 실패하였습니다. 그래서 모두 소스를 롤백하였습니다.</li>
+</ul>
+
+<h3 id="개인적인-생각">개인적인 생각</h3>
+
+<p>새로운 Support Library, Open Source Library가 나올 때 마다 최신 버전 적용하여 대응을 했지만, AndroidX는 예상보다 매우 큰 작업이라고 판단됩니다.  개별로 쓰시는 Open Source가 AndroidX 대응이 될 때 까지는 AndroidX 대응은 미루는걸 추천합니다.</p>
+
+
+
+  <!-- Disqus -->
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//devstrory.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  </div>
+  
+
+</div>
+
+
+    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
+<div class="footer">
+  <hr />
+  <div class="footer-link">
+    
+    <a href="https://www.facebook.com/groups/docfriends/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    
+	
+	
+    <a href="https://www.youtube.com/user/Docairs"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+    
+	
+	
+
+    
+
+    
+    <a href="https://github.com/Docfriends"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+	
+	
+	
+	
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+
+    
+
+    
+
+    
+    <a href="mailto:apps@docfriends.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+
+  </div>
+  © 2018 Docfriends. All rights reserved.
+</div>
+
+  </div>
+</body>
+</html>

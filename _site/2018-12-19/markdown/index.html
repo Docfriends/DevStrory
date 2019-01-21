@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Markdown 기초 문법</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/DevStrory/assets/css/main.css" type="text/css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Docfriends 기술 블로그" href="/DevStrory/feed.xml" />
+    <link href="https://docfriends.github.io/DevStrory/assets/images/favicon.ico" rel="shortcut icon"
+          type="image/x-icon"/>
+    <link href="https://docfriends.github.io/DevStrory/assets/images/logo.png" rel="icon" type="image/png"/>
+
+
+  <meta name="apple-mobile-web-app-title" content="DocfriendsTec" />
+  <meta name="description" content="닥프렌즈의 기술 블로그"/>
+  <meta property="og:title" content="닥프렌즈">
+    <meta content="https://docfriends.github.io/DevStrory/" property="og:url">
+    <meta content="https://docfriends.github.io/DevStrory/assets/images/logo.png" property="og:image">
+  <meta property="og:description" content="닥프렌즈의 기술 블로그"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="">
+    <meta content="https://docfriends.github.io/DevStrory/" name="twitter:url">
+    <meta content="https://docfriends.github.io/DevStrory/assets/images/logo.png" name="twitter:image">
+  <meta name="twitter:description" content="닥프렌즈의 기술 블로그"/>
+
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Markdown 기초 문법 | Docfriends 기술 블로그</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Markdown 기초 문법" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Markdown 활용 방법" />
+<meta property="og:description" content="Markdown 활용 방법" />
+<link rel="canonical" href="http://localhost:4000/DevStrory/2018-12-19/markdown/" />
+<meta property="og:url" content="http://localhost:4000/DevStrory/2018-12-19/markdown/" />
+<meta property="og:site_name" content="Docfriends 기술 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-19T00:00:00+09:00" />
+<script type="application/ld+json">
+{"description":"Markdown 활용 방법","@type":"BlogPosting","url":"http://localhost:4000/DevStrory/2018-12-19/markdown/","headline":"Markdown 기초 문법","dateModified":"2018-12-19T00:00:00+09:00","datePublished":"2018-12-19T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2018-12-19/markdown/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+  <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-131153272-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="content-container">
+    <header class="header">
+  <div class="header-title">
+    <a href="http://localhost:4000/DevStrory">Docfriends 기술 블로그</a>
+  </div>
+  <nav class="header-nav">
+    
+    
+    <a href="/DevStrory/">Post</a>
+    
+    
+    
+    <a href="/DevStrory/member">Member</a>
+    
+    
+    
+    <a href="/DevStrory/archive">Archive</a>
+    
+    
+    
+    <a href="/DevStrory/tags">Tags</a>
+    
+    
+    
+    <a href="https://github.com/Docfriends-Dev">Github</a>
+    
+    
+  </nav>
+</header>
+
+<div class="post, container-content">
+  <div class="post-title">Markdown 기초 문법</div>
+
+
+<div class="post-writergroup">
+  <a class="post-writerselect" href="https://github.com/NoteJGPak" title="https://github.com/NoteJGPak">
+    <span class="post-writer" >Writer: 박준걸 </span>
+    <img class="post-profile" src="http://localhost:4000/DevStrory/assets/images/member/leaf9016.png" onerror="this.src='http://localhost:4000/DevStrory/assets/images/member/defaultProfile.png'">
+  </a>
+</div>
+
+
+
+
+  <span class="post-date">
+    <time>19 Dec 2018</time>
+  </span>
+  <div class="post-tag">
+    <ul>
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#markdown">
+          <span>markdown</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#editor">
+          <span>editor</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  <h1 id="markdown-기초-문법">Markdown 기초 문법</h1>
+<h3 id="1-headerh1--h6">1. Header(H1 ~ H6)</h3>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># H1</span>
+<span class="gu">## H2</span>
+<span class="gu">### H3</span>
+<span class="gu">#### H4</span>
+<span class="gu">##### H5</span>
+<span class="gu">###### H6</span>
+</code></pre></div></div>
+
+<h1 id="h1">H1</h1>
+<h2 id="h2">H2</h2>
+<h3 id="h3">H3</h3>
+<h4 id="h4">H4</h4>
+<h5 id="h5">H5</h5>
+<h6 id="h6">H6</h6>
+
+<p>간단히 사용 가능.<br /><br /></p>
+
+<h3 id="2-인용blockquote">2. 인용(BlockQuote)</h3>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; BlockQuote</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>BlockQuote</p>
+</blockquote>
+
+<p>인용 뎁스를 더 넣으려면 &gt; 이 기호를 더 넣으면 됨.</p>
+
+<blockquote>
+  <blockquote>
+    <p>BlockQuote 2 Depth</p>
+  </blockquote>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="3-목록">3. 목록</h3>
+<h4 id="1-순서있는-목록">1) 순서있는 목록</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> 첫번째
+<span class="p">2.</span> 두번째
+<span class="p">3.</span> 세번째
+</code></pre></div></div>
+
+<ol>
+  <li>첫번째</li>
+  <li>두번째</li>
+  <li>세번째</li>
+</ol>
+
+<p>기본형</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> 첫번째
+<span class="p">1.</span> 두번째
+<span class="p">1.</span> 세번째
+</code></pre></div></div>
+
+<ol>
+  <li>첫번째</li>
+  <li>두번째</li>
+  <li>세번째</li>
+</ol>
+
+<p>숫자와 상관없이 자동으로 숫자값 늘어남</p>
+
+<p>2단계로 목록을 하고 싶으면 스페이스바 두번 하면됨</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> 첫번째
+<span class="p">  2.</span> 두번째
+<span class="p">    3.</span> 세번째
+</code></pre></div></div>
+
+<ol>
+  <li>첫번째</li>
+  <li>두번째
+    3. 세번째</li>
+</ol>
+
+<h4 id="2-순서없는-목록">2) 순서없는 목록</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">*</span> 첫번째
+<span class="p">*</span> 두번째
+<span class="p">*</span> 세번째
+</code></pre></div></div>
+
+<ul>
+  <li>첫번째</li>
+  <li>두번째</li>
+  <li>세번째</li>
+</ul>
+
+<p>기본형</p>
+
+<p>2단계로 목록을 하고 싶으면 스페이스바 두번 하면됨</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">*</span> 첫번째
+<span class="p">  *</span> 두번째
+<span class="p">    *</span> 세번째
+</code></pre></div></div>
+
+<ul>
+  <li>첫번째
+    <ul>
+      <li>두번째
+        <ul>
+          <li>세번째</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+<h3 id="4-링크">4. 링크</h3>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nv">링크 표시 텍스트</span><span class="p">](</span><span class="sx">링크</span> URL)
+
+ex : <span class="p">[</span><span class="nv">Google</span><span class="p">](</span><span class="sx">https://www.google.com</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>위 예제를 랜더링 하면 아래와 같이 나옴</p>
+
+<p><a href="https://www.google.com">Google</a></p>
+
+<p>바로 URL을 노출 시키고 싶을 때는</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">&lt;https://www.google.com&gt;</span>
+</code></pre></div></div>
+
+<p><a href="https://www.google.com">https://www.google.com</a></p>
+
+<h3 id="5-수평선">5. 수평선</h3>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">---</span>
+<span class="p">***</span>
+<span class="ge">__</span>_
+</code></pre></div></div>
+
+<p>위 내용 입력 시</p>
+
+<hr />
+<hr />
+<hr />
+
+<h3 id="6-코드-블럭">6. 코드 블럭</h3>
+<p>지금까지도 계속 쓰고 있는 것 코드 입력에 따른 적절한 색상까지 해줌</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ~~~java
+</code></pre></div></div>
+
+<p>java 위치에 적절한 각 언어를 입력하면 코드에 맞게 색상 변환됨</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kt">void</span> <span class="nf">foo</span><span class="o">(){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"TEST"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>코드 적을 때 매우 좋음.
+하지만 gist 쓰는게 더 좋아보임.</p>
+
+<script src="https://gist.github.com/NoteJGPak/a652cf359eadfa579d30b0f0159db84d.js"></script>
+
+<p>gist 에서 코드 입력 후 embed에서 코드 복사하여 붙여넣기하면 됨
+<br /></p>
+
+<h3 id="7-이미지-첨부">7. 이미지 첨부</h3>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">Alt Text</span><span class="p">](</span><span class="sx">Path</span><span class="p">)</span>
+<span class="p">![</span><span class="nv">Alt Text</span><span class="p">](</span><span class="sx">Path</span> <span class="nn">"Title"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/DevStrory/images/2018/markdown/splash_image.png" alt="Test" />
+<br /></p>
+
+<h3 id="8-강조">8. 강조</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="ge">*이텔릭*</span>
+<span class="gs">**볼드**</span>
+</code></pre></div></div>
+
+<p><em>이텔릭</em><br />
+<strong>볼드</strong></p>
+
+<p>
+    <h3 style="text-align: center;">Markdown이 생소해서 공부하다보니<br />쓸 것들만 따로 정리하였습니다.&lt;/h2&gt;
+    <h6 style="text-align: center;">ps. 개인적으로는 HTML이 더 편하다...&lt;/p&gt;
+&lt;/p&gt;
+</h6></h3></p>
+
+
+  <!-- Disqus -->
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//devstrory.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  </div>
+  
+
+</div>
+
+
+    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
+<div class="footer">
+  <hr />
+  <div class="footer-link">
+    
+    <a href="https://www.facebook.com/groups/docfriends/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    
+	
+	
+    <a href="https://www.youtube.com/user/Docairs"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+    
+	
+	
+
+    
+
+    
+    <a href="https://github.com/Docfriends"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+	
+	
+	
+	
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+
+    
+
+    
+
+    
+    <a href="mailto:apps@docfriends.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+
+  </div>
+  © 2018 Docfriends. All rights reserved.
+</div>
+
+  </div>
+</body>
+</html>

@@ -413,7 +413,7 @@ function Photo(element) {
 
 > 만약 봇이 작동을 안하면 /start 를 적어주시면 됩니다.
 
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 

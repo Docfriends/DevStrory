@@ -174,7 +174,7 @@ function maxRFC3339(date) {
 ```
 
 
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 

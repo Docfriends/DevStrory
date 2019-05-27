@@ -6,6 +6,1962 @@
     <atom:link href="http://localhost:4000/DevStrory/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>구글 캘린더 API</title>
+        <description>&lt;h3 id=&quot;1google-console에서-api키-얻기&quot;&gt;1.Google Console에서 API키 얻기&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://console.developers.google.com/&quot; target=&quot;blank&quot;&gt;Google Console 사이트&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;1-캘린더-라이브러리&quot;&gt;1) 캘린더 라이브러리&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/lib.png&quot; alt=&quot;Lib&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;라이브러리를 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/calendar.png&quot; alt=&quot;Calendar&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;calendar를 검색하고&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/calendarStart.png&quot; alt=&quot;CalendarStart&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;사용설정을 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/lib.png&quot; alt=&quot;Lib&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;사용자 인증 정보로 갑니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/key.png&quot; alt=&quot;Key&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;사용자 인증 정보 만들기&lt;/strong&gt; 에서 &lt;strong&gt;API 키&lt;/strong&gt; 를 만듭니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/keyValue.png&quot; alt=&quot;KeyValue&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;키 제한을 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/keyRole.png&quot; alt=&quot;KeyRole&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;calendar만 사용할수 있게 제한을 할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;2캘린더에서-id-얻기&quot;&gt;2.캘린더에서 ID 얻기&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://calendar.google.com/calendar/&quot; target=&quot;blank&quot;&gt;Google Calendar 사이트&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;1-캘린더&quot;&gt;1) 캘린더&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/cal.png&quot; alt=&quot;Cal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원하는 캘린더에 &lt;strong&gt;설정 및 공유&lt;/strong&gt; 를 들어갑니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/calAuth.png&quot; alt=&quot;CalAuth&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;캘린더 엑세스 권한을 설정합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/calID.png&quot; alt=&quot;CalID&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;캘린더 ID를 얻었습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.googleapis.com/calendar/v3/calendars//events?orderBy=startTime&amp;amp;singleEvents=true&amp;amp;timeMax=&amp;amp;timeMin=&amp;amp;key=&quot; target=&quot;blank&quot;&gt;https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?orderBy=startTime&amp;amp;singleEvents=true&amp;amp;timeMax=${maxTime}&amp;amp;timeMin=${minTime}&amp;amp;key=${googleKey}&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${calendarID}는 찾은 calendarID 를 입력해 줍니다.&lt;br /&gt;
+${googleKey}는 googleKey를 입력해 줍니다.&lt;br /&gt;
+${minTime}검색할 최소 날짜를 입력해 줍니다.&lt;br /&gt;
+${maxTime}검색할 최대 날짜를 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;시간은 RFC3339 룰을 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;minTime를 2019-05-23T00:00:00Z&lt;br /&gt;
+maxTime 2019-05-25T00:00:00Z&lt;/p&gt;
+
+&lt;p&gt;를 해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/google-calendar/calJson.png&quot; alt=&quot;CalJson&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;calendarID 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_id&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;calendarID를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;googleKey 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_googleKey&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;googleKey를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;최소 ~ 최대 일정 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_min&quot; type=&quot;date&quot; value=&quot;&quot; style=&quot;height: 40px; width: 48%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt; ~
+&lt;input id=&quot;input_max&quot; type=&quot;date&quot; value=&quot;&quot; style=&quot;height: 40px; width: 48%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+(결과값 간단히 보기 &lt;input id=&quot;check_find&quot; checked=&quot;true&quot; type=&quot;checkbox&quot; /&gt;)&lt;br /&gt;
+&lt;button id=&quot;search_cal&quot; style=&quot;height:44px; width: 15%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;캘린더 조회&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_json&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3lambda-코드&quot;&gt;3.Lambda 코드&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-code&quot;&gt;1) Code&lt;/h5&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'https'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;util&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'util'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;todayDate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// var yesterdayDate = new Date(todayDate.getTime() - 1000*60*60*24);&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// var tomorrowDate = new Date(todayDate.getTime() + 1000*60*60*24);&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// var twoDayAgoDate = new Date(todayDate.getTime() + 1000*60*60*24*2);&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calendarID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;googleKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;requestAPI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;method&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;GET&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;443&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;hostname&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;www.googleapis.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`/calendar/v3/calendars/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calendarID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/events?orderBy=startTime&amp;amp;singleEvents=true&amp;amp;timeMax=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;maxRFC3339&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todayDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;timeMin=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;minRFC3339&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todayDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;key=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;googleKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Access-Control-Allow-Origin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Success&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 통신 API&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;requestAPI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;errorCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;method&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;GET&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hostname&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;443&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;headers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setEncoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'utf8'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'end'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'200'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;errorCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`statusCode Error: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'error'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;errorCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;responseText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%j&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 시간&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;minRFC3339&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFullYear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;T00:00:00Z`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 시간&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;maxRFC3339&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFullYear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;T23:59:59Z`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;script src=&quot;http://code.jquery.com/jquery-1.10.2.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+
+  $(&quot;#search_cal&quot;).click(function() {
+    const id = $(&quot;#input_id&quot;).val();
+    if (id == &quot;&quot; || id == undefined) {
+      $(&quot;#print_json&quot;).empty();
+      $(&quot;#print_json&quot;).append(&quot;id를 입력하세요.&quot;);
+      return
+    }
+
+    const googleKey = $(&quot;#input_googleKey&quot;).val();
+    if (googleKey == &quot;&quot; || googleKey == undefined) {
+      $(&quot;#print_json&quot;).empty();
+      $(&quot;#print_json&quot;).append(&quot;googleKey를 입력하세요.&quot;);
+      return
+    }
+
+    const min = $(&quot;#input_min&quot;).val();
+    if (min == &quot;&quot; || min == undefined) {
+      $(&quot;#print_json&quot;).empty();
+      $(&quot;#print_json&quot;).append(&quot;최소 날짜를 입력하세요.&quot;);
+      return
+    }
+
+    const max = $(&quot;#input_max&quot;).val();
+    if (max == &quot;&quot; || max == undefined) {
+      $(&quot;#print_json&quot;).empty();
+      $(&quot;#print_json&quot;).append(&quot;최대 날짜를 입력하세요.&quot;);
+      return
+    }
+
+    var minDate = new Date(min);
+    var maxDate = new Date(max);
+
+    if (minDate &gt; maxDate) {
+      $(&quot;#print_json&quot;).empty();
+      $(&quot;#print_json&quot;).append(&quot;최소 날짜가 최대 날짜를 넘으면 안됩니다.&quot;);
+      return
+    }
+
+    const urlPath = `https://www.googleapis.com/calendar/v3/calendars/${id}/events?orderBy=startTime&amp;singleEvents=true&amp;timeMax=${maxRFC3339(maxDate)}&amp;timeMin=${minRFC3339(minDate)}&amp;key=${googleKey}`;
+
+    $.ajax({
+          type: &quot;GET&quot;,
+          url: urlPath,
+          success: function(args) {
+            $(&quot;#print_json&quot;).empty();
+            if ($(&quot;#check_find&quot;).is(':checked')) {
+              var json = JSON.stringify(args[&quot;items&quot;], null, 4);
+              $(&quot;#print_json&quot;).append(document.createTextNode(json));
+            } else {
+              var json = JSON.stringify(args, null, 4);
+              $(&quot;#print_json&quot;).append(document.createTextNode(json));
+            }
+          },
+          error: function(e) {
+            var json = JSON.stringify(e, null, 4);
+            $(&quot;#print_json&quot;).empty();
+            $(&quot;#print_json&quot;).append(document.createTextNode(json));
+          }
+      });
+  });
+
+  // 시간
+  function minRFC3339(date) {
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1 &lt; 10) ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`;
+    var day  = (date.getDate() &lt; 10) ? `0${date.getDate()}` : `${date.getDate()}`;
+    return `${year}-${month}-${day}T00:00:00Z`;
+  }
+
+  // 시간
+  function maxRFC3339(date) {
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1 &lt; 10) ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`;
+    var day  = (date.getDate() &lt; 10) ? `0${date.getDate()}` : `${date.getDate()}`;
+    return `${year}-${month}-${day}T23:59:59Z`;
+  }
+});
+&lt;/script&gt;
+
+</description>
+        <pubDate>Fri, 24 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/DevStrory/2019-05-24/google-calendar/</link>
+        <guid isPermaLink="true">http://localhost:4000/DevStrory/2019-05-24/google-calendar/</guid>
+      </item>
+    
+      <item>
+        <title>트렐로 웹훅 받기</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://developers.trello.com/page/webhooks&quot; target=&quot;blank&quot;&gt;트렐로 웹훅 사이트&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1key-token&quot;&gt;1.Key, Token&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-트렐로-key-받기&quot;&gt;1) 트렐로 Key 받기&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://trello.com/&quot; target=&quot;blank&quot;&gt;트렐로 사이트&lt;/a&gt; 에서 로그인을 해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://trello.com/app-key/&quot; target=&quot;blank&quot;&gt;트렐로 AppKey 사이트&lt;/a&gt; 에서 API Key를 받습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/key.png&quot; alt=&quot;Key&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;AWS 사이트 상단에서 자기와 가까운 리전을 설정합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/getKey.png&quot; alt=&quot;GetKey&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;트렐로 웹훅 Key를 받았습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;2-트렐로-token-받기&quot;&gt;2) 트렐로 Token 받기&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://trello.com/1/authorize?expiration=never&amp;amp;scope=read,write,account&amp;amp;response_type=token&amp;amp;name=Server%20Token&amp;amp;key=&quot; target=&quot;blank&quot;&gt;https://trello.com/1/authorize?expiration=never&amp;amp;scope=read,write,account&amp;amp;response_type=token&amp;amp;name=Server%20Token&amp;amp;key=${key}&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${key}는 방금 받은 트렐로 Key를 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/token.png&quot; alt=&quot;Token&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Allow 를 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/getToken.png&quot; alt=&quot;GetToken&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;트렐로 웹훅 Token을 받았습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h3 id=&quot;2보드-리스트-찾기&quot;&gt;2.보드 리스트 찾기&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-트렐로-username-찾기&quot;&gt;1) 트렐로 username 찾기&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/username.png&quot; alt=&quot;Username&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이름옆에 회색글자가 username입니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;2-트렐로-id-찾기&quot;&gt;2) 트렐로 ID 찾기&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://api.trello.com/1/members/&quot; target=&quot;blank&quot;&gt;https://api.trello.com/1/members/${username}&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${username}은 username을 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/id.png&quot; alt=&quot;Id&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;제일 앞에 ID가 있네요.&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;username을 입력&lt;/span&gt;&lt;br /&gt;
+(결과값 간단히 보기 &lt;input id=&quot;check_find_id&quot; checked=&quot;true&quot; type=&quot;checkbox&quot; /&gt;)&lt;br /&gt;
+&lt;input id=&quot;input_username_id&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;username을 입력해 주세요.&quot; style=&quot;height: 40px; width: 80%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;button id=&quot;find_id&quot; style=&quot;height:44px; width: 15%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;ID 찾기&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_id&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;3-보드-리스트-검색&quot;&gt;3) 보드 리스트 검색&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://api.trello.com/1/members//boards?key=&amp;amp;token=&quot; target=&quot;blank&quot;&gt;https://api.trello.com/1/members/${id}/boards?key=${key}&amp;amp;token=${token}&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${id}은 방금 찾은 ID를 입력해 줍니다.&lt;br /&gt;
+${key}은 트렐로 Key를 입력해 줍니다.&lt;br /&gt;
+${token}은 트렐로 Token을 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/boardList.png&quot; alt=&quot;BoardList&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;복잡합니다. 필요한건 보드의 shortLink입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;Key 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_key_board&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;키를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;Token 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_token_board&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;토큰을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;ID 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_id_board&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;ID를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+(결과값 간단히 보기 &lt;input id=&quot;check_find_board&quot; checked=&quot;true&quot; type=&quot;checkbox&quot; /&gt;)&lt;br /&gt;
+&lt;button id=&quot;search_board&quot; style=&quot;height:44px; width: 15%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;트렐로 보드 찾기&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_board&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;4-보드의-리스트-검색&quot;&gt;4) 보드의 리스트 검색&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://api.trello.com/1/boards//lists?key=&amp;amp;token=&quot; target=&quot;blank&quot;&gt;https://api.trello.com/1/boards/${shortLink}/lists?key=${key}&amp;amp;token=${token}&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${shortLink}는 원하는 보드의 shortLink를 입력해 줍니다.&lt;br /&gt;
+${key}은 트렐로 Key를 입력해 줍니다.&lt;br /&gt;
+${token}은 트렐로 Token을 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/list.png&quot; alt=&quot;List&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;리스트까지 가져왔습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;Key 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_key_list&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;키를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;Token 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_token_list&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;토큰을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;ID 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_shortLink_list&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;shortLink를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+(결과값 간단히 보기 &lt;input id=&quot;check_find_list&quot; checked=&quot;true&quot; type=&quot;checkbox&quot; /&gt;)&lt;br /&gt;
+&lt;button id=&quot;search_list&quot; style=&quot;height:44px; width: 25%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;트렐로 보드의 리스트 찾기&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_list&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3웹훅-등록-삭제하기&quot;&gt;3.웹훅 등록, 삭제하기&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-웹훅을-받을-url만들기&quot;&gt;1) 웹훅을 받을 URL만들기&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://localhost:4000/DevStrory/2019-05-20/make-lambda#temp1&quot; target=&quot;blank&quot;&gt;AWS Lambda 만들기&lt;/a&gt; 로 가서 Lambda 함수와 APIGateway를 만듭니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;2-웹훅-등록&quot;&gt;2) 웹훅 등록&lt;/h5&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;POST&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//api.trello.com/1/tokens/${token}/webhooks/?key=${key},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;callbackURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callbackURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;idModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;idModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;${token}은 트렐로 Token을 입력해 줍니다.&lt;br /&gt;
+${key}은 트렐로 Key를 입력해 줍니다.&lt;br /&gt;
+${description}은 웹훅 별칭을 입력해 줍니다.&lt;br /&gt;
+${callbackURL}은 callback을 받을 URL을 입력해 줍니다.&lt;br /&gt;
+${idModel}은 리스트의 ID를 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;Key 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_key_webhook&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;키를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;Token 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_token_webhook&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;토큰을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;Description 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_description_webhook&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;description을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;callbackURL 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_callbackURL_webhook&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;callbackURL을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;idModel 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_idModel_webhook&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;idModel을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;button id=&quot;register_webhook&quot; style=&quot;height:44px; width: 25%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;웹훅 등록&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_register_webhook&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;3-웹훅-리스트-조회&quot;&gt;3) 웹훅 리스트 조회&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://api.trello.com/1/members/me/tokens?webhooks=true&amp;amp;key=&amp;amp;token=&quot; target=&quot;blank&quot;&gt;https://api.trello.com/1/members/me/tokens?webhooks=true&amp;amp;key=${key}&amp;amp;token=${token}&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${key}은 트렐로 Key를 입력해 줍니다.&lt;br /&gt;
+${token}은 트렐로 Token을 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/webhookList.png&quot; alt=&quot;WebhookList&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;등록된 웹훅 리스트를 가져왔습니다.&lt;br /&gt;
+등록된 웹훅을 삭제하려면 webhooks 안의 id 값이 필요합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;Key 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_key_webhook_list&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;키를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;Token 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_token_webhook_list&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;토큰을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+(결과값 간단히 보기 &lt;input id=&quot;check_find_webhook_list&quot; checked=&quot;true&quot; type=&quot;checkbox&quot; /&gt;)&lt;br /&gt;
+&lt;button id=&quot;search_webhook_list&quot; style=&quot;height:44px; width: 25%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;등록 웹훅 리스트 찾기&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_webhook_list&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;4-웹훅-삭제&quot;&gt;4) 웹훅 삭제&lt;/h5&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;DELETE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//api.trello.com/1/tokens/${token}/webhooks/${webhookID}?key=${key},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;${token}은 트렐로 Token을 입력해 줍니다.&lt;br /&gt;
+${key}은 트렐로 Key를 입력해 줍니다.&lt;br /&gt;
+${webhookID}은 웹훅의 ID를 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;Key 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_key_delete_webhook&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;키를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;Token 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_token_delete_webhook&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;토큰을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;webhookID 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_webhook_id_delete_webhook&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;webhookID을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;button id=&quot;delete_webhook&quot; style=&quot;height:44px; width: 25%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;웹훅 삭제&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_delete_webhook&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;4웹훅-테스트&quot;&gt;4.웹훅 테스트&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-lambda에-log-찍기&quot;&gt;1) Lambda에 Log 찍기&lt;/h5&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Access-Control-Allow-Origin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Success&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;간단하게 로그를 찍어봅니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;2-log&quot;&gt;2) Log&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/trello-webhook/log.png&quot; alt=&quot;Log&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;type에 트렐로 타입들이 나옵니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;3-type&quot;&gt;3) Type&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;action_renamed_list: 리스트 제목 변경
+action_archived_list: 리스트 아카이브
+action_sent_list_to_board: 리스트 아카이브 복구
+action_create_card: 리스트 카드 생성
+action_renamed_card: 카드 제목 변경
+action_changed_description_of_card: 카드 Description 수정
+action_add_attachment_to_card: 카드 Attachment 추가
+action_comment_on_card: 카드 댓글 추가
+action_convert_to_card_from_checkitem: 카드 체크리스트를 카드로 추가
+action_added_a_due_date: 카드 일정 추가
+action_changed_a_due_date: 카드 일정 수정
+action_removed_a_due_date: 카드 일정 삭제
+action_marked_the_due_date_complete: 카드 일정 완료
+action_marked_the_due_date_incomplete: 카드 일정 완료 취소
+action_moved_card_lower: 카드 순서 상단으로 변경
+action_moved_card_higher: 카드 순서 하단으로 변경
+action_move_card_from_list_to_list: 카드의 리스트 위치 변경
+action_archived_card: 카드 아카이브
+action_sent_card_to_board: 카드 아카이브 복구
+action_delete_card: 카드 삭제
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;4-구조&quot;&gt;4) 구조&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var trelloInfo = new TrelloInfo(event);
+
+// trello
+function TrelloInfo(event) {
+  this.model = new EventModel(event[&quot;model&quot;] || {});
+  this.action = new EventAction(event[&quot;action&quot;] || {});
+}
+
+// model
+function EventModel(element) {
+  this.id = element[&quot;id&quot;];
+  this.name = element[&quot;name&quot;];
+  this.closed = element[&quot;closed&quot;];
+  this.idBoard = element[&quot;idBoard&quot;];
+  this.pos = element[&quot;pos&quot;];
+}
+
+// action
+function EventAction(element) {
+  this.id = element[&quot;id&quot;];
+  this.idMemberCreator = element[&quot;idMemberCreator&quot;];
+  this.type = element[&quot;type&quot;];
+  this.date = element[&quot;date&quot;];
+
+  this.limits = new EventActionLimit(element[&quot;limits&quot;] || {});
+  this.data = new EventActionData(element[&quot;data&quot;] || {});
+  this.display = new EventActionDisplay(element[&quot;display&quot;] || {});
+  this.memberCreator = new EventActionMemberCreator(element[&quot;memberCreator&quot;] || {});
+}
+
+// action - limit
+function EventActionLimit(element) {
+  this.reactions = new EventActionLimitReactions(element[&quot;reactions&quot;] || {});
+}
+
+// action - limit - reactions
+function EventActionLimitReactions(element) {
+  this.perAction = new EventActionLimitPerAction(element[&quot;perAction&quot;] || {});
+  this.uniquePerAction = new EventActionLimitUniquePerAction(element[&quot;uniquePerAction&quot;] || {});
+}
+
+// action - limit - reactions - perAction
+function EventActionLimitPerAction(element) {
+  this.status = element[&quot;status&quot;];
+  this.disableAt = element[&quot;disableAt&quot;];
+  this.warnAt = element[&quot;warnAt&quot;];
+}
+
+// action - limit - reactions - uniquePerAction
+function EventActionLimitUniquePerAction(element) {
+  this.status = element[&quot;status&quot;];
+  this.disableAt = element[&quot;disableAt&quot;];
+  this.warnAt = element[&quot;warnAt&quot;];
+}
+
+// action - data
+function EventActionData(element) {
+  this.cardSource = new EventActionDataCardSource(element[&quot;cardSource&quot;] || {});
+  this.checklist = new EventActionDataChecklist(element[&quot;checklist&quot;] || {});
+  this.listAfter = new EventActionDataListAfter(element[&quot;listAfter&quot;] || {});
+  this.listBefore = new EventActionDataListBefore(element[&quot;listBefore&quot;] || {});
+  this.board = new EventActionDataBoard(element[&quot;board&quot;] || {});
+  this.list = new EventActionDataList(element[&quot;list&quot;] || {});
+  this.card = new EventActionDataCard(element[&quot;card&quot;] || {});
+  this.old = new EventActionDataOld(element[&quot;old&quot;] || {});
+  this.attachment = new EventActionDataAttachment(element[&quot;attachment&quot;] || {});
+  this.text = element[&quot;text&quot;];
+}
+
+// action - data - cardSource
+function EventActionDataCardSource(element) {
+  this.shortLink = element[&quot;shortLink&quot;];
+  this.idShort = element[&quot;idShort&quot;];
+  this.name = element[&quot;name&quot;];
+  this.id = element[&quot;id&quot;];
+}
+
+// action - data - checklist
+function EventActionDataChecklist(element) {
+  this.name = element[&quot;name&quot;];
+  this.id = element[&quot;id&quot;];
+}
+
+// action - data - listAfter
+function EventActionDataListAfter(element) {
+  this.creationMethod = element[&quot;creationMethod&quot;];
+  this.name = element[&quot;name&quot;];
+  this.id = element[&quot;id&quot;];
+}
+
+// action - data - listBefore
+function EventActionDataListBefore(element) {
+  this.name = element[&quot;name&quot;];
+  this.id = element[&quot;id&quot;];
+}
+
+// action - data - board
+function EventActionDataBoard(element) {
+  this.creationMethod = element[&quot;creationMethod&quot;];
+  this.shortLink = element[&quot;shortLink&quot;];
+  this.name = element[&quot;name&quot;];
+  this.id = element[&quot;id&quot;];
+}
+
+// action - data - list
+function EventActionDataList(element) {
+  this.id = element[&quot;id&quot;];
+  this.name = element[&quot;name&quot;];
+}
+
+// action - data - card
+function EventActionDataCard(element) {
+  this.shortLink = element[&quot;shortLink&quot;];
+  this.idShort = element[&quot;idShort&quot;];
+  this.name = element[&quot;name&quot;];
+  this.id = element[&quot;id&quot;];
+  this.idList = element[&quot;idList&quot;];
+  this.due = element[&quot;due&quot;];
+  this.dueComplete = element[&quot;dueComplete&quot;];
+  this.pos = element[&quot;pos&quot;];
+}
+
+// action - data - old
+function EventActionDataOld(element) {
+  this.idList = element[&quot;idList&quot;];
+  this.name = element[&quot;name&quot;];
+  this.desc = element[&quot;desc&quot;];
+  this.due = element[&quot;due&quot;];
+  this.dueComplete = element[&quot;dueComplete&quot;];
+  this.pos = element[&quot;pos&quot;];
+  this.closed = element[&quot;closed&quot;];
+}
+
+// action - data - attachment
+function EventActionDataAttachment(element) {
+  this.previewUrl2x = element[&quot;previewUrl2x&quot;];
+  this.previewUrl = element[&quot;previewUrl&quot;];
+  this.url = element[&quot;url&quot;];
+  this.name = element[&quot;name&quot;];
+  this.id = element[&quot;id&quot;];
+}
+
+// action - display
+function EventActionDisplay(element) {
+  this.translationKey = element[&quot;translationKey&quot;];
+  this.entities = new EventActionDisplayEntities(element[&quot;entities&quot;] || {});
+}
+
+// action - display - entities
+function EventActionDisplayEntities(element) {
+  this.date = new EventActionDisplayEntitiesDate(element[&quot;date&quot;] || {});
+  this.cardSource = new EventActionDisplayEntitiesCardSource(element[&quot;cardSource&quot;] || {});
+  this.card = new EventActionDisplayEntitiesCard(element[&quot;card&quot;] || {});
+  this.list = new EventActionDisplayEntitiesList(element[&quot;list&quot;] || {});
+  this.name = new EventActionDisplayEntitiesName(element[&quot;name&quot;] || {});
+  this.contextOn = new EventActionDisplayEntitiesContextOn(element[&quot;contextOn&quot;] || {});
+  this.comment = new EventActionDisplayEntitiesComment(element[&quot;comment&quot;] || {});
+  this.listBefore = new EventActionDisplayEntitiesListBefore(element[&quot;listBefore&quot;] || {});
+  this.listAfter = new EventActionDisplayEntitiesListAfter(element[&quot;listAfter&quot;] || {});
+  this.attachment = new EventActionDisplayEntitiesAttachment(element[&quot;attachment&quot;] || {});
+  this.attachmentPreview = new EventActionDisplayEntitiesAttachmentPreview(element[&quot;attachmentPreview&quot;] || {});
+  this.memberCreator = new EventActionDisplayEntitiesMemberCreator(element[&quot;memberCreator&quot;] || {});
+}
+
+// action - display - entities - date
+function EventActionDisplayEntitiesDate(element) {
+  this.type = element[&quot;type&quot;];
+  this.date = element[&quot;date&quot;];
+}
+
+// action - display - entities - cardSource
+function EventActionDisplayEntitiesCardSource(element) {
+  this.type = element[&quot;type&quot;];
+  this.id = element[&quot;id&quot;];
+  this.idShort = element[&quot;idShort&quot;];
+  this.text = element[&quot;text&quot;];
+}
+
+// action - display - entities - card
+function EventActionDisplayEntitiesCard(element) {
+  this.type = element[&quot;type&quot;];
+  this.idList = element[&quot;idList&quot;];
+  this.id = element[&quot;id&quot;];
+  this.shortLink = element[&quot;shortLink&quot;];
+  this.text = element[&quot;text&quot;];
+  this.desc = element[&quot;desc&quot;];
+  this.dueComplete = element[&quot;dueComplete&quot;];
+  this.pos = element[&quot;pos&quot;];
+}
+
+// action - display - entities - list
+function EventActionDisplayEntitiesList(element) {
+  this.type = element[&quot;type&quot;];
+  this.id = element[&quot;id&quot;];
+  this.text = element[&quot;text&quot;];
+}
+
+// action - display - entities - name
+function EventActionDisplayEntitiesName(element) {
+  this.type = element[&quot;type&quot;];
+  this.text = element[&quot;text&quot;];
+}
+
+// action - display - entities - contextOn
+function EventActionDisplayEntitiesContextOn(element) {
+  this.type = element[&quot;type&quot;];
+  this.translationKey = element[&quot;translationKey&quot;];
+  this.hideIfContext = element[&quot;hideIfContext&quot;];
+  this.idContext = element[&quot;idContext&quot;];
+}
+
+// action - display - entities - comment
+function EventActionDisplayEntitiesComment(element) {
+  this.type = element[&quot;type&quot;];
+  this.id = element[&quot;id&quot;];
+  this.username = element[&quot;username&quot;];
+  this.text = element[&quot;text&quot;];
+}
+
+// action - display - entities - listBefore
+function EventActionDisplayEntitiesListBefore(element) {
+  this.type = element[&quot;type&quot;];
+  this.id = element[&quot;id&quot;];
+  this.text = element[&quot;text&quot;];
+}
+
+// action - display - entities - listAfter
+function EventActionDisplayEntitiesListAfter(element) {
+  this.type = element[&quot;type&quot;];
+  this.id = element[&quot;id&quot;];
+  this.text = element[&quot;text&quot;];
+  this.creationMethod = element[&quot;creationMethod&quot;];
+}
+
+// action - display - entities - attachment
+function EventActionDisplayEntitiesAttachment(element) {
+  this.type = element[&quot;type&quot;];
+  this.id = element[&quot;id&quot;];
+  this.previewUrl = element[&quot;previewUrl&quot;];
+  this.previewUrl2x = element[&quot;previewUrl2x&quot;];
+  this.link = element[&quot;link&quot;];
+  this.text = element[&quot;text&quot;];
+  this.url = element[&quot;url&quot;];
+}
+
+// action - display - entities - attachmentPreview
+function EventActionDisplayEntitiesAttachmentPreview(element) {
+  this.type = element[&quot;type&quot;];
+  this.originalUrl = element[&quot;originalUrl&quot;];
+  this.id = element[&quot;id&quot;];
+  this.previewUrl = element[&quot;previewUrl&quot;];
+  this.previewUrl2x = element[&quot;previewUrl2x&quot;];
+}
+
+// action - display - entities - memberCreator
+function EventActionDisplayEntitiesMemberCreator(element) {
+  this.type = element[&quot;type&quot;];
+  this.id = element[&quot;id&quot;];
+  this.username = element[&quot;username&quot;];
+  this.text = element[&quot;text&quot;];
+}
+
+// action - memberCreator
+function EventActionMemberCreator(element) {
+  this.id = element[&quot;id&quot;];
+  this.avatarHash = element[&quot;avatarHash&quot;];
+  this.avatarUrl = element[&quot;avatarUrl&quot;];
+  this.fullName = element[&quot;fullName&quot;];
+  this.idMemberReferrer = element[&quot;idMemberReferrer&quot;];
+  this.initials = element[&quot;initials&quot;];
+  this.nonPublic = element[&quot;nonPublic&quot;] || {};
+  this.nonPublicAvailable = element[&quot;nonPublicAvailable&quot;];
+  this.username = element[&quot;username&quot;];
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;script src=&quot;http://code.jquery.com/jquery-1.10.2.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+
+  $(&quot;#find_id&quot;).click(function() {
+    const username = $(&quot;#input_username_id&quot;).val();
+
+    if (username == &quot;&quot; || username == undefined) {
+      $(&quot;#print_id&quot;).empty();
+      $(&quot;#print_id&quot;).append(&quot;username을 입력하세요.&quot;);
+      return
+    }
+    const urlPath = &quot;https://api.trello.com/1/members/&quot;+username;
+
+    $.ajax({
+          type: &quot;GET&quot;,
+          url: urlPath,
+          success: function(args) {
+            $(&quot;#print_id&quot;).empty();
+            if ($(&quot;#check_find_id&quot;).is(':checked')) {
+              var json = JSON.stringify({&quot;id&quot;: args[&quot;id&quot;]}, null, 4);
+              $(&quot;#print_id&quot;).append(document.createTextNode(json));
+            } else {
+              var json = JSON.stringify(args, null, 4);
+              $(&quot;#print_id&quot;).append(document.createTextNode(json));
+            }
+          },
+          error: function(e) {
+            var json = JSON.stringify(e, null, 4);
+            $(&quot;#print_id&quot;).empty();
+            $(&quot;#print_id&quot;).append(document.createTextNode(json));
+          }
+      });
+  });
+
+  $(&quot;#search_board&quot;).click(function() {
+    const key = $(&quot;#input_key_board&quot;).val();
+    if (key == &quot;&quot; || key == undefined) {
+      $(&quot;#print_board&quot;).empty();
+      $(&quot;#print_board&quot;).append(&quot;key를 입력하세요.&quot;);
+      return
+    }
+
+    const token = $(&quot;#input_token_board&quot;).val();
+    if (token == &quot;&quot; || token == undefined) {
+      $(&quot;#print_board&quot;).empty();
+      $(&quot;#print_board&quot;).append(&quot;token을 입력하세요.&quot;);
+      return
+    }
+
+    const id = $(&quot;#input_id_board&quot;).val();
+    if (id == &quot;&quot; || id == undefined) {
+      $(&quot;#print_board&quot;).empty();
+      $(&quot;#print_board&quot;).append(&quot;id를 입력하세요.&quot;);
+      return
+    }
+    const urlPath = &quot;https://api.trello.com/1/members/&quot;+id+&quot;/boards?key=&quot;+key+&quot;&amp;token=&quot;+token;
+
+    $.ajax({
+          type: &quot;GET&quot;,
+          url: urlPath,
+          success: function(args) {
+            $(&quot;#print_board&quot;).empty();
+            if ($(&quot;#check_find_board&quot;).is(':checked')) {
+              var items = [];
+              args.forEach(function(item) {
+                items.push({
+                  &quot;name&quot;: item[&quot;name&quot;],
+                  &quot;shortLink&quot;: item[&quot;shortLink&quot;],
+                });
+              });
+              var json = JSON.stringify(items, null, 4);
+              $(&quot;#print_board&quot;).append(document.createTextNode(json));
+            } else {
+              var json = JSON.stringify(args, null, 4);
+              $(&quot;#print_board&quot;).append(document.createTextNode(json));
+            }
+          },
+          error: function(e) {
+            var json = JSON.stringify(e, null, 4);
+            $(&quot;#print_board&quot;).empty();
+            $(&quot;#print_board&quot;).append(document.createTextNode(json));
+          }
+      });
+  });
+
+
+  $(&quot;#search_list&quot;).click(function() {
+    const key = $(&quot;#input_key_list&quot;).val();
+    if (key == &quot;&quot; || key == undefined) {
+      $(&quot;#print_board&quot;).empty();
+      $(&quot;#print_board&quot;).append(&quot;key를 입력하세요.&quot;);
+      return
+    }
+
+    const token = $(&quot;#input_token_list&quot;).val();
+    if (token == &quot;&quot; || token == undefined) {
+      $(&quot;#print_board&quot;).empty();
+      $(&quot;#print_board&quot;).append(&quot;token을 입력하세요.&quot;);
+      return
+    }
+
+    const shortLink = $(&quot;#input_shortLink_list&quot;).val();
+    if (shortLink == &quot;&quot; || shortLink == undefined) {
+      $(&quot;#print_list&quot;).empty();
+      $(&quot;#print_list&quot;).append(&quot;shortLink를 입력하세요.&quot;);
+      return
+    }
+    const urlPath = &quot;https://api.trello.com/1/boards/&quot;+shortLink+&quot;/lists?key=&quot;+key+&quot;&amp;token=&quot;+token;
+
+    $.ajax({
+          type: &quot;GET&quot;,
+          url: urlPath,
+          success: function(args) {
+            $(&quot;#print_list&quot;).empty();
+            if ($(&quot;#check_find_list&quot;).is(':checked')) {
+              var items = [];
+              args.forEach(function(item) {
+                items.push({
+                  &quot;id&quot;: item[&quot;id&quot;],
+                  &quot;name&quot;: item[&quot;name&quot;],
+                  &quot;closed&quot;: item[&quot;closed&quot;]
+                });
+              });
+              var json = JSON.stringify(items, null, 4);
+              $(&quot;#print_list&quot;).append(document.createTextNode(json));
+            } else {
+              var json = JSON.stringify(args, null, 4);
+              $(&quot;#print_list&quot;).append(document.createTextNode(json));
+            }
+          },
+          error: function(e) {
+            var json = JSON.stringify(e, null, 4);
+            $(&quot;#print_list&quot;).empty();
+            $(&quot;#print_list&quot;).append(document.createTextNode(json));
+          }
+      });
+  });
+
+
+
+
+  $(&quot;#register_webhook&quot;).click(function() {
+    const key = $(&quot;#input_key_webhook&quot;).val();
+    if (key == &quot;&quot; || key == undefined) {
+      $(&quot;#print_register_webhook&quot;).empty();
+      $(&quot;#print_register_webhook&quot;).append(&quot;key를 입력하세요.&quot;);
+      return
+    }
+
+    const token = $(&quot;#input_token_webhook&quot;).val();
+    if (token == &quot;&quot; || token == undefined) {
+      $(&quot;#print_register_webhook&quot;).empty();
+      $(&quot;#print_register_webhook&quot;).append(&quot;token을 입력하세요.&quot;);
+      return
+    }
+
+    const description = $(&quot;#input_description_webhook&quot;).val();
+    if (description == &quot;&quot; || description == undefined) {
+      $(&quot;#print_register_webhook&quot;).empty();
+      $(&quot;#print_register_webhook&quot;).append(&quot;description을 입력하세요.&quot;);
+      return
+    }
+
+    const callbackURL = $(&quot;#input_callbackURL_webhook&quot;).val();
+    if (callbackURL == &quot;&quot; || callbackURL == undefined) {
+      $(&quot;#print_register_webhook&quot;).empty();
+      $(&quot;#print_register_webhook&quot;).append(&quot;callbackURL을 입력하세요.&quot;);
+      return
+    }
+
+    const idModel = $(&quot;#input_idModel_webhook&quot;).val();
+    if (idModel == &quot;&quot; || idModel == undefined) {
+      $(&quot;#print_register_webhook&quot;).empty();
+      $(&quot;#print_register_webhook&quot;).append(&quot;idModel을 입력하세요.&quot;);
+      return
+    }
+
+    const urlPath = &quot;https://api.trello.com/1/tokens/&quot;+token+&quot;/webhooks/?key=&quot;+key;
+    $.ajax({
+        type: &quot;POST&quot;,
+        url: urlPath,
+        data: {
+          description: description,
+          callbackURL: callbackURL,
+          idModel: idModel,
+        },
+        success: function(args) {
+          $(&quot;#print_register_webhook&quot;).empty();
+          var json = JSON.stringify(args, null, 4);
+          $(&quot;#print_register_webhook&quot;).append(document.createTextNode(json));
+        },
+        error: function(e) {
+          var json = JSON.stringify(e, null, 4);
+          $(&quot;#print_register_webhook&quot;).empty();
+          $(&quot;#print_register_webhook&quot;).append(document.createTextNode(json));
+        }
+    });
+  });
+
+
+  $(&quot;#search_webhook_list&quot;).click(function() {
+    const key = $(&quot;#input_key_webhook_list&quot;).val();
+    if (key == &quot;&quot; || key == undefined) {
+      $(&quot;#print_webhook_list&quot;).empty();
+      $(&quot;#print_webhook_list&quot;).append(&quot;key를 입력하세요.&quot;);
+      return
+    }
+
+    const token = $(&quot;#input_token_webhook_list&quot;).val();
+    if (token == &quot;&quot; || token == undefined) {
+      $(&quot;#print_webhook_list&quot;).empty();
+      $(&quot;#print_webhook_list&quot;).append(&quot;token을 입력하세요.&quot;);
+      return
+    }
+    const urlPath = &quot;https://api.trello.com/1/members/me/tokens?webhooks=true&amp;key=&quot;+key+&quot;&amp;token=&quot;+token;
+    $.ajax({
+        type: &quot;GET&quot;,
+        url: urlPath,
+        success: function(args) {
+          $(&quot;#print_webhook_list&quot;).empty();
+          if ($(&quot;#check_find_webhook_list&quot;).is(':checked')) {
+            var webhooks = [];
+            args.forEach(function (item) {
+              item[&quot;webhooks&quot;].forEach(function(element) {
+                webhooks.push(element);
+              });
+            });
+            var json = JSON.stringify(webhooks, null, 4);
+            $(&quot;#print_webhook_list&quot;).append(document.createTextNode(json));
+          } else {
+            var json = JSON.stringify(args, null, 4);
+            $(&quot;#print_webhook_list&quot;).append(document.createTextNode(json));
+          }
+        },
+        error: function(e) {
+          var json = JSON.stringify(e, null, 4);
+          $(&quot;#print_webhook_list&quot;).empty();
+          $(&quot;#print_webhook_list&quot;).append(document.createTextNode(json));
+        }
+    });
+  });
+
+
+
+
+  $(&quot;#delete_webhook&quot;).click(function() {
+    const key = $(&quot;#input_key_delete_webhook&quot;).val();
+    if (key == &quot;&quot; || key == undefined) {
+      $(&quot;#print_delete_webhook&quot;).empty();
+      $(&quot;#print_delete_webhook&quot;).append(&quot;key를 입력하세요.&quot;);
+      return
+    }
+
+    const token = $(&quot;#input_token_delete_webhook&quot;).val();
+    if (token == &quot;&quot; || token == undefined) {
+      $(&quot;#print_delete_webhook&quot;).empty();
+      $(&quot;#print_delete_webhook&quot;).append(&quot;token을 입력하세요.&quot;);
+      return
+    }
+
+    const webhookID = $(&quot;#input_webhook_id_delete_webhook&quot;).val();
+    if (webhookID == &quot;&quot; || webhookID == undefined) {
+      $(&quot;#print_delete_webhook&quot;).empty();
+      $(&quot;#print_delete_webhook&quot;).append(&quot;webhookID를 입력하세요.&quot;);
+      return
+    }
+    const urlPath = &quot;https://api.trello.com/1/token/&quot;+token+&quot;/webhooks/&quot;+webhookID+&quot;?key=&quot;+key;
+    $.ajax({
+        type: &quot;DELETE&quot;,
+        url: urlPath,
+        success: function(args) {
+          $(&quot;#print_delete_webhook&quot;).empty();
+          var json = JSON.stringify(args, null, 4);
+          $(&quot;#print_delete_webhook&quot;).append(document.createTextNode(json));
+        },
+        error: function(e) {
+          var json = JSON.stringify(e, null, 4);
+          $(&quot;#print_delete_webhook&quot;).empty();
+          $(&quot;#print_delete_webhook&quot;).append(document.createTextNode(json));
+        }
+    });
+  });
+
+});
+&lt;/script&gt;
+
+</description>
+        <pubDate>Thu, 23 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/DevStrory/2019-05-23/trello-webhook/</link>
+        <guid isPermaLink="true">http://localhost:4000/DevStrory/2019-05-23/trello-webhook/</guid>
+      </item>
+    
+      <item>
+        <title>텔레그램 웹훅 받기</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://core.telegram.org/bots/api&quot; target=&quot;blank&quot;&gt;텔레그램 봇 사이트&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1봇-만들기&quot;&gt;1.봇 만들기&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-botfather&quot;&gt;1) BotFather&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/botFather.png&quot; alt=&quot;BotFather&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;텔레그램에서 BotFather를 찾습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/botFatherStart.png&quot; alt=&quot;BotFatherStart&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;BotFather를 선택하고 Start 버튼을 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/botFatherStartInput.png&quot; alt=&quot;BotFatherStartInput&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여러가지 메뉴가 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/newBot.png&quot; alt=&quot;NewBot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/newbot&lt;/code&gt;을 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/name.png&quot; alt=&quot;Name&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;봇의 이름을 적습니다.&lt;br /&gt;
+원하는 이름을 적으면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/botId.png&quot; alt=&quot;BotId&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;봇의 유저네임을 입력합니다.&lt;br /&gt;
+봇의 유저네임은 중복이 안됩니다.&lt;br /&gt;
+봇의 토큰이 나왔습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;2-채팅방-id&quot;&gt;2) 채팅방 ID&lt;/h5&gt;
+
+&lt;p&gt;봇과 대화한 채팅방 ID는 &lt;a href=&quot;https://api.telegram.org/bot/getUpdates&quot; target=&quot;blank&quot;&gt;https://api.telegram.org/bot${telegramBotToken}/getUpdates&lt;/a&gt; 에서 알수 있습니다.&lt;br /&gt;
+${telegramBotToken}은 아까 얻은 token을 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/emptyValue.png&quot; alt=&quot;EmptyValue&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아무값이 없네요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/myBot.png&quot; alt=&quot;MyBot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;텔레그램에서 방금 만든 봇을 검색합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/myBotChat.png&quot; alt=&quot;MyBotChat&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Start 버튼을 눌러줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/start.png&quot; alt=&quot;Start&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다시 &lt;a href=&quot;https://api.telegram.org/bot/getUpdates&quot; target=&quot;blank&quot;&gt;https://api.telegram.org/bot${telegramBotToken}/getUpdates&lt;/a&gt; 여기에서 봇 토큰을 입력하고 들어가 봅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/chatId.png&quot; alt=&quot;ChatId&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;데이터가 나왔습니다 🎉🎉🎉&lt;br /&gt;
+ID는 result - message - chat - id 에서 볼 수 있습니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;3-id-찾기&quot;&gt;3) ID 찾기&lt;/h5&gt;
+
+&lt;p&gt;&lt;span&gt;봇 토큰 입력&lt;/span&gt;&lt;br /&gt;
+(결과값 간단히 보기 &lt;input id=&quot;check_find_bot_id&quot; checked=&quot;true&quot; type=&quot;checkbox&quot; /&gt;)&lt;br /&gt;
+&lt;input id=&quot;input_bot_token&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;봇 토큰을 입력해 주세요.&quot; style=&quot;height: 40px; width: 80%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;button id=&quot;search_bot_id&quot; style=&quot;height:44px; width: 15%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;찾기&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_bot_id&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3텔레그램에-메시지-보내기&quot;&gt;3.텔레그램에 메시지 보내기&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-메시지-보내기&quot;&gt;1) 메시지 보내기&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://api.telegram.org/bot/sendMessage?chat_id=&amp;amp;text=&quot; target=&quot;blank&quot;&gt;https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&amp;amp;text=${text}&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${telegramBotToken}은 봇 token을 입력해 줍니다.&lt;br /&gt;
+${telegramChatId}은 채팅 ID를 입력해 줍니다.&lt;br /&gt;
+${text}은 보낼 메시지를 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/sendMessageURL.png&quot; alt=&quot;SendMessageURL&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/sendMessage.png&quot; alt=&quot;SendMessage&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;메시지 보내기 성공 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;2-메시지-보내기-테스트&quot;&gt;2) 메시지 보내기 테스트&lt;/h5&gt;
+
+&lt;p&gt;&lt;span&gt;봇 토큰 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_send_message_bot_token&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;봇 토큰을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;보내질 채팅방 ID 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_send_message_chat_id&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;보내질 채팅방 ID를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;보낼 메시지 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_send_message_text&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;보낼 메시지를 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;button id=&quot;send_message&quot; style=&quot;height:44px; width: 15%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;메시지 보내기&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_message&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3웹훅-등록하기&quot;&gt;3.웹훅 등록하기&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-웹훅을-받을-url만들기&quot;&gt;1) 웹훅을 받을 URL만들기&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://localhost:4000/DevStrory/2019-05-20/make-lambda#temp1&quot; target=&quot;blank&quot;&gt;AWS Lambda 만들기&lt;/a&gt; 로 가서 Lambda 함수와 APIGateway를 만듭니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;2-웹훅-등록&quot;&gt;2) 웹훅 등록&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://api.telegram.org/bot/setWebhook?url=&quot; target=&quot;blank&quot;&gt;https://api.telegram.org/bot${telegramBotToken}/setWebhook?url=${callbackURL}&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${telegramBotToken}은 봇 token을 입력해 줍니다.&lt;br /&gt;
+${callbackURL}은 Lambda함수와 연결되어 있는 APIGateway URL을 입력해 줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/webhookSuccess.png&quot; alt=&quot;WebhookSuccess&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;웹훅 등록 성공 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;3-웹훅-삭제&quot;&gt;3) 웹훅 삭제&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://api.telegram.org/bot/setWebhook?url=&quot; target=&quot;blank&quot;&gt;https://api.telegram.org/bot${telegramBotToken}/setWebhook?url=&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;${telegramBotToken}은 봇 token을 입력해 줍니다.&lt;br /&gt;
+url을 비우면 웹훅 삭제가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/webhookDelete.png&quot; alt=&quot;WebhookDelete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;웹훅 삭제 성공 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;4-웹훅-등록삭제&quot;&gt;4) 웹훅 등록/삭제&lt;/h5&gt;
+
+&lt;p&gt;&lt;span&gt;봇 토큰 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_webhook_bot_token&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;봇 토큰을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;
+&lt;span&gt;callbackURL 입력&lt;/span&gt;&lt;br /&gt;
+&lt;input id=&quot;input_webhook_callbackURL&quot; type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;callbackURL을 입력해 주세요.&quot; style=&quot;height: 40px; width: 100%; border: 2px solid black; border-radius: 5px; font-size: 15px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;button id=&quot;webhook_set&quot; style=&quot;height:44px; width: 15%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;웹훅 등록&lt;/button&gt;
+&lt;button id=&quot;webhook_delete&quot; style=&quot;height:44px; width: 15%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;웹훅 삭제&lt;/button&gt;
+&lt;button id=&quot;webhook_info&quot; style=&quot;height:44px; width: 15%; border-top: 2px solid black; border-radius: 5px; font-size: 16px; background-color: black; color: white;&quot;&gt;웹훅 정보&lt;/button&gt;&lt;/p&gt;
+&lt;pre id=&quot;print_webhook&quot; style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;4웹훅&quot;&gt;4.웹훅&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-로그&quot;&gt;1) 로그&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/lambdaConsole.png&quot; alt=&quot;LambdaConsole&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;callbackURL 에 등록된 Lambda함수에 event를 Log로 찍어보기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;Console.log(event);&lt;/code&gt; 를 적습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/chat.png&quot; alt=&quot;Chat&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;봇에게 채팅을 해봅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/log.png&quot; alt=&quot;Log&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;성공적으로 웹훅을 받고 로그에 출력했습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;2-웹훅을-받고-텔레그램에-메시지-보내기&quot;&gt;2) 웹훅을 받고 텔레그램에 메시지 보내기&lt;/h5&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 텔레그램 봇 TOKEN&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TOKEN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 채팅방 ID&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SEND_ROOM_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'https'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;util&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'util'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;sendRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`메시지를 보낸 사람: &amp;lt;b&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/b&amp;gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Access-Control-Allow-Origin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Success&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'POST'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'api.telegram.org'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;443&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`/bot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/sendMessage`&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setEncoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'utf8'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'end'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'error'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'problem with request: '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%j&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;chat_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SEND_ROOM_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;parse_mode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;HTML&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Model&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;update_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;message_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;From&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;from&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Chat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;chat&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;caption&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;caption&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;photo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;photo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;photos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;photo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;photo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;photos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Photo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}));&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;photo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;photos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Chat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;first_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;last_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;From&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;is_bot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;is_bot&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;first_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;last_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;language_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;language_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Photo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;file_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;file_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;file_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;file_size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;width&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;height&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lambda 소스를 수정해봅니다.&lt;/p&gt;
+
+&lt;p&gt;Chat은 Chat에 대해서 나옵니다.&lt;br /&gt;
+From은 채팅을 보낸 사람에 대해 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/testComplete.png&quot; alt=&quot;TestComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;성공 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;3-텔레그램-그룹방에-봇-추가&quot;&gt;3) 텔레그램 그룹방에 봇 추가&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/groupInfo.png&quot; alt=&quot;GroupInfo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그룹방 Info에서 &lt;strong&gt;Add Members&lt;/strong&gt; 를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/groupBotSearch.png&quot; alt=&quot;GroupBotSearch&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;추가할 봇을 찾습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/groupBotAdd.png&quot; alt=&quot;GroupBotAdd&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;봇을 추가합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;또는&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/botInfo.png&quot; alt=&quot;BotInfo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;봇 Info에서 Add To Group를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/botGroup.png&quot; alt=&quot;BotGroup&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그룹을 찾고 추가를 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/groupEdit.png&quot; alt=&quot;GroupEdit&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그룹방 Info에서 Administrators를 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/groupAddAdmin.png&quot; alt=&quot;GroupAddAdmin&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add Admin(관리자 추가)를 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/groupAddBotAdmin.png&quot; alt=&quot;GroupAddBotAdmin&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;테스트봇에 관리자 권한을 줍니다.&lt;/p&gt;
+
+&lt;p&gt;메시지를 받으면 그룹방에 바로 보내도록 Lambda 소스를 수정합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 텔레그램 봇 TOKEN&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TOKEN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'https'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;util&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'util'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;sendRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`메시지를 보낸 사람: &amp;lt;b&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/b&amp;gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Access-Control-Allow-Origin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Success&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chatId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'POST'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'api.telegram.org'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;443&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`/bot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/sendMessage`&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setEncoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'utf8'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'end'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'error'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'problem with request: '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%j&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;chat_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chatId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;parse_mode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;HTML&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Model&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;update_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;message_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;From&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;from&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Chat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;chat&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;caption&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;caption&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;photo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;photo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;photos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;photo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;photo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;photos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Photo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}));&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;photo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;photos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Chat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;first_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;last_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;From&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;is_bot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;is_bot&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;first_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;last_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;language_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;language_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Photo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;file_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;file_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;file_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;file_size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;width&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;height&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/telegram-webhook/groupMessageSuccess.png&quot; alt=&quot;GroupMessageSuccess&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;성공 🎉🎉🎉&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;만약 봇이 작동을 안하면 /start 를 적어주시면 됩니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;http://code.jquery.com/jquery-1.10.2.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+
+  $(&quot;#search_bot_id&quot;).click(function() {
+    const telegramBotToken = $(&quot;#input_bot_token&quot;).val();
+
+    if (telegramBotToken == &quot;&quot; || telegramBotToken == undefined) {
+      $(&quot;#print_bot_id&quot;).empty();
+      $(&quot;#print_bot_id&quot;).append(&quot;Bot 토큰을 입력하세요.&quot;);
+      return
+    }
+    const urlPath = &quot;https://api.telegram.org/bot&quot;+telegramBotToken+&quot;/getUpdates&quot;;
+
+    $.ajax({
+          type: &quot;GET&quot;,
+          url: urlPath,
+          success: function(args) {
+            $(&quot;#print_bot_id&quot;).empty();
+            if ($(&quot;#check_find_bot_id&quot;).is(':checked')) {
+              var results =  args[&quot;result&quot;] || [];
+              var chats = [];
+              results.forEach(function (item, index, array) {
+                var chat = (item[&quot;message&quot;] || {})[&quot;chat&quot;];
+
+                var found = false;
+                for(var i = 0; i &lt; chats.length; i++) {
+                    if (chats[i][&quot;id&quot;] == chat[&quot;id&quot;]) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                  var data = {};
+                  if (chat[&quot;title&quot;] == undefined) {
+                    data = {
+                      &quot;id&quot;: chat[&quot;id&quot;],
+                      &quot;isGroup&quot;: false,
+                      &quot;username&quot;: chat[&quot;username&quot;],
+                    };
+                  } else {
+                    data = {
+                      &quot;id&quot;: chat[&quot;id&quot;],
+                      &quot;isGroup&quot;: true,
+                      &quot;title&quot;: chat[&quot;title&quot;],
+                    };
+                  }
+                  chats.push(data);
+                }
+              });
+              var json = JSON.stringify(chats, null, 4);
+              $(&quot;#print_bot_id&quot;).append(document.createTextNode(json));
+            } else {
+              var json = JSON.stringify(args, null, 4);
+              $(&quot;#print_bot_id&quot;).append(document.createTextNode(json));
+            }
+          },
+          error: function(e) {
+            var json = JSON.stringify(e, null, 4);
+            $(&quot;#print_bot_id&quot;).empty();
+            $(&quot;#print_bot_id&quot;).append(document.createTextNode(json));
+          }
+      });
+  });
+
+  $(&quot;#send_message&quot;).click(function() {
+    const telegramBotToken = $(&quot;#input_send_message_bot_token&quot;).val();
+    if (telegramBotToken == &quot;&quot; || telegramBotToken == undefined) {
+      $(&quot;#print_message&quot;).empty();
+      $(&quot;#print_message&quot;).append(&quot;Bot 토큰을 입력하세요.&quot;);
+      return
+    }
+    const chatID = $(&quot;#input_send_message_chat_id&quot;).val();
+    if (chatID == &quot;&quot; || chatID == undefined) {
+      $(&quot;#print_message&quot;).empty();
+      $(&quot;#print_message&quot;).append(&quot;보내질 채팅방 ID를 입력하세요.&quot;);
+      return
+    }
+    const text = $(&quot;#input_send_message_text&quot;).val();
+    if (text == &quot;&quot; || text == undefined) {
+      $(&quot;#print_message&quot;).empty();
+      $(&quot;#print_message&quot;).append(&quot;보낼 메시지를 입력하세요.&quot;);
+      return
+    }
+    const urlPath = &quot;https://api.telegram.org/bot&quot;+telegramBotToken+&quot;/sendMessage?chat_id=&quot;+chatID+&quot;&amp;text=&quot;+text;
+    $.ajax({
+        type: &quot;GET&quot;,
+        url: urlPath,
+        success: function(args) {
+          var json = JSON.stringify(args, null, 4);
+          $(&quot;#print_message&quot;).empty();
+          $(&quot;#print_message&quot;).append(document.createTextNode(json));
+        },
+        error: function(e) {
+          var json = JSON.stringify(e, null, 4);
+          $(&quot;#print_message&quot;).empty();
+          $(&quot;#print_message&quot;).append(document.createTextNode(json));
+        }
+      });
+  });
+
+  $(&quot;#webhook_set&quot;).click(function() {
+    const telegramBotToken = $(&quot;#input_webhook_bot_token&quot;).val();
+    if (telegramBotToken == &quot;&quot; || telegramBotToken == undefined) {
+      $(&quot;#print_webhook&quot;).empty();
+      $(&quot;#print_webhook&quot;).append(&quot;Bot 토큰을 입력하세요.&quot;);
+      return
+    }
+    const callbackURL = $(&quot;#input_webhook_callbackURL&quot;).val();
+    if (callbackURL == &quot;&quot; || callbackURL == undefined) {
+      $(&quot;#print_webhook&quot;).empty();
+      $(&quot;#print_webhook&quot;).append(&quot;callbackURL을 입력하세요.&quot;);
+      return
+    }
+    const webhookUrlPath = &quot;https://api.telegram.org/bot&quot;+telegramBotToken+&quot;/setWebhook?url=&quot;+callbackURL;
+    $.ajax({
+        type: &quot;GET&quot;,
+        url: webhookUrlPath,
+        success: function(args) {
+          var json = JSON.stringify(args, null, 4);
+          $(&quot;#print_webhook&quot;).empty();
+          $(&quot;#print_webhook&quot;).append(document.createTextNode(json));
+        },
+        error: function(e) {
+          var json = JSON.stringify(e, null, 4);
+          $(&quot;#print_webhook&quot;).empty();
+          $(&quot;#print_webhook&quot;).append(document.createTextNode(json));
+        }
+    });
+  });
+
+  $(&quot;#webhook_delete&quot;).click(function() {
+    const telegramBotToken = $(&quot;#input_webhook_bot_token&quot;).val();
+    if (telegramBotToken == &quot;&quot; || telegramBotToken == undefined) {
+      $(&quot;#print_webhook&quot;).empty();
+      $(&quot;#print_webhook&quot;).append(&quot;Bot 토큰을 입력하세요.&quot;);
+      return
+    }
+    const webhookUrlPath = &quot;https://api.telegram.org/bot&quot;+telegramBotToken+&quot;/setWebhook?url=&quot;;
+    $.ajax({
+        type: &quot;GET&quot;,
+        url: webhookUrlPath,
+        success: function(args) {
+          var json = JSON.stringify(args, null, 4);
+          $(&quot;#print_webhook&quot;).empty();
+          $(&quot;#print_webhook&quot;).append(document.createTextNode(json));
+        },
+        error: function(e) {
+          var json = JSON.stringify(e, null, 4);
+          $(&quot;#print_webhook&quot;).empty();
+          $(&quot;#print_webhook&quot;).append(document.createTextNode(json));
+        }
+    });
+  });
+
+  $(&quot;#webhook_info&quot;).click(function() {
+    const telegramBotToken = $(&quot;#input_webhook_bot_token&quot;).val();
+    if (telegramBotToken == &quot;&quot; || telegramBotToken == undefined) {
+      $(&quot;#print_webhook&quot;).empty();
+      $(&quot;#print_webhook&quot;).append(&quot;Bot 토큰을 입력하세요.&quot;);
+      return
+    }
+    const webhookUrlPath = &quot;https://api.telegram.org/bot&quot;+telegramBotToken+&quot;/getWebhookInfo&quot;;
+    $.ajax({
+          type: &quot;GET&quot;,
+          url: webhookUrlPath,
+          success: function(args) {
+            var json = JSON.stringify(args, null, 4);
+            $(&quot;#print_webhook&quot;).empty();
+            $(&quot;#print_webhook&quot;).append(document.createTextNode(json));
+          },
+          error: function(e) {
+            var json = JSON.stringify(e, null, 4);
+            $(&quot;#print_webhook&quot;).empty();
+            $(&quot;#print_webhook&quot;).append(document.createTextNode(json));
+          }
+      });
+  });
+
+});
+&lt;/script&gt;
+
+</description>
+        <pubDate>Wed, 22 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/DevStrory/2019-05-22/telegram-webhook/</link>
+        <guid isPermaLink="true">http://localhost:4000/DevStrory/2019-05-22/telegram-webhook/</guid>
+      </item>
+    
+      <item>
+        <title>Lambda 스케쥴러 만들기</title>
+        <description>&lt;h3 id=&quot;1lambda&quot;&gt;1.Lambda&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-람다-만들기&quot;&gt;1) 람다 만들기&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ap-northeast-2.console.aws.amazon.com/lambda/home&quot; target=&quot;blank&quot;&gt;AWS Lambda 사이트&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://localhost:4000/DevStrory/2019-05-20/make-lambda#temp1-2&quot; target=&quot;blank&quot;&gt;AWS Lambda 함수 만들기&lt;/a&gt; 로 가서 Lambda 함수를 만듭니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/lambda-scheduler/makeLambda.png&quot; alt=&quot;MakeLambda&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2cloudwatch-규칙-만들기&quot;&gt;2.CloudWatch 규칙 만들기&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ap-northeast-2.console.aws.amazon.com/cloudwatch/home&quot; target=&quot;blank&quot;&gt;AWS CloudWatch 사이트&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleMake.png&quot; alt=&quot;RoleMake&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;이벤트&lt;/strong&gt; &lt;strong&gt;규칙&lt;/strong&gt; 을 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleCreate.png&quot; alt=&quot;RoleCreate&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleInput.png&quot; alt=&quot;RoleInput&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;일정&lt;/strong&gt; 을 누르고 Cron식을 입력합니다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*/1 * ? * MON-FRI *: 월-금 매시간 1분마다 호출
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;대상추가&lt;/strong&gt; 를 누르고 Lambda함수를 선택합니다.&lt;br /&gt;
+&lt;strong&gt;세부 정보 구성&lt;/strong&gt; 을 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleName.png&quot; alt=&quot;RoleName&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;규칙 이름을 입력하고 &lt;strong&gt;규칙 생성&lt;/strong&gt; 을 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleComplete.png&quot; alt=&quot;RoleComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;규칙 생성 완료 🎉🎉🎉&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/lambda-scheduler/lambdaComplete.png&quot; alt=&quot;LambdaComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lambda에 들어가면 CloudWatch Event가 생겼습니다.&lt;br /&gt;
+누르면 Event 리스트가 나오게 됩니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h3 id=&quot;3test&quot;&gt;3.Test&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;exports.handler = async (event) =&amp;gt; {
+    // TODO implement
+    const response = {
+        statusCode: 200,
+        body: JSON.stringify('Hello from Lambda!'),
+    };
+    console.log(&quot;스케쥴러!&quot;);
+    return response;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;람다 함수에 Console.log(); 를 추가합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/lambda-scheduler/test.png&quot; alt=&quot;Test&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;테스트 성공 🎉🎉🎉&lt;/p&gt;
+
+&lt;p&gt;Cron에서 UTC 시간대 때문에 서울은 +9를 해주어야 합니다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;월-금 10시 = 0 1 ? * MON-FRI *
+월-금 18시 30분 = 30 9 ? * MON-FRI *
+월-금 19시 = 0 10 ? * MON-FRI *
+월-금 매분마다 = */1 * ? * MON-FRI *
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 21 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/DevStrory/2019-05-21/lambda-scheduler/</link>
+        <guid isPermaLink="true">http://localhost:4000/DevStrory/2019-05-21/lambda-scheduler/</guid>
+      </item>
+    
+      <item>
+        <title>Lambda 만들기</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://ap-northeast-2.console.aws.amazon.com/lambda/home&quot; target=&quot;blank&quot;&gt;AWS Lambda&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ap-northeast-2.console.aws.amazon.com/apigateway/home&quot; target=&quot;blank&quot;&gt;AWS API Gateway&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://console.aws.amazon.com/iam/home&quot; target=&quot;blank&quot;&gt;AWS IAM&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ap-northeast-2.console.aws.amazon.com/cloudwatch/home&quot; target=&quot;blank&quot;&gt;AWS CloudWatch&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1lambda&quot;&gt;1.Lambda&lt;/h3&gt;
+
+&lt;h3 id=&quot;temp1&quot; style=&quot;visibility:hidden;&quot;&gt;&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-aws-리전-변경&quot;&gt;1) AWS 리전 변경&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/region.png&quot; alt=&quot;Region&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;AWS 사이트 상단에서 자기와 가까운 리전을 설정합니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;2-lambda-함수-생성&quot;&gt;2) Lambda 함수 생성&lt;/h5&gt;
+
+&lt;h3 id=&quot;temp1-2&quot; style=&quot;visibility:hidden;&quot;&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/lambdaSite.png&quot; alt=&quot;LambdaSite&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;함수 만들기를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/lambdaMakeFunc.png&quot; alt=&quot;LambdaMakeFunc&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;함수이름을 입력하고 함수 생성을 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/lambdaMakeFuncComplete.png&quot; alt=&quot;LambdaMakeFuncComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lambda 함수 만들기 성공했습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h3 id=&quot;2api-gateway&quot;&gt;2.API Gateway&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-api-gateway-만들기&quot;&gt;1) API Gateway 만들기&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewaySite.png&quot; alt=&quot;ApiGatewaySite&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;API Gateway를 시작합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayMake.png&quot; alt=&quot;ApiGatewayMake&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;새 API생성&lt;/strong&gt;에서 &lt;strong&gt;새 API&lt;/strong&gt; 를 선택하고&lt;br /&gt;
+API 이름을 입력합니다.&lt;br /&gt;
+그리고 API 생성을 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayMakeComplete.png&quot; alt=&quot;ApiGatewayMakeComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;API Gateway 만들기 성공했습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;2-api-gateway-method-만들기&quot;&gt;2) API Gateway Method 만들기&lt;/h5&gt;
+
+&lt;h3 id=&quot;temp2-2&quot; style=&quot;visibility:hidden;&quot;&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayWorkMethod.png&quot; alt=&quot;ApiGatewayWorkMethod&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;메서드 생성&lt;/strong&gt; 을 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayMethodType.png&quot; alt=&quot;ApiGatewayWorkMethodType&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여러가지 HTTP Method가 나오게 되는데 저는 POST를 해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayMethodPost.png&quot; alt=&quot;ApiGatewayMethodPost&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;POST를 선택한 다음 체크를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayLambda.png&quot; alt=&quot;ApiGatewayLambda&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lambda함수를 입력을 하고 저장을 해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayLambdaConnect.png&quot; alt=&quot;ApiGatewayLambdaConnect&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lambda 함수에 API Gateway 권한부여를 확인을 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayMethodMakeComplete.png&quot; alt=&quot;ApiGatewayMethodMakeComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;API Gateway POST 메서드를 만들었습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h3 id=&quot;3배포-테스트&quot;&gt;3.배포, 테스트&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-배포&quot;&gt;1) 배포&lt;/h5&gt;
+
+&lt;h3 id=&quot;temp3-1&quot; style=&quot;visibility:hidden;&quot;&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/uploadWork.png&quot; alt=&quot;UploadWork&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;작업을 눌러서 &lt;strong&gt;API 배포&lt;/strong&gt; 를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/uploadSelect.png&quot; alt=&quot;UploadSelect&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;배포 스테이지&lt;/strong&gt; 를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/uploadComplete.png&quot; alt=&quot;UploadComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[새 스테이지]&lt;/strong&gt; 를 선택하고 스테이지 이름을 입력을 한 뒤 배포를 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/uploadSiteComplete.png&quot; alt=&quot;UploadSiteComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 URL까지 나왔습니다 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;2-통신-테스트&quot;&gt;2) 통신 테스트&lt;/h5&gt;
+
+&lt;h3 id=&quot;temp3-2&quot; style=&quot;visibility:hidden;&quot;&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/requestTest.png&quot; alt=&quot;RequestTest&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;URL로 통신 끝 🎉🎉🎉&lt;/p&gt;
+
+&lt;h3 id=&quot;4head추가-cors추가&quot;&gt;4.HEAD추가, CORS추가&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-head&quot;&gt;1) HEAD&lt;/h5&gt;
+
+&lt;p&gt;특정 사이트에서는 HTTP Method 중 head가 필요할수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/lambdaHead.png&quot; alt=&quot;LambdaHead&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#temp1-2&quot;&gt;Lambda - Lambda 함수 생성&lt;/a&gt; 에서 POST를 만드는것과 비슷하게 HEAD를 만듭니다.&lt;br /&gt;
+코드는 간단히 200을 리턴하게 하였습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/apiGatewayHead.png&quot; alt=&quot;ApiGatewayHead&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#temp2-2&quot;&gt;API_Gateway - API Gateway Method 만들기&lt;/a&gt; 에서 HEAD 메서드를 만듭니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#temp3-1&quot;&gt;배포, 테스트 - 배포&lt;/a&gt; 다시 배포를 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/testHead.png&quot; alt=&quot;TestHead&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;HEAD 테스트 완료 🎉🎉🎉&lt;/p&gt;
+
+&lt;h5 id=&quot;1-cors&quot;&gt;1) CORS&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/workCors.png&quot; alt=&quot;WorkCors&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;작업&lt;/strong&gt; 에서 CORS 활성화를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/corsCheck.png&quot; alt=&quot;CorsCheck&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CORS 활성화 및 기존의 CORS 헤더 대체&lt;/strong&gt; 를 선택 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/corsConfirm.png&quot; alt=&quot;CorsConfirm&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;예, 기존 값을 대체하겠습니다.&lt;/strong&gt; 를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/corsComplete.png&quot; alt=&quot;CorsComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OPTIONS 메서드도 생겼습니다.&lt;br /&gt;
+CORS &lt;a href=&quot;#temp3-1&quot;&gt;배포, 테스트 - 배포&lt;/a&gt; 배포를 합니다.&lt;br /&gt;
+CORS 추가 완료 🎉🎉🎉&lt;/p&gt;
+
+&lt;h3 id=&quot;5로그-iam-추가&quot;&gt;5.로그 IAM 추가&lt;/h3&gt;
+
+&lt;h5 id=&quot;1-role-추가&quot;&gt;1) Role 추가&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/iamRole.png&quot; alt=&quot;IamRole&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;IAM에 들어가서 &lt;strong&gt;역활&lt;/strong&gt; 을 누르고 &lt;strong&gt;역활 만들기&lt;/strong&gt; 를 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/iamRoleAPIGateway.png&quot; alt=&quot;IamRoleAPIGateway&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;API Gateway&lt;/strong&gt; 를 누르고 &lt;strong&gt;다음:권한&lt;/strong&gt; 을 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/iamFilter.png&quot; alt=&quot;IamFilter&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;다음:태그&lt;/strong&gt; 를 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/iamTag.png&quot; alt=&quot;IamTag&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;다음:검토&lt;/strong&gt; 를 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/iamCheck.png&quot; alt=&quot;IamCheck&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;역활 이름을 입력하고 &lt;strong&gt;다음:만들기&lt;/strong&gt; 를 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/iamComplete.png&quot; alt=&quot;IamComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;IAM 추가 완료 🎉🎉🎉&lt;br /&gt;
+&lt;strong&gt;역활 ARN&lt;/strong&gt; 을 복사해놓습니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;2-api-gateway에-iam-추가&quot;&gt;2) API Gateway에 IAM 추가&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/iamGateway.png&quot; alt=&quot;IamGateway&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;API Gateway에서 &lt;strong&gt;설정&lt;/strong&gt; 에 들어간 다음 ARN을 적고 &lt;strong&gt;저장&lt;/strong&gt; 을 눌러줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/logMethod.png&quot; alt=&quot;LogMethod&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;API Gateway에서 &lt;strong&gt;스테이지&lt;/strong&gt; 를 누르고 배포스테이지에 들어간 다음 &lt;strong&gt;로그/추적&lt;/strong&gt; 에서 &lt;strong&gt;CloudWatch 로그 활성화&lt;/strong&gt; 를 해줍니다.&lt;br /&gt;
+로그 수준을 &lt;strong&gt;INFO&lt;/strong&gt; 해주고 필요한 사항을 체크한 뒤 &lt;strong&gt;변경 사항 저장&lt;/strong&gt; 을 합니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;3-test&quot;&gt;3) Test&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/lambdaLog.png&quot; alt=&quot;LambdaLog&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lambda 코드에 Console.log를 적어주고 저장합니다.&lt;br /&gt;
+다시 통신 테스트 &lt;a href=&quot;#temp3-2&quot;&gt;배포, 테스트 - 테스트&lt;/a&gt; 를 합니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;3-log-확인&quot;&gt;3) Log 확인&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/cloudWatchLog.png&quot; alt=&quot;CloudWatchLog&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;CloudWatch에서 &lt;strong&gt;로그&lt;/strong&gt; 를 들어갑니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/cloudWatchLogList.png&quot; alt=&quot;CloudWatchLogList&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아까 만든 로그 그룹을 들어갑니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/DevStrory/images/2019/make-lambda/cloudWatchLogComplete.png&quot; alt=&quot;CloudWatchLogComplete&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;로그 완료 🎉🎉🎉&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/DevStrory/2019-05-20/make-lambda/</link>
+        <guid isPermaLink="true">http://localhost:4000/DevStrory/2019-05-20/make-lambda/</guid>
+      </item>
+    
+      <item>
         <title>swift Throttle, Debounce</title>
         <description>&lt;h2 id=&quot;debounce과-throttle&quot;&gt;Debounce과 Throttle&lt;/h2&gt;
 

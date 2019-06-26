@@ -2,18 +2,6 @@ const https = require('https');
 const http = require('http');
 const util = require('util');
 
-exports.response = function(statusCode, body, headers) {
-  var headers = headers || {};
-  var accessControlAllowOrigin = headers['Access-Control-Allow-Origin'] || '*';
-  headers['Access-Control-Allow-Origin'] = accessControlAllowOrigin;
-  const response = {
-      statusCode: statusCode || 200,
-      headers: headers,
-      body: body || 'Success'
-  };
-  return response;
-};
-
 exports.telegramSendMessageRequest = function(token, sendRoomId, message, callback, errorCallback) {
   exports.request({
     'method': 'POST',

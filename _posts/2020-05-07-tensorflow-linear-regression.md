@@ -10,10 +10,6 @@ comments: true
 share: true
 ---
 
-# Tensorflow Linear Regression
-
-Created: May 07, 2020 2:13 PM
-
 ## Tensorflow 란?
 
   구글에서 발표한 머신러닝을 위한 오픈소스 라이브러리 입니다.  많은 머신러닝 서비스에서 사용 중이며, Python으로 개발이 가능해서 개발 접근성이 매우 좋습니다.

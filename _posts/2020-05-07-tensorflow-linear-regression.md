@@ -4,8 +4,8 @@ title: "Tensorflow Linear Regression"
 description: "Tensorflow 를 활용한 Linear Regression 구현"
 date: 2019-05-24
 tags: [Tensorflow, Linear, Regression]
-writer: Tej Pak
-category: server
+writer: TejPak
+category: Machine Learning
 comments: true
 share: true
 ---

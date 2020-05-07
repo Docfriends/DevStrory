@@ -10,8 +10,8 @@ writer:
 
 writers:
   - member:
-      id: "leaf9016"
-      url: "https://github.com/NoteJGPak"
+      id: "TejPak"
+      url: "https://github.com/TejNote"
       image: "/assets/images/member/leaf9016.png"
       name: "박준걸"
   - member:

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lambda 스케쥴러 만들기</title>
+  <title>temp</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="/DevStrory/assets/css/main.css" type="text/css">
@@ -33,21 +33,21 @@
 
 
   <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Lambda 스케쥴러 만들기 | Docfriends 기술 블로그</title>
+<title>temp | Docfriends 기술 블로그</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Lambda 스케쥴러 만들기" />
+<meta property="og:title" content="temp" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="AWS Lambda Scheduler" />
-<meta property="og:description" content="AWS Lambda Scheduler" />
-<link rel="canonical" href="http://localhost:4000/DevStrory/2019-05-21/lambda-scheduler/" />
-<meta property="og:url" content="http://localhost:4000/DevStrory/2019-05-21/lambda-scheduler/" />
+<meta name="description" content="temp" />
+<meta property="og:description" content="temp" />
+<link rel="canonical" href="http://localhost:4000/DevStrory/2021-03-29/temp/" />
+<meta property="og:url" content="http://localhost:4000/DevStrory/2021-03-29/temp/" />
 <meta property="og:site_name" content="Docfriends 기술 블로그" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-05-21T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-03-29T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Lambda 스케쥴러 만들기" />
+<meta property="twitter:title" content="temp" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/DevStrory/2019-05-21/lambda-scheduler/","headline":"Lambda 스케쥴러 만들기","datePublished":"2019-05-21T00:00:00+09:00","dateModified":"2019-05-21T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2019-05-21/lambda-scheduler/"},"description":"AWS Lambda Scheduler","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/DevStrory/2021-03-29/temp/","headline":"temp","datePublished":"2021-03-29T00:00:00+09:00","dateModified":"2021-03-29T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2021-03-29/temp/"},"description":"temp","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -101,44 +101,37 @@ ga('send', 'pageview');
 </header>
 
 <div class="post, container-content">
-  <div class="post-title">Lambda 스케쥴러 만들기</div>
+  <div class="post-title">temp</div>
+
+
 
 
 
 
 <div class="post-writergroup">
-  <a class="post-writerselect" href="https://github.com/pikachu987" title="https://github.com/pikachu987">
-    <span class="post-writer" >Writer: 김관호 </span>
-    <img class="post-profile" src="http://localhost:4000/DevStrory/assets/images/member/pikachu987.png" onerror="this.src='http://localhost:4000/DevStrory/assets/images/member/defaultProfile.png'">
+  <a class="post-writerselect" href="https://github.com/ddalam" title="https://github.com/ddalam">
+    <span class="post-writer" >Writer: 최다영 </span>
+    <img class="post-profile" src="http://localhost:4000/DevStrory/assets/images/member/ddalam.png" onerror="this.src='http://localhost:4000/DevStrory/assets/images/member/defaultProfile.png'">
   </a>
 </div>
 
 
-
-
   <span class="post-date">
-    <time>21 May 2019</time>
+    <time>29 Mar 2021</time>
   </span>
   <div class="post-tag">
     <ul>
       
       <li>
-        <a href="http://localhost:4000/DevStrory/tags#AWS">
-          <span>AWS</span>
+        <a href="http://localhost:4000/DevStrory/tags#markdown">
+          <span>markdown</span>
         </a>
       </li>
       
       
       <li>
-        <a href="http://localhost:4000/DevStrory/tags#Lambda">
-          <span>Lambda</span>
-        </a>
-      </li>
-      
-      
-      <li>
-        <a href="http://localhost:4000/DevStrory/tags#Scheduler">
-          <span>Scheduler</span>
+        <a href="http://localhost:4000/DevStrory/tags#editor">
+          <span>editor</span>
         </a>
       </li>
       
@@ -146,75 +139,7 @@ ga('send', 'pageview');
     </ul>
   </div>
 
-  <h3 id="1lambda">1.Lambda</h3>
-
-<h5 id="1-람다-만들기">1) 람다 만들기</h5>
-
-<p><a href="https://ap-northeast-2.console.aws.amazon.com/lambda/home" target="blank">AWS Lambda 사이트</a></p>
-
-<p><a href="http://localhost:4000/DevStrory/2019-05-20/make-lambda#temp1-2" target="blank">AWS Lambda 함수 만들기</a> 로 가서 Lambda 함수를 만듭니다.</p>
-
-<p><img src="http://localhost:4000/DevStrory/images/2019/lambda-scheduler/makeLambda.png" alt="MakeLambda" /></p>
-
-<h3 id="2cloudwatch-규칙-만들기">2.CloudWatch 규칙 만들기</h3>
-
-<p><a href="https://ap-northeast-2.console.aws.amazon.com/cloudwatch/home" target="blank">AWS CloudWatch 사이트</a></p>
-
-<p><img src="http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleMake.png" alt="RoleMake" /></p>
-
-<p><strong>이벤트</strong> <strong>규칙</strong> 을 선택합니다.</p>
-
-<p><img src="http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleCreate.png" alt="RoleCreate" /></p>
-
-<p><img src="http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleInput.png" alt="RoleInput" /></p>
-
-<p><strong>일정</strong> 을 누르고 Cron식을 입력합니다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*/1 * ? * MON-FRI *: 월-금 매시간 1분마다 호출
-</code></pre></div></div>
-
-<p><strong>대상추가</strong> 를 누르고 Lambda함수를 선택합니다.<br />
-<strong>세부 정보 구성</strong> 을 누릅니다.</p>
-
-<p><img src="http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleName.png" alt="RoleName" /></p>
-
-<p>규칙 이름을 입력하고 <strong>규칙 생성</strong> 을 누릅니다.</p>
-
-<p><img src="http://localhost:4000/DevStrory/images/2019/lambda-scheduler/roleComplete.png" alt="RoleComplete" /></p>
-
-<p>규칙 생성 완료 🎉🎉🎉</p>
-
-<p><img src="http://localhost:4000/DevStrory/images/2019/lambda-scheduler/lambdaComplete.png" alt="LambdaComplete" /></p>
-
-<p>Lambda에 들어가면 CloudWatch Event가 생겼습니다.<br />
-누르면 Event 리스트가 나오게 됩니다 🎉🎉🎉</p>
-
-<h3 id="3test">3.Test</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exports.handler = async (event) =&gt; {
-    // TODO implement
-    const response = {
-        statusCode: 200,
-        body: JSON.stringify('Hello from Lambda!'),
-    };
-    console.log("스케쥴러!");
-    return response;
-};
-</code></pre></div></div>
-
-<p>람다 함수에 Console.log(); 를 추가합니다.</p>
-
-<p><img src="http://localhost:4000/DevStrory/images/2019/lambda-scheduler/test.png" alt="Test" /></p>
-
-<p>테스트 성공 🎉🎉🎉</p>
-
-<p>Cron에서 UTC 시간대 때문에 서울은 +9를 해주어야 합니다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>월-금 10시 = 0 1 ? * MON-FRI *
-월-금 18시 30분 = 30 9 ? * MON-FRI *
-월-금 19시 = 0 10 ? * MON-FRI *
-월-금 매분마다 = */1 * ? * MON-FRI *
-</code></pre></div></div>
+  
 
 
   <!-- Disqus -->

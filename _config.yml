@@ -19,6 +19,11 @@ writers:
       url: "https://github.com/pikachu987"
       image: "/assets/images/member/pikachu987.png"
       name: "김관호"
+  - member:
+      id: "ddalam"
+      url: "https://github.com/ddalam"
+      image: "/assets/images/member/ddalam.png"
+      name: "최다영"
 
 author:
   facebook:         groups/docfriends/

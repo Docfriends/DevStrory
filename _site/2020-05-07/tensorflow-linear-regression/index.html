@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tensorflow Linear Regression</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/DevStrory/assets/css/main.css" type="text/css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Docfriends 기술 블로그" href="/DevStrory/feed.xml" />
+    <link href="https://docfriends.github.io/DevStrory/assets/images/favicon.ico" rel="shortcut icon"
+          type="image/x-icon"/>
+    <link href="https://docfriends.github.io/DevStrory/assets/images/logo.png" rel="icon" type="image/png"/>
+
+
+  <meta name="apple-mobile-web-app-title" content="DocfriendsTec" />
+  <meta name="description" content="닥프렌즈의 기술 블로그"/>
+  <meta property="og:title" content="닥프렌즈">
+    <meta content="https://docfriends.github.io/DevStrory/" property="og:url">
+    <meta content="https://docfriends.github.io/DevStrory/assets/images/logo.png" property="og:image">
+  <meta property="og:description" content="닥프렌즈의 기술 블로그"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="">
+    <meta content="https://docfriends.github.io/DevStrory/" name="twitter:url">
+    <meta content="https://docfriends.github.io/DevStrory/assets/images/logo.png" name="twitter:image">
+  <meta name="twitter:description" content="닥프렌즈의 기술 블로그"/>
+
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Tensorflow Linear Regression | Docfriends 기술 블로그</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Tensorflow Linear Regression" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Tensorflow 를 활용한 Linear Regression 구현" />
+<meta property="og:description" content="Tensorflow 를 활용한 Linear Regression 구현" />
+<link rel="canonical" href="http://localhost:4000/DevStrory/2020-05-07/tensorflow-linear-regression/" />
+<meta property="og:url" content="http://localhost:4000/DevStrory/2020-05-07/tensorflow-linear-regression/" />
+<meta property="og:site_name" content="Docfriends 기술 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-07T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Tensorflow Linear Regression" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/DevStrory/2020-05-07/tensorflow-linear-regression/","headline":"Tensorflow Linear Regression","datePublished":"2020-05-07T00:00:00+09:00","dateModified":"2020-05-07T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2020-05-07/tensorflow-linear-regression/"},"description":"Tensorflow 를 활용한 Linear Regression 구현","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+  <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-131153272-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="content-container">
+    <header class="header">
+  <div class="header-title">
+    <a href="http://localhost:4000/DevStrory">Docfriends 기술 블로그</a>
+  </div>
+  <nav class="header-nav">
+    
+    
+    <a href="/DevStrory/">Post</a>
+    
+    
+    
+    <a href="/DevStrory/member">Member</a>
+    
+    
+    
+    <a href="/DevStrory/archive">Archive</a>
+    
+    
+    
+    <a href="/DevStrory/tags">Tags</a>
+    
+    
+    
+    <a href="https://github.com/Docfriends">Github</a>
+    
+    
+  </nav>
+</header>
+
+<div class="post, container-content">
+  <div class="post-title">Tensorflow Linear Regression</div>
+
+
+<div class="post-writergroup">
+  <a class="post-writerselect" href="https://github.com/TejNote" title="https://github.com/TejNote">
+    <span class="post-writer" >Writer: 박준걸 </span>
+    <img class="post-profile" src="http://localhost:4000/DevStrory/assets/images/member/leaf9016.png" onerror="this.src='http://localhost:4000/DevStrory/assets/images/member/defaultProfile.png'">
+  </a>
+</div>
+
+
+
+
+  <span class="post-date">
+    <time>07 May 2020</time>
+  </span>
+  <div class="post-tag">
+    <ul>
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#Tensorflow">
+          <span>Tensorflow</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#Linear">
+          <span>Linear</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://localhost:4000/DevStrory/tags#Regression">
+          <span>Regression</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  <h2 id="tensorflow-란">Tensorflow 란?</h2>
+
+<p>구글에서 발표한 머신러닝을 위한 오픈소스 라이브러리 입니다.  많은 머신러닝 서비스에서 사용 중이며, Python으로 개발이 가능해서 개발 접근성이 매우 좋습니다.</p>
+
+<h2 id="linear-regression-이란">Linear Regression 이란?</h2>
+
+<p>선형 회귀는 y와 한 개 이상의 x가 선형 상관 관계를 모델링 하는 기법입니다.  말은 어렵지만 아래의 계산식을 보면 이해하기가 좋습니다.</p>
+
+<p><img src="http://localhost:4000/DevStrory/images/2020/tensorflow-linear-regression/formula.png" alt="Formula" /></p>
+
+<p>y의 답에 도달하기 위해 주어진 x가 있고, W(weight)의 값과 b(bias)의 값을 조정해서 결과적으로 y와 일치할 수 있도록 합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"><center>횟수</center></th>
+      <th style="text-align: center"><center>y</center></th>
+      <th style="text-align: right"><center>x</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><center>1회</center></td>
+      <td style="text-align: center"><center>4</center></td>
+      <td style="text-align: right"><center>1</center></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><center>2회</center></td>
+      <td style="text-align: center"><center>5</center></td>
+      <td style="text-align: right"><center>2</center></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><center>3회</center></td>
+      <td style="text-align: center"><center>6</center></td>
+      <td style="text-align: right"><center>3</center></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><center>4회</center></td>
+      <td style="text-align: center"><center>7</center></td>
+      <td style="text-align: right"><center>4</center></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><center>5회</center></td>
+      <td style="text-align: center"><center>8</center></td>
+      <td style="text-align: right"><center>5</center></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위와 같이 y, x의 값이 값이 있을 때 풀어보면 W = 1, b = 3 이라는 결과가 나옵니다.  이렇게 결과값이 나올 수 있도록 y, x의 관계를 정리해서 추론한 것이 Linear Regression 입니다.<del>(수학과가 아니라서 잘못 이해했을 수도 있습니다.)</del></p>
+
+<h2 id="방법은">방법은?</h2>
+
+<ol>
+  <li>어떠한 데이터 (x DataSet)를 기준으로 결과 y 값이 있을 때 해당 데이터를 학습 합니다.</li>
+  <li>계속적인 학습으로 오차율을 줄여 갑니다.</li>
+  <li>학습된 데이터를 토대로 새로운 x dataset을 넣어서 y 값을 추론 합니다.</li>
+</ol>
+
+<h2 id="어디다-써먹지">어디다 써먹지?</h2>
+
+<ol>
+  <li>남부순환로 신림역에서 서울대 입구역 월요일 오후 10시에 출발하면 얼마가 걸릴까?</li>
+  <li>학교에서 A 학생이 고등학교에서 8시간을 공부 했을 때 성적은?</li>
+  <li>야구에서 A 타자가 B 투수를 만났을 때 안타를 칠 확률은?
+    <ul>
+      <li>위 예시의 공통점</li>
+    </ul>
+    <ul>
+      <li>이전에 있던 행동(x DataSet)에 의한 결과(y)가 누적되어 학습이 가능한 데이터</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="실제-코드로-해보자">실제 코드로 해보자!</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow.compat.v1</span> <span class="k">as</span> <span class="n">tf_v1</span>
+
+<span class="c1"># x_train = 각 학생 별 공부 시간(시간)
+# y_train = 최종 학생별 중간고사 점수
+</span><span class="n">x_train</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
+
+<span class="c1"># W, b는 시작에서는 정확한 값을 모르기 때문에 random으로 처음 설정을 함
+</span><span class="n">W</span> <span class="o">=</span> <span class="n">tf_v1</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf_v1</span><span class="p">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">1</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s">"weight"</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tf_v1</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf_v1</span><span class="p">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">1</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s">"bias"</span><span class="p">)</span>
+
+<span class="c1"># 계산식 : H(x) = Wx + b
+# 랜덤한 W, b를 가지고 계산해서 나오는 결과값을 H(x) 라고 한다
+</span><span class="n">hypothesis</span> <span class="o">=</span> <span class="n">W</span> <span class="o">*</span> <span class="n">x_train</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># cost/Loss function : 오차율 평균을 구하는 코드
+# 랜덤으로 나온 W, b를 가지고 계산한 결과값인 H(x)와 실제 결과값 y를 뺀 후
+# 제곱(square)을 해준다
+# * 제곱을 하는 이유
+#  1) 오차에 음수와 양수가 섞이게 되면 정확한 오차율이 나오지 않음
+#  2) 확대 계산으로 오차율 보정을 효율적으로 하기 위해
+# 위 내용으로 나온 값을 기반으로 합산하여 평균(reduce_mean)을 측정한다.
+</span><span class="n">cost</span> <span class="o">=</span> <span class="n">tf_v1</span><span class="p">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf_v1</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">hypothesis</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">))</span>
+
+<span class="c1"># Gradient Descent Algorithm 으로 오차율을 감소 학습 진행을 위한 변수 선언
+# 참고 : https://medium.com/@peteryun/ml-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-tensorflow-3-gradient-descent-algorithm-%EA%B8%B0%EB%B3%B8-c0688208fc59
+# learning_rate 는 오차 보정 시 움직일 스탭의 단위(작으면 작을 수록 미세조정이 가능 다만 횟수가 늘어나야 안정적이 되는것 같음)
+# 0.1 정도로 했을 때는 오차율이 너무 높아져서 오류로 안되는 경우도 발생
+</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf_v1</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+
+<span class="c1"># 학습 알고리즘을 적용한 변수 선언
+</span><span class="n">train</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+
+<span class="c1"># Tensorflow 기능 수행을 위해 필요한 기본 Session
+</span><span class="n">session</span> <span class="o">=</span> <span class="n">tf_v1</span><span class="p">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="c1"># Variable 사용 시 꼭 선언 필요
+</span><span class="n">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf_v1</span><span class="p">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
+
+<span class="c1"># 2000번 학습 진행
+</span><span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2001</span><span class="p">):</span>
+    <span class="n">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+
+		<span class="c1"># 100번 마다 진행 상황 공유
+</span>    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Step: "</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="s">"Loss : "</span><span class="p">,</span> <span class="n">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">cost</span><span class="p">),</span> <span class="s">"W : "</span><span class="p">,</span> <span class="n">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">W</span><span class="p">),</span> <span class="s">"b : "</span><span class="p">,</span> <span class="n">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+<span class="c1"># 학습된 데이터셋을 활용 35 시간 공부 시 예상점수 표출 
+</span><span class="k">print</span><span class="p">(</span><span class="s">"당신의 예상 점수는 "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">hypothesis</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">35.</span><span class="p">]]})))</span>
+<span class="c1"># 당신의 예상 점수는 [[60.50574]] - 거의 비슷하게 나올듯
+</span>
+<span class="c1"># Hypothesis : H(x)라고도 하며 y, x의 관계를 정의하는 가설이 된다.
+# Cost Function : (or Loss) 결과값의 오차율을 확인
+</span></code></pre></div></div>
+
+<p>위 코드를 실행해보면 결과적으로 y값을 도출할 수 있는 학습셋(hypothesis, H(x))이 만들어지고 해당 H(x)을 가지고 x값을 대입해서 y값을 추출 합니다.</p>
+
+<p>아직 초기 학습 단계라서 이제부터 1개씩 학습을 해나가면서 올릴 수 있도록 하겠습니다.
+혹시라도 틀린 부분이 있다면 이야기 부탁드립니다 :)</p>
+
+<p>공부자료<br />
+<a href="https://www.youtube.com/watch?v=Hax03rCn3UI">Sung Kim님 강좌 : Lecture 2 Linear Regression</a></p>
+
+
+  <!-- Disqus -->
+  
+  <div class="post-disqus">
+      <section id="disqus_thread"></section>
+      <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//devstrory.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  </div>
+  
+
+</div>
+
+
+    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
+<div class="footer">
+  <hr />
+  <div class="footer-link">
+    
+    <a href="https://www.facebook.com/groups/docfriends/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    
+	
+	
+    <a href="https://www.youtube.com/user/Docairs"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+    
+	
+	
+
+    
+
+    
+    <a href="https://github.com/Docfriends"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+	
+	
+	
+	
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+
+    
+
+    
+
+    
+    <a href="mailto:apps@docfriends.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+
+  </div>
+  © 2018 Docfriends. All rights reserved.
+</div>
+
+  </div>
+</body>
+</html>

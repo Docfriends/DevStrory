@@ -32,9 +32,9 @@
   <meta name="twitter:description" content="닥프렌즈의 기술 블로그"/>
 
 
-  <!-- Begin Jekyll SEO tag v2.5.0 -->
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>트렐로 웹훅 받기 | Docfriends 기술 블로그</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="트렐로 웹훅 받기" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="트렐로에서 웹훅으로 데이터 받기" />
@@ -44,8 +44,10 @@
 <meta property="og:site_name" content="Docfriends 기술 블로그" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-05-23T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="트렐로 웹훅 받기" />
 <script type="application/ld+json">
-{"description":"트렐로에서 웹훅으로 데이터 받기","@type":"BlogPosting","url":"http://localhost:4000/DevStrory/2019-05-23/trello-webhook/","headline":"트렐로 웹훅 받기","dateModified":"2019-05-23T00:00:00+09:00","datePublished":"2019-05-23T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2019-05-23/trello-webhook/"},"@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/DevStrory/2019-05-23/trello-webhook/","headline":"트렐로 웹훅 받기","datePublished":"2019-05-23T00:00:00+09:00","dateModified":"2019-05-23T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2019-05-23/trello-webhook/"},"description":"트렐로에서 웹훅으로 데이터 받기","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -244,7 +246,7 @@ ${token}은 트렐로 Token을 입력해 줍니다.</p>
 <h5 id="2-웹훅-등록">2) 웹훅 등록</h5>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">url</span><span class="p">:</span> <span class="na">https</span><span class="p">:</span><span class="c1">//api.trello.com/1/tokens/${token}/webhooks/?key=${key},</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">description</span><span class="p">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">description</span><span class="p">},</span>
@@ -303,7 +305,7 @@ ${token}은 트렐로 Token을 입력해 줍니다.</p>
 <h5 id="4-웹훅-삭제">4) 웹훅 삭제</h5>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">type</span><span class="p">:</span> <span class="s2">"DELETE"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">url</span><span class="p">:</span> <span class="na">https</span><span class="p">:</span><span class="c1">//api.trello.com/1/tokens/${token}/webhooks/${webhookID}?key=${key},</span>
     <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
 
@@ -336,8 +338,8 @@ ${webhookID}은 웹훅의 ID를 입력해 줍니다.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
     <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
         <span class="na">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="s2">"Access-Control-Allow-Origin"</span><span class="p">:</span> <span class="s2">"*"</span><span class="p">},</span>
-        <span class="na">body</span><span class="p">:</span> <span class="s2">"Success"</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Success</span><span class="dl">"</span>
     <span class="p">});</span>
 <span class="p">};</span>
 </code></pre></div></div>
@@ -352,7 +354,7 @@ ${webhookID}은 웹훅의 ID를 입력해 줍니다.</p>
 
 <h5 id="3-type">3) Type</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action_renamed_list: 리스트 제목 변경
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action_renamed_list: 리스트 제목 변경
 action_archived_list: 리스트 아카이브
 action_sent_list_to_board: 리스트 아카이브 복구
 action_create_card: 리스트 카드 생성
@@ -376,7 +378,7 @@ action_delete_card: 카드 삭제
 
 <h5 id="4-구조">4) 구조</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var trelloInfo = new TrelloInfo(event);
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var trelloInfo = new TrelloInfo(event);
 
 // trello
 function TrelloInfo(event) {

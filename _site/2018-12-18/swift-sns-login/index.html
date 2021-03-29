@@ -32,9 +32,9 @@
   <meta name="twitter:description" content="닥프렌즈의 기술 블로그"/>
 
 
-  <!-- Begin Jekyll SEO tag v2.5.0 -->
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Swift로 SNS Login 연동 | Docfriends 기술 블로그</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Swift로 SNS Login 연동" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Facebook, Kakao, Google, Naver 로그인 연동하기" />
@@ -44,8 +44,10 @@
 <meta property="og:site_name" content="Docfriends 기술 블로그" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-12-18T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Swift로 SNS Login 연동" />
 <script type="application/ld+json">
-{"description":"Facebook, Kakao, Google, Naver 로그인 연동하기","@type":"BlogPosting","url":"http://localhost:4000/DevStrory/2018-12-18/swift-sns-login/","headline":"Swift로 SNS Login 연동","dateModified":"2018-12-18T00:00:00+09:00","datePublished":"2018-12-18T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2018-12-18/swift-sns-login/"},"@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/DevStrory/2018-12-18/swift-sns-login/","headline":"Swift로 SNS Login 연동","datePublished":"2018-12-18T00:00:00+09:00","dateModified":"2018-12-18T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2018-12-18/swift-sns-login/"},"description":"Facebook, Kakao, Google, Naver 로그인 연동하기","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -206,14 +208,14 @@ ga('send', 'pageview');
 
 <h5 id="2fbsdkloginkit-설치">2)FBSDKLoginKit 설치</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'FBSDKLoginKit'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'FBSDKLoginKit'
 </code></pre></div></div>
 
 <p><a href="https://cocoapods.org/">Cocoapods</a>로 FBSDKLoginKit을 install 합니다.</p>
 
 <h5 id="3infoplist-설정">3)info.plist 설정</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
 &lt;array&gt;
     &lt;dict&gt;
         &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
@@ -228,7 +230,7 @@ ga('send', 'pageview');
 &lt;string&gt;앱네임&lt;/string&gt;
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;LSApplicationQueriesSchemes&lt;/key&gt;
 &lt;array&gt;
     &lt;string&gt;fbapi&lt;/string&gt;
     &lt;string&gt;fb-messenger-share-api&lt;/string&gt;
@@ -241,12 +243,12 @@ ga('send', 'pageview');
 
 <h5 id="4appdelegate-설정">4)AppDelegate 설정</h5>
 
-<p><code class="highlighter-rouge">AppDelegate.swift</code> 파일에서 FBSDKLoginKit를 임포트 합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">AppDelegate.swift</code> 파일에서 FBSDKLoginKit를 임포트 합니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">FBSDKLoginKit</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
     <span class="c1">// Override point for customization after application launch.</span>
@@ -257,7 +259,7 @@ ga('send', 'pageview');
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">applicationDidBecomeActive(_:)</code> 함수에 <code class="highlighter-rouge">FBSDKAppEvents.activateApp()</code>를 추가합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">applicationDidBecomeActive(_:)</code> 함수에 <code class="language-plaintext highlighter-rouge">FBSDKAppEvents.activateApp()</code>를 추가합니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationDidBecomeActive</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</span>
@@ -293,8 +295,8 @@ ga('send', 'pageview');
 </code></pre></div></div>
 
 <blockquote>
-  <p><code class="highlighter-rouge">application(_:open:sourceApplication:annotation:)</code> 함수는 iOS 9.0버전 이후에는 Deprecated 되었습니다.<br />
-자신의 앱이 iOS 9.0버전 이상만 지원한다면 <code class="highlighter-rouge">application(_:open:sourceApplication:annotation:)</code> 함수를 적지 않아도 되지만 9.0 이전 버전을 지원한다면 함수를 적어야 합니다.
+  <p><code class="language-plaintext highlighter-rouge">application(_:open:sourceApplication:annotation:)</code> 함수는 iOS 9.0버전 이후에는 Deprecated 되었습니다.<br />
+자신의 앱이 iOS 9.0버전 이상만 지원한다면 <code class="language-plaintext highlighter-rouge">application(_:open:sourceApplication:annotation:)</code> 함수를 적지 않아도 되지만 9.0 이전 버전을 지원한다면 함수를 적어야 합니다.
 <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623073-application">Apple</a></p>
 </blockquote>
 
@@ -343,7 +345,7 @@ ga('send', 'pageview');
 <span class="p">})</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>token: Optional("***********")
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>token: Optional("***********")
 name: Optional("Kim Gwan Ho")
 email: Optional("pikachu77769@gmail.com")
 profile: https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1081468991941206&amp;height=50&amp;width=50&amp;ext=1547718902&amp;hash=AeRuZEjoxS7zHkkb
@@ -390,14 +392,14 @@ parameters의 birthday, gender는 페이스북의</p>
 <p>이 창이 나오는데 Create Bridging Header 를 누르면 간편하게 만들수 있습니다.<br />
 Bridging Header파일에서</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#import &lt;KakaoOpenSDK/KakaoOpenSDK.h&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#import &lt;KakaoOpenSDK/KakaoOpenSDK.h&gt;
 </code></pre></div></div>
 
 <p>를 적어줍니다.</p>
 
 <h5 id="3infoplist-설정-1">3)info.plist 설정</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
 &lt;array&gt;
     &lt;dict&gt;
         &lt;key&gt;CFBundleTypeRole&lt;/key&gt;
@@ -425,7 +427,7 @@ Bridging Header파일에서</p>
 
 <h5 id="4appdelegate-설정-1">4)AppDelegate 설정</h5>
 
-<p><code class="highlighter-rouge">applicationDidBecomeActive(_:)</code> 함수에 <code class="highlighter-rouge">KOSession.handleDidBecomeActive()</code>를 추가합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">applicationDidBecomeActive(_:)</code> 함수에 <code class="language-plaintext highlighter-rouge">KOSession.handleDidBecomeActive()</code>를 추가합니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">applicationDidBecomeActive</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</span>
@@ -525,7 +527,7 @@ Build Settings에서 OtherLinkerFlags에 -all_load를 추가하면 됩니다.</p
 <span class="p">})</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>male
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>male
 ********
 김관호
 pikachu987@naver.com
@@ -540,7 +542,7 @@ http://mud-kage.kakao.co.kr/14/dn/btqeCdyElA4/3i8HMTQfSdCkjXo3rb2PI1/o.jpg
 <p><img src="http://localhost:4000/DevStrory/images/2018/swift-sns-login/kakaoPermission1.png" alt="Permission1" /></p>
 
 <p>추가 권한을 획득하여야 일반 사용자들이 사용할수 있습니다.<br />
-추가권한을 요청하는 부분은 <code class="highlighter-rouge">KOSession.shared()?.updateScopes</code> 입니다.</p>
+추가권한을 요청하는 부분은 <code class="language-plaintext highlighter-rouge">KOSession.shared()?.updateScopes</code> 입니다.</p>
 
 <h3 id="3google">3.Google</h3>
 
@@ -560,14 +562,14 @@ http://mud-kage.kakao.co.kr/14/dn/btqeCdyElA4/3i8HMTQfSdCkjXo3rb2PI1/o.jpg
 
 <h5 id="2googlesignin-설치">2)GoogleSignIn 설치</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'GoogleSignIn'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pod 'GoogleSignIn'
 </code></pre></div></div>
 
 <p><a href="https://cocoapods.org/">Cocoapods</a>로 GoogleSignIn을 install 합니다.</p>
 
 <h5 id="3infoplist-설정-2">3)info.plist 설정</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
 &lt;array&gt;
   &lt;dict&gt;  
     &lt;key&gt;CFBundleTypeRole&lt;/key&gt;
@@ -585,12 +587,12 @@ http://mud-kage.kakao.co.kr/14/dn/btqeCdyElA4/3i8HMTQfSdCkjXo3rb2PI1/o.jpg
 
 <h5 id="4appdelegate-설정-2">4)AppDelegate 설정</h5>
 
-<p><code class="highlighter-rouge">AppDelegate.swift</code> 파일에서 GoogleSignIn를 임포트 합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">AppDelegate.swift</code> 파일에서 GoogleSignIn를 임포트 합니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">GoogleSignIn</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
     <span class="c1">// Override point for customization after application launch.</span>
@@ -662,13 +664,13 @@ http://mud-kage.kakao.co.kr/14/dn/btqeCdyElA4/3i8HMTQfSdCkjXo3rb2PI1/o.jpg
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>userID: Optional("**********")
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>userID: Optional("**********")
 idToken: Optional("***********")
 name: Optional("김관호")
 email: Optional("pikachu77769@gmail.com")
 </code></pre></div></div>
 
-<p>만약 사용자가 구글로그인을 다른아이디로 변경하고 싶거나 구글 로그아웃을 하려면 <code class="highlighter-rouge">GIDSignIn.sharedInstance()?.signOut()</code> 코드를 호출하면 됩니다.</p>
+<p>만약 사용자가 구글로그인을 다른아이디로 변경하고 싶거나 구글 로그아웃을 하려면 <code class="language-plaintext highlighter-rouge">GIDSignIn.sharedInstance()?.signOut()</code> 코드를 호출하면 됩니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">GIDSignIn</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()?</span><span class="o">.</span><span class="nf">signOut</span><span class="p">()</span>
 </code></pre></div></div>
@@ -697,7 +699,7 @@ Scheme는 원하는 글자를 적으면 됩니다. (남들과 겹치지 않게 �
 iOS 9.0 버전 이상부터 지원을 합니다.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>platform :ios, '9.0
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>platform :ios, '9.0
 
 pod 'naveridlogin-sdk-ios'
 </code></pre></div></div>
@@ -706,7 +708,7 @@ pod 'naveridlogin-sdk-ios'
 
 <h5 id="3infoplist-설정-3">3)info.plist 설정</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;array&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;array&gt;
     &lt;dict&gt;
         &lt;key&gt;CFBundleTypeRole&lt;/key&gt;
         &lt;string&gt;Editor&lt;/string&gt;
@@ -729,12 +731,12 @@ CFBundleURLSchemes는 네이버 개발자 사이트에서 적었는 글자로 �
 
 <h5 id="4appdelegate-설정-3">4)AppDelegate 설정</h5>
 
-<p><code class="highlighter-rouge">AppDelegate.swift</code> 파일에서 NaverThirdPartyLogin을 임포트 합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">AppDelegate.swift</code> 파일에서 NaverThirdPartyLogin을 임포트 합니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">NaverThirdPartyLogin</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">application(_:didFinishLaunchingWithOptions:)</code> 함수에 아래와 같은 코드를 추가합니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
     <span class="c1">// Override point for customization after application launch.</span>
@@ -855,7 +857,7 @@ serviceUrlScheme는 네이버 개발자 사이트에서 적었는 글자로 합�
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>id: Optional("*******")
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>id: Optional("*******")
 email: Optional("pikachu987@naver.com")
 name: Optional("김관호")
 nickname: Optional("pikach****")
@@ -868,7 +870,7 @@ gender: Optional("M")
 로그아웃 하면 네이버으로 이동이 되지만 바로 다시 앱으로 돌아옵니다.</p>
 
 <blockquote>
-  <p>로그아웃하지않고 다시 <code class="highlighter-rouge">requestThirdPartyLogin()</code>를 호출하면 네이버로 이동하지 않고 <code class="highlighter-rouge">oauth20ConnectionDidFinishRequestACTokenWithRefreshToken</code> 딜리게이트 메서드가 호출이 됩니다.</p>
+  <p>로그아웃하지않고 다시 <code class="language-plaintext highlighter-rouge">requestThirdPartyLogin()</code>를 호출하면 네이버로 이동하지 않고 <code class="language-plaintext highlighter-rouge">oauth20ConnectionDidFinishRequestACTokenWithRefreshToken</code> 딜리게이트 메서드가 호출이 됩니다.</p>
 </blockquote>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">NaverThirdPartyLoginConnection</span><span class="o">.</span><span class="nf">getSharedInstance</span><span class="p">()?</span><span class="o">.</span><span class="nf">resetToken</span><span class="p">()</span>

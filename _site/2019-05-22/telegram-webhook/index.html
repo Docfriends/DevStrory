@@ -32,9 +32,9 @@
   <meta name="twitter:description" content="닥프렌즈의 기술 블로그"/>
 
 
-  <!-- Begin Jekyll SEO tag v2.5.0 -->
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>텔레그램 웹훅 받기 | Docfriends 기술 블로그</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="텔레그램 웹훅 받기" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="텔레그램에서 웹훅으로 데이터 받고 텔레그램으로 데이터 보내기" />
@@ -44,8 +44,10 @@
 <meta property="og:site_name" content="Docfriends 기술 블로그" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-05-22T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="텔레그램 웹훅 받기" />
 <script type="application/ld+json">
-{"description":"텔레그램에서 웹훅으로 데이터 받고 텔레그램으로 데이터 보내기","@type":"BlogPosting","url":"http://localhost:4000/DevStrory/2019-05-22/telegram-webhook/","headline":"텔레그램 웹훅 받기","dateModified":"2019-05-22T00:00:00+09:00","datePublished":"2019-05-22T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2019-05-22/telegram-webhook/"},"@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/DevStrory/2019-05-22/telegram-webhook/","headline":"텔레그램 웹훅 받기","datePublished":"2019-05-22T00:00:00+09:00","dateModified":"2019-05-22T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/DevStrory/2019-05-22/telegram-webhook/"},"description":"텔레그램에서 웹훅으로 데이터 받고 텔레그램으로 데이터 보내기","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -155,7 +157,7 @@ ga('send', 'pageview');
 
 <p><img src="http://localhost:4000/DevStrory/images/2019/telegram-webhook/newBot.png" alt="NewBot" /></p>
 
-<p><code class="highlighter-rouge">/newbot</code>을 입력합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">/newbot</code>을 입력합니다.</p>
 
 <p><img src="http://localhost:4000/DevStrory/images/2019/telegram-webhook/name.png" alt="Name" /></p>
 
@@ -276,7 +278,7 @@ url을 비우면 웹훅 삭제가 됩니다.</p>
 
 <p><img src="http://localhost:4000/DevStrory/images/2019/telegram-webhook/lambdaConsole.png" alt="LambdaConsole" /></p>
 
-<p>callbackURL 에 등록된 Lambda함수에 event를 Log로 찍어보기 위해 <code class="highlighter-rouge">Console.log(event);</code> 를 적습니다.</p>
+<p>callbackURL 에 등록된 Lambda함수에 event를 Log로 찍어보기 위해 <code class="language-plaintext highlighter-rouge">Console.log(event);</code> 를 적습니다.</p>
 
 <p><img src="http://localhost:4000/DevStrory/images/2019/telegram-webhook/chat.png" alt="Chat" /></p>
 
@@ -289,47 +291,47 @@ url을 비우면 웹훅 삭제가 됩니다.</p>
 <h5 id="2-웹훅을-받고-텔레그램에-메시지-보내기">2) 웹훅을 받고 텔레그램에 메시지 보내기</h5>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 텔레그램 봇 TOKEN</span>
-<span class="kd">const</span> <span class="nx">TOKEN</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">TOKEN</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
 <span class="c1">// 채팅방 ID</span>
-<span class="kd">const</span> <span class="nx">SEND_ROOM_ID</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">SEND_ROOM_ID</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'https'</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'util'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">https</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">util</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
     <span class="nx">sendRequest</span><span class="p">(</span><span class="s2">`메시지를 보낸 사람: &lt;b&gt;</span><span class="p">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">.</span><span class="nx">username</span><span class="p">}</span><span class="s2">&lt;/b&gt;`</span><span class="p">);</span>
     <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
         <span class="na">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="s2">"Access-Control-Allow-Origin"</span><span class="p">:</span> <span class="s2">"*"</span><span class="p">},</span>
-        <span class="na">body</span><span class="p">:</span> <span class="s2">"Success"</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Success</span><span class="dl">"</span>
     <span class="p">});</span>
 <span class="p">};</span>
 
 <span class="kd">function</span> <span class="nx">sendRequest</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">https</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-      <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-      <span class="na">hostname</span><span class="p">:</span> <span class="s1">'api.telegram.org'</span><span class="p">,</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">hostname</span><span class="p">:</span> <span class="dl">'</span><span class="s1">api.telegram.org</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">port</span><span class="p">:</span> <span class="mi">443</span><span class="p">,</span>
-      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">},</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">},</span>
       <span class="na">path</span><span class="p">:</span> <span class="s2">`/bot</span><span class="p">${</span><span class="nx">TOKEN</span><span class="p">}</span><span class="s2">/sendMessage`</span>
   <span class="p">},</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="s1">'utf8'</span><span class="p">);</span>
-      <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="nx">body</span> <span class="o">=</span> <span class="nx">body</span> <span class="o">+</span> <span class="nx">chunk</span><span class="p">;</span>
       <span class="p">});</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'end'</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
       <span class="p">});</span>
   <span class="p">});</span>
-  <span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'problem with request: '</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">problem with request: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
   <span class="p">});</span>
-  <span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="s2">"%j"</span><span class="p">,</span> <span class="p">{</span>
-      <span class="s2">"chat_id"</span><span class="p">:</span> <span class="nx">SEND_ROOM_ID</span><span class="p">,</span>
-      <span class="s2">"text"</span><span class="p">:</span> <span class="nx">message</span><span class="p">,</span>
-      <span class="s2">"parse_mode"</span><span class="p">:</span> <span class="s2">"HTML"</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="dl">"</span><span class="s2">%j</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">chat_id</span><span class="dl">"</span><span class="p">:</span> <span class="nx">SEND_ROOM_ID</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="nx">message</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">parse_mode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">HTML</span><span class="dl">"</span>
   <span class="p">}));</span>
   <span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
 <span class="p">}</span>
@@ -337,18 +339,18 @@ url을 비우면 웹훅 삭제가 됩니다.</p>
 <span class="c1">// Model</span>
 
 <span class="kd">function</span> <span class="nx">Item</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">update_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"update_id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">update_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">update_id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">Message</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">message_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"message_id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="k">from</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">From</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="s2">"from"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">chat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Chat</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="s2">"chat"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">date</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"date"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"text"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">caption</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"caption"</span><span class="p">];</span>
-  <span class="kd">var</span> <span class="nx">photo</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"photo"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">message_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">message_id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="k">from</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">From</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">from</span><span class="dl">"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">chat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Chat</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">chat</span><span class="dl">"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">date</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">caption</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">caption</span><span class="dl">"</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">photo</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">photo</span><span class="dl">"</span><span class="p">];</span>
   <span class="kd">var</span> <span class="nx">photos</span> <span class="o">=</span> <span class="p">[];</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">photo</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">photo</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
@@ -360,28 +362,28 @@ url을 비우면 웹훅 삭제가 됩니다.</p>
   <span class="k">this</span><span class="p">.</span><span class="nx">photo</span> <span class="o">=</span> <span class="nx">photos</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">Chat</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"title"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"first_name"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"last_name"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"username"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"type"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">first_name</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">last_name</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">username</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">];</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">From</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">is_bot</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"is_bot"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"first_name"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"last_name"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"username"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">language_code</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"language_code"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">is_bot</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">is_bot</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">first_name</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">last_name</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">username</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">language_code</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">language_code</span><span class="dl">"</span><span class="p">];</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">Photo</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">file_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"file_id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">file_size</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"file_size"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"width"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"height"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">file_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">file_id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">file_size</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">file_size</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">width</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">height</span><span class="dl">"</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -435,45 +437,45 @@ From은 채팅을 보낸 사람에 대해 나옵니다.</p>
 <p>메시지를 받으면 그룹방에 바로 보내도록 Lambda 소스를 수정합니다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 텔레그램 봇 TOKEN</span>
-<span class="kd">const</span> <span class="nx">TOKEN</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">TOKEN</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'https'</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'util'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">https</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">util</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
     <span class="nx">sendRequest</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="s2">`메시지를 보낸 사람: &lt;b&gt;</span><span class="p">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">.</span><span class="nx">username</span><span class="p">}</span><span class="s2">&lt;/b&gt;`</span><span class="p">);</span>
     <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
         <span class="na">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="s2">"Access-Control-Allow-Origin"</span><span class="p">:</span> <span class="s2">"*"</span><span class="p">},</span>
-        <span class="na">body</span><span class="p">:</span> <span class="s2">"Success"</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Success</span><span class="dl">"</span>
     <span class="p">});</span>
 <span class="p">};</span>
 
 <span class="kd">function</span> <span class="nx">sendRequest</span><span class="p">(</span><span class="nx">chatId</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">https</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-      <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-      <span class="na">hostname</span><span class="p">:</span> <span class="s1">'api.telegram.org'</span><span class="p">,</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">hostname</span><span class="p">:</span> <span class="dl">'</span><span class="s1">api.telegram.org</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">port</span><span class="p">:</span> <span class="mi">443</span><span class="p">,</span>
-      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">},</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">},</span>
       <span class="na">path</span><span class="p">:</span> <span class="s2">`/bot</span><span class="p">${</span><span class="nx">TOKEN</span><span class="p">}</span><span class="s2">/sendMessage`</span>
   <span class="p">},</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="s1">'utf8'</span><span class="p">);</span>
-      <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="nx">body</span> <span class="o">=</span> <span class="nx">body</span> <span class="o">+</span> <span class="nx">chunk</span><span class="p">;</span>
       <span class="p">});</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'end'</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
       <span class="p">});</span>
   <span class="p">});</span>
-  <span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'problem with request: '</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">problem with request: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
   <span class="p">});</span>
-  <span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="s2">"%j"</span><span class="p">,</span> <span class="p">{</span>
-      <span class="s2">"chat_id"</span><span class="p">:</span> <span class="nx">chatId</span><span class="p">,</span>
-      <span class="s2">"text"</span><span class="p">:</span> <span class="nx">message</span><span class="p">,</span>
-      <span class="s2">"parse_mode"</span><span class="p">:</span> <span class="s2">"HTML"</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">util</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="dl">"</span><span class="s2">%j</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">chat_id</span><span class="dl">"</span><span class="p">:</span> <span class="nx">chatId</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="nx">message</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">parse_mode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">HTML</span><span class="dl">"</span>
   <span class="p">}));</span>
   <span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
 <span class="p">}</span>
@@ -481,18 +483,18 @@ From은 채팅을 보낸 사람에 대해 나옵니다.</p>
 <span class="c1">// Model</span>
 
 <span class="kd">function</span> <span class="nx">Item</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">update_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"update_id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">update_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">update_id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">Message</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">message_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"message_id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="k">from</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">From</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="s2">"from"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">chat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Chat</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="s2">"chat"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">date</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"date"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"text"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">caption</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"caption"</span><span class="p">];</span>
-  <span class="kd">var</span> <span class="nx">photo</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"photo"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">message_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">message_id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="k">from</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">From</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">from</span><span class="dl">"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">chat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Chat</span><span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">chat</span><span class="dl">"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{});</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">date</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">caption</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">caption</span><span class="dl">"</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">photo</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">photo</span><span class="dl">"</span><span class="p">];</span>
   <span class="kd">var</span> <span class="nx">photos</span> <span class="o">=</span> <span class="p">[];</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">photo</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">photo</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
@@ -504,28 +506,28 @@ From은 채팅을 보낸 사람에 대해 나옵니다.</p>
   <span class="k">this</span><span class="p">.</span><span class="nx">photo</span> <span class="o">=</span> <span class="nx">photos</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">Chat</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"title"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"first_name"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"last_name"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"username"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"type"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">first_name</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">last_name</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">username</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">];</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">From</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">is_bot</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"is_bot"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"first_name"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"last_name"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"username"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">language_code</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"language_code"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">is_bot</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">is_bot</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">first_name</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">last_name</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">username</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">language_code</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">language_code</span><span class="dl">"</span><span class="p">];</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">Photo</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">file_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"file_id"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">file_size</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"file_size"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"width"</span><span class="p">];</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="s2">"height"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">file_id</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">file_id</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">file_size</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">file_size</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">width</span><span class="dl">"</span><span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">element</span><span class="p">[</span><span class="dl">"</span><span class="s2">height</span><span class="dl">"</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div></div>
 

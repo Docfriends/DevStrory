@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "temp"
-description: "temp"
+title: "녹음된 오디오를 텍스트 채팅으로 변경하기"
+description: "오디오 채널 분리와 STT API를 적용해 오디오 내용을 채팅으로 보여주는 기능에 대해 소개합니다"
 date: 2021-03-29
-tags: []
+tags: [STT, FFMPEG]
 writer: ddalam
 category: server
 comments: true

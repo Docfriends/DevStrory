@@ -1,4 +1,4 @@
-# Docfriends Dev Bolg
+# Docfriends Dev Blog
 
 ### Website
 

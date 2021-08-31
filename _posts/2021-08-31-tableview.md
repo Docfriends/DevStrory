@@ -29,7 +29,6 @@ UITableView Datasource객체는 **UITableViewDataSource** 프로토콜을 채택
 그렇기 때문에 기본적으로 테이블뷰를 사용해보았다면 아래 두 메서드는 반드시 사용해본 경험이 있을 것입니다.
 
 ```swift
-func numberOfSections(in: UITableView)
 func tableView(UITableView, numberOfRowsInSection: Int)
 func tableView(UITableView, cellForRowAt: IndexPath)
 ```

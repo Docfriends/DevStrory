@@ -30,19 +30,20 @@ UITableView Datasource객체는 **UITableViewDataSource** 프로토콜을 채택
 
 ```swift
 func numberOfSections(in: UITableView)
+func tableView(UITableView, numberOfRowsInSection: Int)
 func tableView(UITableView, cellForRowAt: IndexPath)
 ```
 
-1. 첫 번째 메서드는 테이블 뷰 총 섹션의 개수를 묻는 메서드이며
+1. 각 섹션에 표시할 행의 개수를 묻는 메서드이며
 2. 두 번째 메서드는 특정 위치에 표시할 셀을 요청하는 메서드입니다.
 
 이외에 추가적으로 사용해봤을 메서드는 아래 메서드입니다.
 
 ```swift
-func tableView(UITableView, numberOfRowsInSection: Int)
+func numberOfSections(in: UITableView)
 ```
 
-위 메서드는 각 섹션에 표시할 행의 개수를 묻는 메서드입니다. <br>
+위 메서드는 테이블 뷰 총 섹션의 개수를 묻는 메서드입니다. <br>
 그렇지만 이 외에도 datasource에서는 더 많은 메서드들을 지원하고 있습니다.
 
 ```swift

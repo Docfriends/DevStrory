@@ -87,8 +87,8 @@ error code 를 전달 받은 CustomMessageHandler 는 실질적으로 error prop
 지정한 해당 메세지를 가져오게 합니다.
 
 
-![8.PNG](../../img/JAVA/Validator/validator/8.PNG)
-![0-3.PNG](../../img/JAVA/Validator/validator/0-3.PNG)
+![8.PNG](../images/2021/spring-validator/8.PNG)
+![0-3.PNG](../images/2021/spring-validator/0-3.PNG)
 
 
 이제 마지막으로 @ControllerAdvice 통해 해당 Exception 발생 시 컨트롤러 및 캐치 해서 응답하는 역활 한다.

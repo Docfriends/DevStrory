@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "iOS Target Membership"
-description: "iOS Target에 대한 정의, Target을 분리하는 방법, Target을 분리하여 사용했을 때 마주했던 이슈에 대해 설명합니다."
+description: "Target에 대한 정의, 분리하는 방법, 분리하여 사용했을 때 마주했던 이슈에 대해 설명합니다."
 date: 2021-09-03
 tags: [iOS, Target, Target Membership]
 writer: zehye

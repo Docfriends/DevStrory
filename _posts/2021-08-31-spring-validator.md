@@ -18,14 +18,14 @@
 
 우선 일반적인 코드를 보면서 설명 하도록 하겠습니다.
 
-![0-1.PNG](../images/2021/spring-validator/0-1.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/0-1.PNG)
 
 먼저 Response DTO 객체 입니다.
 
 errorCode, message 를 관리 하고 있습니다.
 
 
-![1.PNG](../images/2021/spring-validator/1.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/1.png)
 
 Controller 단에서 회원가입 하기 위한 데이터를 받고 해당 데이터를 DB 에 저장 하기 위해 Service 단으로 전달 하게 됩니다.
 
@@ -33,8 +33,8 @@ Controller 단에서 회원가입 하기 위한 데이터를 받고 해당 데�
 저같은 경우 DB 로부터 데이터를 가져와서 유효성 검사 해야 되는 경우 그리고 서비스 단에서 어쩔수 없이 해야 되는 상황이라면
 서비스 단에 유효성 검사 로직을 수행합니다.
 
-![2.PNG](../images/2021/spring-validator/2.png)
-![0-2.PNG](../images/2021/spring-validator/0-2.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/2.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/0-2.PNG)
 
 Service 단에서 유효성 검사를 하게 되고 클라이언트로 부터 받은 데이터 중 패스워드가 10 이하 이라면 DB 에 저장 하지 않고
 
@@ -51,31 +51,31 @@ Service 단에서 유효성 검사를 하게 되고 클라이언트로 부터 �
 각각 상태와 행위를 한곳에서 관리 하면 좋지 않을까 합니다.
 
 
-![3.PNG](../images/2021/spring-validator/3.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/3.png)
 
 다시 서비스단으로 이동 합니다. 여기서 유효성 검사 상태 관리 및 행위를 Validator 에 옮겼습니다.
 
 
-![4.PNG](../images/2021/spring-validator/4.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/4.png)
 
 MemberValidator 는 회원 전용 유효성 검사 로직 관리 입니다. 앞으로 여기서 유효성 검사 로직은 여기서 관리 하게 됩니다.
 
 클라이언트로 부터 받은 데이터 중 패스워드가 10 이하 이라면 RuntimeException  상속 받은 MemberException 이 예외 처리 하게 됩니다.
 
-![5.PNG](../images/2021/spring-validator/5.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/5.png)
 
 error code  Enum 활용 해서 관리 하게 되었습니다. Enum 장점을 활용 해서 각 error code 마다 본인 만의 계산식
 
 즉 해당 error code 을 이용해서 그에 해당 되는 error message 를 출력 할 수 있도록 하였습니다. (밑에 CustomMessageHandler 을 보시면 이해가 될겁니다.)
 
-![6.PNG](../images/2021/spring-validator/6.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/6.png)
 
 RuntimeException 상속 받은 MemberException 입니다. 실질적으로 @ResponseStatus(HttpStatus.BAD_REQUEST) 이용해 응답 상태 코드 400번 으로 response 하게 됩니다.
 
 예외처리시 나중에 알아보게 될 @ControllerAdvice 통해 예외처리 들어오면 해당 MemberException 을 받고 가동해서 최종적으로 response 하게 됩니다.
 
-![7.PNG](../images/2021/spring-validator/7.png)
-![9.PNG](../images/2021/spring-validator/9.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/7.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/9.png)
 error code 를 전달 받은 CustomMessageHandler 는 실질적으로 error properties 에 저장된 메세지를 가져오고 해당 메세지를
 
 구현한 Exception 에 전달 하는 역활을 합니다.
@@ -87,8 +87,8 @@ error code 를 전달 받은 CustomMessageHandler 는 실질적으로 error prop
 지정한 해당 메세지를 가져오게 합니다.
 
 
-![8.PNG](../images/2021/spring-validator/8.png)
-![0-3.PNG](../images/2021/spring-validator/0-3.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/8.png)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/0-3.PNG)
 
 
 이제 마지막으로 @ControllerAdvice 통해 해당 Exception 발생 시 컨트롤러 및 캐치 해서 응답하는 역활 한다.
@@ -101,20 +101,20 @@ error code 를 전달 받은 CustomMessageHandler 는 실질적으로 error prop
 
 이 경우 Bean 으로 등록한 스프링에서 지원 하는 MessageSource 를 이용하면 된다.
 
-![8.PNG](../images/2021/spring-validator/v0-0.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/v0-0.PNG)
 
 우선 해당 error properties 에서 치환 되는 문자열을 배열 인덱스 형태로 기입합니다.
 
-![8.PNG](../images/2021/spring-validator/v1.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/v1.PNG)
 
 Custom 한 MemberException 에 Object Array 통해 치환 하고자 하는 메세지를 같이 보낸다.
 
-![8.PNG](../images/2021/spring-validator/v2.PNG)
-![8.PNG](../images/2021/spring-validator/v3.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/v2.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/v3.PNG)
 
 Bean 으로 등록한 MessageSource 2번째 인자값에 적용한다.
 
-![8.PNG](../images/2021/spring-validator/v0.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-validator/v0.PNG)
 
 여기까지 유효성 검사에 대해 알아보았습니다.
 

@@ -77,7 +77,7 @@ delegate에는 datasource와는 달리 필수로 구현해야하는 메서드는
 func tableView(UITableView, didSelectRowAt: IndexPath)
 ```
 
-위 메서드는 지정된 행이 선택되었음을 알려주는 메서드로 해당 행이 눌렸을 때 행해질 행위에 대한 코드가 담기게 됩니다.<br>
+위 메서드는 지정된 행이 선택되었음을 알려주는 메서드로 해당 행이 눌렸을 때 행해질 행위에 대한 코드가 담기게 됩니다.
 외에도 아래와 같이 다양한 delegate 메서드들이 존재합니다.
 
 

@@ -24,6 +24,11 @@ writers:
       url: "https://github.com/ddalam"
       image: "/assets/images/member/ddalam.png"
       name: "최다영"
+  - member:
+      id: "zehye"
+      url: "https://github.com/zehye"
+      image: "/assets/images/member/zehye.jpeg"
+      name: "박지혜"
 
 author:
   facebook:         groups/docfriends/

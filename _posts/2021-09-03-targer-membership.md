@@ -155,7 +155,7 @@ A 뷰컨트롤러의 Target Membership과 B 뷰컨트롤러의 Target Membership
 ![Target]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/target10.png)
 
 
- </br>
+<br/>
 
 따라서 타겟을 분리해 사용할 때에는 이렇게 Target Membership을 한번씩 확인해 주는 습관이 있는게 좋을 것 같습니다.
 

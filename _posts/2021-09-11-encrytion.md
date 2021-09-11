@@ -63,7 +63,8 @@ share: true
 대칭형 암호는 훌륭한 암호화 방식이긴 하지만 **키 배송** 관련으로 결정적인 문제가 존재합니다. 어떻게든 송신 측에는 수신 측에 암호키를 전달해야만 하고, 이 키가 배송과정에서 털리게 되면 아무리 뛰어난 암호화 알고리즘을 사용했더라도 속절없이 평문이 드러나게 됩니다. 안전하게 평문을 전달하기 위해 만든 것이 암호문인데, 정작 키는 안전하게 전달할 방법이 없다는 것이 가장 큰 단점입니다. 따라서 이 키 배송에 대한 방법이 여러가지 연구되었지만 결국 발상의 전환으로 키 배송 문제를 해결하기 위해 나타난 방식이 바로 비대칭형 암호 입니다.
 
 
-AES를 간단하게 실습해 볼 수 있는 사이트가 있습니다. > <a href='https://aesencryption.net/' target='blank'AES encryption</a>
+AES를 간단하게 실습해 볼 수 있는 사이트가 있습니다.<br>
+<a href='https://aesencryption.net/' target='blank'AES encryption 홈페이지 바로가기</a>
 
 ![encryption]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/encrpt3.png)
 

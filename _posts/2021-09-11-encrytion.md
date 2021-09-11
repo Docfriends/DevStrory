@@ -64,7 +64,7 @@ share: true
 
 
 AES를 간단하게 실습해 볼 수 있는 사이트가 있습니다.<br>
-<a href='https://aesencryption.net/' target='blank'AES encryption 홈페이지 바로가기</a>
+<a href='https://aesencryption.net/' target='blank'>AES encryption 홈페이지 바로가기</a>
 
 ![encryption]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/encrpt3.png)
 

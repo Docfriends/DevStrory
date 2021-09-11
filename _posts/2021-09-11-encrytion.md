@@ -3,7 +3,7 @@ layout: post
 title: "암호화와 복호화"
 description: "암호, 암호화와 복호화, 암호화의 종류, 공개키, 비공개키에 대해 정리합니다."
 date: 2021-09-11
-tags: [iOS]
+tags: [iOS, 암호화, 복호화, 공개키, 비공개키]
 writer: zehye
 category: iOS
 comments: true

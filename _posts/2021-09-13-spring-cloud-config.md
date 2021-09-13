@@ -122,7 +122,13 @@ bootstrap 파일은 초기 기동시(Server API 및 Scheduler Server) applicatio
 
 즉 외부에 설정한 설정파일을 먼저 읽겠다는 것이다.
 
-![bootstrap]({{ site.url }}{{ site.baseurl }}/images/2021/spring-cloud-config/bootstrap.png)
+![bootstrap-server-api]({{ site.url }}{{ site.baseurl }}/images/2021/spring-cloud-config/bootstrap-server-api.png)
+
+Server API -> bootstrap.yml
+
+![bootstrap-scheduler-server]({{ site.url }}{{ site.baseurl }}/images/2021/spring-cloud-config/bootstrap-scheduler-server.png)
+
+Scheduler Server -> bootstrap.yml
 
 Server API, Scheduler Server 프로젝트에 각각 bootstrap.yml 추가 해서 이미지에 보이는 설정값을 기입하자<br>
 uri: spring-cloud-config-server 주소<br>
@@ -131,7 +137,13 @@ profiles.active: Git Repository 에 추가된 설정 파일 중에서 어떤 pro
 
 Git Repository 에 docfriends-{profile name}.yml 라고 추가 한 값을 읽어 오겠다는 의미
 
-![controller]({{ site.url }}{{ site.baseurl }}/images/2021/spring-cloud-config/controller.png)
+![controller-server-api]({{ site.url }}{{ site.baseurl }}/images/2021/spring-cloud-config/controller-server-api.png)
+
+Server API -> ServerApiController
+
+![controller-scheduler-server]({{ site.url }}{{ site.baseurl }}/images/2021/spring-cloud-config/controller-scheduler-server.png)
+
+Scheduler Server -> SchedulerApiController
 
 추가된 Server API(port: 8881), Scheduler Server(port: 8882) 프로젝트 에서 controller 를 만들어보자
 

@@ -107,7 +107,7 @@ pod 'FBSDKLoginKit'
 
 #### 5. AppDelegate, SceneDelegate 설정
 
-AppDelegate는 앱의 라이프사이클을 관리하는 부분으로 앱이 실행될 때마다 해주어야 하는 작업을 작성해줍니다. <br>
+AppDelegate는 앱의 라이프사이클을 관리하는 부분으로 앱이 실행될 때마다 해주어야 하는 작업을 작성해줍니다.
 네이티브로 페이스북 앱을 열기 위해서는 앱을 실행할 때마다 SDK를 초기화해 주어야 합니다.
 
 
@@ -161,7 +161,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### ViewController에 페이스북 버튼 추가하기
 
-페이스북 버튼을 추가하는 방법엔 페이스북 자체에서 제공해주는 버튼을 상속받아와 사용하는 방법과 직접 버튼을 구현해 함수를 연결해주는 방법이 있습니다.ㄴ
+페이스북 버튼을 추가하는 방법엔 페이스북 자체에서 제공해주는 버튼을 상속받아와 사용하는 방법과 직접 버튼을 구현해 함수를 연결해주는 방법이 있습니다.
 
 #### 1. 페이스북 버튼 상속받아와 사용해보기
 
@@ -303,6 +303,9 @@ extension ViewController {
 사용자 데이터 삭제 부분은 사용자가 삭제를 원할때 서버에서 모든 정보를 지울 수 있는 방법을 마련해 놓으라는 것으로 데이터 삭제 콜백 URL과 데이터 삭제 안내 URL 중 선택할 수 있습니다. 이렇게 모두 완료하면 비로소 라이브모드를 켤수 있게 되고, 로그인도 가능해집니다.
 
 
+<br/>
+
+
 
 ## 2.Kakao
 
@@ -332,7 +335,7 @@ extension ViewController {
 
 - 프로필 정보를 제외한 다른 동의 항목의 '필수 동의'설정은 사용이 불가능함
 - 설정한 동의 항목 내역은 내가 만든 앱의 카카오 로그인 동의 화면에 반영됨
-- 동의 목적은 참고 문구로 카카오 로그인 동의 화면에는 나타나지 않으나, 해당 동의 하ㅇ목 이용 권한 검수에 사용됨
+- 동의 목적은 참고 문구로 카카오 로그인 동의 화면에는 나타나지 않으나, 해당 동의 항목 이용 권한 검수에 사용됨
 
 
 ### KakaoSDK 설치하기
@@ -505,6 +508,11 @@ extension ViewController {
     }
 }
 ```
+
+
+<br/>
+
+
 
 ## 3.Naver
 
@@ -726,3 +734,9 @@ extension ViewController: NaverThirdPartyLoginConnectionDelegate {
 - oauth20ConnectionDidFinishRequestACTokenWithRefreshToken(): 접근 토큰을 갱신할 때 호출되는 함수
 - oauth20ConnectionDidFinishDeleteToken(): 토큰 삭제를 하면 호출되는 함수(로그아웃에 사용)
 - oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!): 네아로에 모든 에러에 호출되는 함수
+
+
+
+<br/>
+
+읽어주셔서 감사합니다 :)

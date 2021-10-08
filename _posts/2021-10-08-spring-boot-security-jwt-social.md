@@ -24,10 +24,10 @@ https://github.com/syh8088/Kiwi-Board-Front (Vue Nuxt)
 
 ## 로그인 구현 페이지
 
-![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-boot-security-jwt-social/login.git)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-boot-security-jwt-social/login.gif)
 
 
-![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-boot-security-jwt-social/social_login.git)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-boot-security-jwt-social/social_login.gif)
 
 ## DB 구성
 

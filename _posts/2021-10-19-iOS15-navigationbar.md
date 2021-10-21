@@ -32,12 +32,10 @@ if #available(iOS 15.0, *) {
     UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
 }
 ```
-<br/>
 - configureWithDefaultBackground는 네비게이션 바를 반투명하게 표시하도록 설정합니다.
 
 여기서 핵심은 `scrollEdgeAppearance`를 `standardAppearance`와 동일하게 설정해야한다는 것입니다. `UINavigationBar.appearance()`를 통해 앱의 모든 네비게이션 바에 대한 자동 투명도가 해제될 수 있게 됩니다. 위 코드가 이상적으로 실행되기 위해서는 `AppDelegate`에서 실행되는 것이 좋습니다.
 
-<br/>
 
 
 전체적으로 네비게이션 바의 자동 투명도를 해제시킨다면, 한가지 문제가 발생할 수 있습니다.

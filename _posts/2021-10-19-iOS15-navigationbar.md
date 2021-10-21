@@ -21,6 +21,7 @@ share: true
 
 iOS15로 업데이트가 된 이후부터는 네비게이션 바가 확장이 되면서 `scrollEdgeAppearance`는 기본적으로 투명한 배경으로 생성이 되면서 뒤에 컨텐츠가 없는 경우 기본적으로 투명한 배경색으로 보이게 변경 되었습니다. 따라서 실제로 앱이 Xcode13에서 빌드를 하게 되면, 배경을 가진 이전 'bar'는 사라지고 콘텐츠를 스크롤 하는 경우에 다시 'bar'가 보이게 되는 것을 확인할 수 있습니다. 이러한 변화가 기본적으로 활성화되어있기 때문에, 앱에서 시각적인 문제가 발생할 수 있게 되었습니다. 이에 대한 해결 방법은 iOS13부터 사용이 가능한 `UINavigationBarAppearance`를 사용해야합니다.
 
+<br/>
 ```swift
 if #available(iOS 15.0, *) {
     let navigationBarAppearance = UINavigationBarAppearance()
@@ -31,7 +32,7 @@ if #available(iOS 15.0, *) {
     UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
 }
 ```
-
+<br/>
 - configureWithDefaultBackground는 네비게이션 바를 반투명하게 표시하도록 설정합니다.
 
 여기서 핵심은 `scrollEdgeAppearance`를 `standardAppearance`와 동일하게 설정해야한다는 것입니다. `UINavigationBar.appearance()`를 통해 앱의 모든 네비게이션 바에 대한 자동 투명도가 해제될 수 있게 됩니다. 위 코드가 이상적으로 실행되기 위해서는 `AppDelegate`에서 실행되는 것이 좋습니다.
@@ -121,5 +122,5 @@ self.navigationController?.navigationBar.isTranslucent = false
 self.navigationController?.navigationBar.backgroundColor =  // 원하는 색상
 ```
 
-
+<br/>
 읽어주셔서 감사합니다 🙇‍♀️

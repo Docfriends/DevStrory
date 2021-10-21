@@ -1,17 +1,15 @@
 ---
+layout: post
 title:  "Retrofit2, Hilt를 활용한 API 호출 사용기"
-excerpt: "Retrofit2, Hilt, Coroutines, Flow 를 조합해서 만든 API 호출 기능 입니다."
-
-categories:
-  - Android
-tags:
-  - Android
-  - Retrofit2
-  - Hilt
-  - Coroutines
-  - Flow
-last_modified_at: 2021-10-20T21:00:00+09:00
+description: "Retrofit2, Hilt, Coroutines, Flow 를 조합해서 만든 API 호출 기능 입니다."
+date: 2021-10-20
+tags: [Android, Retrofit2, Hilt, Coroutines, Flow]
+writer: TejPak
+category: Android
+comments: true
+share: true
 ---
+
 ## 배경
 2019년 개발 당시 네트워크 라이브러리들은 다양했습니다. 그 중 iOS의 Alamofire의 구조와 비슷한 네트워크 라이브러리를 찾았었습니다.  Builder 패턴으로 만들어진 [Fast Android Networking](https://github.com/amitshekhariitbhu/Fast-Android-Networking) 은 매우 매력적으로 다가왔습니다.
 사용하기 간편했으며, okHttp 기반의 라이브러리이기 때문에 안정성 또한 좋다고 판단하여 해당 라이브러리로 네트워크를 구성하였습니다.

@@ -29,7 +29,7 @@ share: true
 
 https://docs.spring.io/spring-batch/docs/3.0.x/reference/html/metaDataSchema.html
 
-![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/spring_batch_meta_data_erd.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/spring_batch_meta_data_erd.png)
 
 여기서 확인이 가능합니다.
 

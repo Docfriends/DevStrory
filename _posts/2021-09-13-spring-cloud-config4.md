@@ -70,7 +70,7 @@ Spring Cloud Config Server 'bootstrap.yml' 에 아래 설정값을 추가 한다
 encrypt:
   key-store:
     location: file:///{디렉토리 경로}/{파일명}.jks
-    alias: apiEncryptionKey
+    alias: privateKey
     password: 1q2w3e4r
 ```
 Window OS 버전

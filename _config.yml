@@ -29,7 +29,11 @@ writers:
       url: "https://github.com/zehye"
       image: "/assets/images/member/zehye.jpeg"
       name: "박지혜"
-
+  - member:
+      id: "syh8088"
+      url: "https://github.com/syh8088"
+      image: "/assets/images/member/syh8088.png"
+      name: "서양훈"
 author:
   facebook:         groups/docfriends/
   youtubeUser:      Docairs

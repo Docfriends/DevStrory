@@ -334,7 +334,7 @@ public class SimpleJob extends AbstractJob {
 
 ### Job 객체
 
-![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/job.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/job.png)
 
 ![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/job_interface.PNG)
 
@@ -353,7 +353,7 @@ Spring Batch 'Job' 은 최상위 인터페이지로 구성되어 있습니다.
 
 #### AbstractJob
 
-![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/AbstractJob.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/AbstractJob.png)
 
 AbstractJob 입니다. 여기서 관리하는 대표적인 필드만 알아보겠습니다.
 

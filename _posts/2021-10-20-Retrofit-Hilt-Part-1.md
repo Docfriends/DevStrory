@@ -27,7 +27,7 @@ share: true
 3. 테스트 코드로 코드 안정성 확보 필요
 
 ## 정의
-![](/images/2021/retrofit-hilt-part1/clean_architecture.png)  
+![]({{ site.url }}{{ site.baseurl }}/images/2021/retrofit-hilt-part1/clean_architecture.png)  
 실제로 공부하면서 느낀 것은 같은 정보를 가지고 다양한 해석이 나오고 다양한 방식 및 현재 상황에 맞는 방식으로 구현한다는 것을 확인할 수 있었습니다.
 
 그래서 제가 정의한 것은 위에 스크린샷과 같습니다.
@@ -39,7 +39,7 @@ ViewModel에서는 UseCase만 참조하며, UseCase에서 실제 비지니스 �
 마지막으로 Data Layer에서는 API 통신 혹은 Local DB 처리를 위한 Source 기능을 구현하고, Data Layer 안에서 사용될 Data Class인 Entity를 만들었습니다.  마지막으로 Domain Layer와 실제 소통을 위해 Repository Interface를 상속받는 클래스를 구현합니다.
 
 ## 패키지 구조
-![](/images/2021/retrofit-hilt-part1/package_struct.png)  
+![]({{ site.url }}{{ site.baseurl }}/images/2021/retrofit-hilt-part1/package_struct.png)  
 위에서 설명한 것처럼 data, domain, presentation을 기본으로 나누고, di는 hilt를 활용해서 주입을 위해 구현하였습니다.
 마지막으로 common은 기타 유틸리티 성향을 가진 공통 클래스를 모았습니다.
 
@@ -149,7 +149,7 @@ class UsersJoinLoginRepositoryImpl @Inject constructor(
 ### 3) Entity
 API 호출 혹은 Local DB 기능 구현 시 사용되는 데이터 모델 클래스 입니다.  
 Jackson 라이브러리를 사용해서 구현했습니다.
-![](/images/2021/retrofit-hilt-part1/entity.png)  
+![]({{ site.url }}{{ site.baseurl }}/images/2021/retrofit-hilt-part1/entity.png)  
 
 
 ## Domain Layer

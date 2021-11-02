@@ -427,7 +427,20 @@ public Step basicStep1() {
 
 우리가 만들었던 BasicJobConfiguration 클래스 확인 해보면 Step 을 설정하는 곳이 보입니다.
 
-stepBuilderFactory 가 tasklet 메소드를 실행하는 한번 확인 해봅시다.
+```markdown
+public class StepBuilderFactory {
+
+	private JobRepository jobRepository;
+	private PlatformTransactionManager transactionManager;
+	
+    public StepBuilder get(String name) {
+        StepBuilder builder = new StepBuilder(name).repository(jobRepository).transactionManager(
+                transactionManager);
+        return builder;
+    }
+}
+```
+StepBuilderFactory 가 StepBuilder 를 생성합니다. 이후 StepBuilder 는 하위 빌더 클래스 중 가장 기본이 되는 TaskletStepBuilder 생성 합니다.
 
 ```markdown
 public class StepBuilder extends StepBuilderHelper<StepBuilder> {
@@ -715,14 +728,52 @@ public class TaskletStep extends AbstractStep {
 
 여기서 우리가 로직을 구성한것을 수행하게 됩니다.
 
+## Step 객체
 
-### Step 객체
+Spring Batch 에서 사용되는 Step 인터페이스 대해 알아보겠습니다.
 
-// 이미지
+### Step
 
-Spring Batch 에서 사용되는 Step 객체에 대해 알아보겠습니다.
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/step.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/step_interface.PNG)
 
-#### Step
+### Step
+
+Spring Batch 'Step' 은 최상위 인터페이지로 구성되어 있습니다.
+
+대표적인 메소드를 보면
+
+* execute(): 설정한 Step 을 실행 하는 메소드 입니다.
+
+### AbstractStep
+
+AbstractStep 입니다. 대표적인 필드만 알아보겠습니다.
+
+* name: 설정한 해당 Step 의 이름 입니다.
+* startLimit: Step 실행 제한 횟수 입니다.
+* allowStartIfComplete: 해당 Step 이 실행 완료 후 재 실행 여부 입니다.
+* jobRepository: Step 메타데이터 저장소 입니다.
+
+### TaskletStep
+
+Step 구현체 중 가장 기본이 되는 객체가 TaskletStep 입니다.
+
+
+## TaskletStep 정리
+
+
+Job 에서 TaskletStep 을 실행 한다면 BatchStatus 값은 'STARTED', ExitStatus 값은 'EXECUTING' 로 변경됩니다.
+
+여기서 우리가 비지니스 로직을 구현한 Tasklet 을 수행하게 되는데요.
+
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/step_business_logic.PNG)
+우리가 만든 비지니스 로직이 수행 하는데 중요한것은 loop 를 돌면서 수행한다는 점 입니다. 반드시 어느 시점에 loop 를 빠져나가고 싶으면
+
+``RepeatStatus.FINISHED`` 값을 return 해야 합니다. 참고로 null 로 return 해도 됩니다.
+
+동시에 RepeatStatus 값은 'FINISHED' 로 변경 됩니다.
+
+최종 해당 Step 완료 되면 BatchStatus 값은 'COMPLETED' 로 변경 됩니다.
 
 
 

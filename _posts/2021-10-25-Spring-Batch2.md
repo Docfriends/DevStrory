@@ -734,7 +734,7 @@ Spring Batch 에서 사용되는 Step 인터페이스 대해 알아보겠습니�
 
 ### Step
 
-![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/step.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/step.png)
 ![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/step_interface.PNG)
 
 ### Step

@@ -122,7 +122,7 @@ Configuration -> Program arguments 값을 지정 합시다.
 
 마지막으로 application.yml 파일에 다음 내용을 추가 합니다.
 
-![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/name_setting2.PNG)
+![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/job.name_setting2.PNG)
 
 실행시 Program arguments '--job.name=flowJob' 이라고 입력을 하게 된다면 'flowJob' 이라는 job 만 실행하게 될 것 이고
 

@@ -35,7 +35,7 @@ writers:
       image: "/assets/images/member/syh8088.png"
       name: "서양훈"
   - member:
-      id: "Jang"
+      id: "unseoJang"
       url: "https://github.com/unseoJang"
       image: "/assets/images/member/unseoJang.png"
       name: "장운서"

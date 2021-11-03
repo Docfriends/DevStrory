@@ -4,7 +4,7 @@ title: "라이브러리와 프레임워크의 차이"
 description: "라이브러리와 프레임워크의 차이를 알아봅시다."
 date: 2021-11-03
 tags: [Framework,Library,React,Vue]
-writer: seojang212
+writer: unseoJang
 category: JavaScript
 comments: true
 share: true

@@ -34,6 +34,12 @@ writers:
       url: "https://github.com/syh8088"
       image: "/assets/images/member/syh8088.png"
       name: "서양훈"
+  - member:
+      id: "unseoJang"
+      url: "https://github.com/unseoJang"
+      image: "/assets/images/member/unseoJang.png"
+      name: "장운서"
+      
 author:
   facebook:         groups/docfriends/
   youtubeUser:      Docairs

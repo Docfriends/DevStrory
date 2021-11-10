@@ -31,8 +31,8 @@ DataSource하면 떠오르는 두개가 있죠.
 <br/>
 
 
-> 우리가 이전에 사용하던 UITableViewDataSource/UICollectionViewDataSource는 프로토콜이기때문에 보통 UIViewController가 이를 채택하곤 했습니다.
-그러나 UITableViewDiffableDataSource/UICollectionViewDiffableDataSource는 프로토콜이 아닌 제네릭 클래스입니다.
+> 우리가 이전에 사용하던 UITableViewDataSource/UICollectionViewDataSource는 프로토콜이기때문에 보통 UIViewController가 이를 채택하곤 했습니다.          
+그러나 UITableViewDiffableDataSource/UICollectionViewDiffableDataSource는 프로토콜이 아닌 제네릭 클래스입니다.               
 심지어 UITableViewDiffableDataSource/UICollectionViewDiffableDataSource가 UITableViewDataSource/UICollectionViewDataSource를 채택합니다.
 
 
@@ -247,7 +247,7 @@ SectionIdentifierType, ItemIdentifierType은 Hashable을 준수해야합니다.
 
 > DiffableDataSource_Example[75856:2941803] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Fatal: supplied item identifiers are not unique.'
 
-이와 같은 에러를 내뱉음니다.
+이와 같은 에러를 뱉어냅니다.
 
 만약 이 둘중 하나라도 공통된 데이터가 존재한다면 고유하지않은 Hash값을 가지게 되는 것입니다.
 Diffable DataSource는 고유한 해쉬값을 요구하는데, 이 identifier가 고유하지않다면 바로 오류가 발생하게 되는것이죠.

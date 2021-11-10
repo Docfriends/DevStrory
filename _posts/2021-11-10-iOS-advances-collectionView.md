@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Advances CollectionView - Diffable Data Source"
-description: "WWDC19에 소개된 Diffable DataSource를 설명합니다."
+description: "Diffable DataSource를 설명합니다."
 date: 2021-11-10
 tags: [iOS, WWDC, Diffable DataSource]
 writer: zehye

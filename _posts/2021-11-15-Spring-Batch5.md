@@ -118,7 +118,7 @@ chunkContext 에 저장했던 데이터를 가져와서 실행하게 됩니다.
 ``chunkProvider.provide(contribution);``
 
 실행하게 됩니다.
-
+하나의 item 를 추출해서 doProcess 메소드를 실행 하게 됩니다.
 chunkProvider 는 chunk 단위 아이템을 제공하는 클래스 입니다.
 
 ![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/SimpleChunkProvider_provide.PNG)

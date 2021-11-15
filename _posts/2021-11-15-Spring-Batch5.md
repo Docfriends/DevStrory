@@ -45,6 +45,46 @@ Chunk<O> 객체는 ItemWriter 로 전달 하게 되고 후처리 하게 됩니�
 
 ## 실습 해보자
 
+```markdown
+@RequiredArgsConstructor
+@Configuration
+public class BasicChunkConfiguration {
+
+    private final JobBuilderFactory jobBuilderFactory;
+    private final StepBuilderFactory stepBuilderFactory;
+
+    @Bean
+    public Job chunk1Job1() {
+        return jobBuilderFactory.get("chunk1Job1")
+                .incrementer(new RunIdIncrementer())
+                .start(chunk1Step1())
+                .build();
+    }
+
+    @Bean
+    public Step chunk1Step1() {
+        return stepBuilderFactory.get("chunk1Step1")
+                .<String, String>chunk(2)
+                .reader(new ListItemReader<>(Arrays.asList("data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10")))
+                .processor(new ItemProcessor<String, String>() {
+                    @Override
+                    public String process(String data) throws Exception {
+                        System.out.println("data = " + data);
+                        return data + "_A";
+                    }
+                })
+                .writer(new ItemWriter<String>() {
+                    @Override
+                    public void write(List<? extends String> items) throws Exception {
+                        Thread.sleep(1000);
+                        System.out.println(items);
+                    }
+                })
+                .build();
+    }
+}
+```
+
 'chunk1Job1' Job 이 실행하면 'chunk1Step1' Step 이 실행 됩니다.
 
 여기서 데이터는
@@ -57,45 +97,10 @@ ItemReader 에서 ``<String, String>chunk(2)`` chunk 사이즈를 2로 설정했
 
 이후 가공한 데이터를 ItemWriter 가 처리 하게 됩니다.
 
+<String, String> 첫번째 타입은 String 으로 되어 있는데 ItemReader 통해 얻은 데이터 타입이고 두번째 타입도 String 인데 write 에 요청 받을시 데이터 타입 입니다.
+
 ## Chunk 자세히 알아보자
 
-```markdown
-public class ChunkOrientedTasklet<I> implements Tasklet {
-
-	@Nullable
-	@Override
-	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-
-		@SuppressWarnings("unchecked")
-		Chunk<I> inputs = (Chunk<I>) chunkContext.getAttribute(INPUTS_KEY);
-		if (inputs == null) {
-			inputs = chunkProvider.provide(contribution);
-			if (buffering) {
-				chunkContext.setAttribute(INPUTS_KEY, inputs);
-			}
-		}
-
-		chunkProcessor.process(contribution, inputs);
-		chunkProvider.postProcess(contribution, inputs);
-
-		// Allow a message coming back from the processor to say that we
-		// are not done yet
-		if (inputs.isBusy()) {
-			logger.debug("Inputs still busy");
-			return RepeatStatus.CONTINUABLE;
-		}
-
-		chunkContext.removeAttribute(INPUTS_KEY);
-		chunkContext.setComplete();
-
-		if (logger.isDebugEnabled()) {
-			logger.debug("Inputs not busy, ended: " + inputs.isEnd());
-		}
-		return RepeatStatus.continueIf(!inputs.isEnd());
-
-	}
-}
-```
 ![Formula]({{ site.url }}{{ site.baseurl }}/images/2021/spring-batch/ChunkOrientedTasklet_execute.PNG)
 
 ChunkOrientedTasklet 클래스는 Tasklet 인터페이스 구현체 입니다. 또한 chunk 지향 프로세싱을 담당하는 객체라고 보시면 되겠습니다.

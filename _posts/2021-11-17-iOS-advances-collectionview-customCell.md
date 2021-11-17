@@ -25,6 +25,8 @@ share: true
 1. Diffable DataSource / Section Snapshot
 2. UICollectionViewCompositionalLayout
 
+<br/>
+
 만들어볼 화면 구성은 다음과 같습니다.
 
 1. CollectionView를 통해 json 파일 내 데이터를 보여준다.
@@ -32,7 +34,9 @@ share: true
 3. 해당 데이터는 DiffableDataSource를 통해 Cell에 나타내도록 한다.
 4. 각 셀은 커스텀 셀로 구성되어진다.
 
-+ 추가적으로 확인해 볼 내용은 다음과 같습니다.
+<hr>
+
+추가적으로 확인해 볼 내용은 다음과 같습니다.
 
 1. 셀이 무한 스크롤 되는 경우 dataSource와 layout이 어떻게 호출되는 지 확인
 2. 섹션 사이에 다른 섹션이 들어갈 수 있는지 확인

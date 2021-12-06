@@ -17,7 +17,7 @@ share: true
 
 그러나 iOS13부터는 이 방식이 deprecated 되어 아래 문구를 띄워주게 됩니다.
 
-![statusBarFrame deprecated]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/statusBarFrame.PNG)
+![statusBarFrame deprecated]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/statusBarFrame.png)
 
 이제 window scene의 statusbarManager를 사용하라는 의미입니다.<br>
 이는 아래 방식으로 고쳐 사용하면 됩니다.
@@ -55,7 +55,7 @@ keyWindow란 윈도우가 여러개 존재할 때, 가장 앞쪽에 배치된 �
 
 이러한 keyWindow는 iOS13에서 deprecated 되었습니다.
 
-![keyWindow deprecated]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/keyWindow.PNG)
+![keyWindow deprecated]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/keyWindow.png)
 
 이제 keyWindow를 window로 사용해야 합니다.
 

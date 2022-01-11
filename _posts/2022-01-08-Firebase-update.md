@@ -43,7 +43,7 @@ pod 'Firebase/Crashlytics'
 <br/>
 
 
-#### Target > BuildSetting > 서치박스에서 FirebaseInstanceID 검색
+#### 1-1. Target > BuildSetting > 서치박스에서 FirebaseInstanceID 검색
 
 ![firebase deprecated]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/firebase1.png)
 
@@ -51,7 +51,7 @@ pod 'Firebase/Crashlytics'
 <br/>
 
 
-#### Linking에 FirebaseInstanceID가 있을 것
+#### 1-2. Linking에 FirebaseInstanceID가 있을 것
 
 ![firebase deprecated]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/firebase2.png)
 
@@ -59,7 +59,7 @@ pod 'Firebase/Crashlytics'
 <br/>
 
 
-#### Linking > Other Linker Flags > Debug/Release 두개 모두에서 -framework, FirebaseInstanceID delete(-) 클릭
+#### 1-3. Linking > Other Linker Flags > Debug/Release 두개 모두에서 -framework, FirebaseInstanceID delete(-) 클릭
 
 ![firebase deprecated]({{ site.url }}{{ site.baseurl }}/images/2021/iOS/firebase3.png)
 
@@ -67,9 +67,9 @@ pod 'Firebase/Crashlytics'
 <br/>
 
 
-#### 반드시 Debug/Release 두개 모두에서 삭제해줘야하고
+#### 1-4. 반드시 Debug/Release 두개 모두에서 삭제해줘야하고
 
-#### -framework, FirebaseInstanceID 이 두개도 반드시 지워줘야 함
+#### 1-5. -framework, FirebaseInstanceID 이 두개도 반드시 지워줘야 함
 
 
 <br/>

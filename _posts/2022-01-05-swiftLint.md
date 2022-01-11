@@ -2,7 +2,7 @@
 layout: post
 title: "SwiftLint"
 description: "SwiftLint를 적용하며 마주한 경고 정리"
-date: 2021-01-05
+date: 2022-01-05
 tags: [Swift, iOS, SwiftLint]
 writer: zehye
 category: iOS

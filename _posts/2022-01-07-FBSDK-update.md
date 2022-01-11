@@ -2,7 +2,7 @@
 layout: post
 title: "iOS Facebook SDK 12.2.1 업데이트 이슈"
 description: "CocoaPod > Facebook SDK 12.2.1로 업데이트하면서 수정한 것을 정리하였습니다."
-date: 2021-01-07
+date: 2022-01-07
 tags: [Swift, iOS, CocoaPods, FBSDK]
 writer: zehye
 category: iOS

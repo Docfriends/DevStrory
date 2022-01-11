@@ -2,7 +2,7 @@
 layout: post
 title: "iOS Firebase 8.8.0 업데이트 이슈"
 description: "CocoaPod > Firebase 8.8.0으로 업데이트하면서 수정한 것을 정리하였습니다."
-date: 2021-01-08
+date: 2022-01-08
 tags: [Swift, iOS, CocoaPods, Firebase]
 writer: zehye
 category: iOS

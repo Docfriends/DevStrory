@@ -115,7 +115,7 @@ func setA() -> Int { }
 
 ### Redundant Optional Initialization Violation: Initializing an optional variable with nil is redundant. (redundant_optional_initialization)
 
-옵셔널 변수라면 최초에 자동으로 nil로 초기화 되기 때문에 명시해주지 않아도 됩니다. 
+옵셔널 변수라면 최초에 자동으로 nil로 초기화 되기 때문에 명시해주지 않아도 됩니다.
 
 ```swift
 var frame: CGRect? = nil  // 적용 전

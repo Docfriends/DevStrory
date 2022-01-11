@@ -69,9 +69,6 @@ pod 'Firebase/Crashlytics'
 
 #### 반드시 Debug/Release 두개 모두에서 삭제해줘야하고
 
-<br/>
-
-
 #### -framework, FirebaseInstanceID 이 두개도 반드시 지워줘야 함
 
 

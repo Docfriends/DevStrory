@@ -306,5 +306,6 @@ node_modules/vuex/type/vue.d.ts 파일을 삭제시켜주면 내가 정의한 pr
 
 
 
+
 <br/>
 읽어주셔서 감사합니다 🙇‍♀️

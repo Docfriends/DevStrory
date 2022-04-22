@@ -160,8 +160,8 @@ type MyMemberActionContext = {
 
 ```
 
-Omit<ActionContext<MemberState, MyRootState>, "commit"> & MyRootState -> 제네릭의 두번째 param "commit"의 제외한 나머지 타입을 전부 받아들이고 내가 정의한 MyMutations가 commit 타입으로써 정의되는 것 이다. 
-이제 MyStore를 삽입시키면 된다.
+Omit<ActionContext<MemberState, MyRootState>, "commit"> & MyRootState -> 제네릭의 두번째 param "commit"의 제외한 나머지 타입을 전부 받아들이고 내가 정의한 MyMutations가 commit 타입으로써 정의되는 것 입니다.. 
+이제 MyStore를 삽입시키면 됩니다.
 
 `store/index.ts`
 ```ts
@@ -176,7 +176,7 @@ export const mutations = {
 ```
 
 ![NavigationBar]({{ site.url }}{{ site.baseurl }}/images/2022/nuxt/mutations.png)
-<span>내가 정의한 commit의 타입이 잘 읽어지고 있다.</span>
+<span>내가 정의한 commit의 타입이 잘 읽어지고 있습니다..</span>
 
 
 ### 3. actions에 타입을 씌우기 & store의 타입추론이 잘 이루어지게 프로젝트 레벨의 \*.d.ts 정의하기

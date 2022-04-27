@@ -14,7 +14,7 @@ share: true
 typescript는 javascript 와는 다르게 정해져 있는 타입 아래에서만 움직여야 하고 대부분의 오브젝트들의 타입들을 정의해줘야 합니다.
 vuex를 사용하면서 해당 패턴들에 관련된 타입정의를 진행하지 않으면 오류가 나는 부분을 확인했고 첫 세팅으로 nuxt.config.js 파일을 ts 파일로 변환하였습니다.
 
-후에 vue를 쭉 살펴보니 vuex 3.6.2 버전에서는 vuex(상태 관리를 위한 패턴이자 라이브러리) 패턴들에 대한 typescript의 타입 추론을 제공해주지 않는 상태였고 이 부분 관련해서 찾아본 두 가지 방법이 있었습니다.
+후에 vue를 쭉 살펴보니 vuex 3.6.2 버전에서는 vuex(상태 관리를 위한 패턴이자 라이브러리) 패턴들에 대한 typescript의 타입 추론을 제공해주지 않는 상태였고(store에 대한 타입추론들이 모두 any로 되어있음, 타입추론이 안됨) 이 부분 관련해서 찾아본 두 가지 방법이 있었습니다.
 
 1. 클래스 문법을 활용해 vue-decorator-property 를 설치한 다음 해당 라이브러리에서 제공하는 타입 추론을 이용하는 방법
 2. vue.extend 문법을 활용해서 vuex의 패턴들에 대한 타입 추론을 직접 설정하는 방법
@@ -176,7 +176,7 @@ export const mutations = {
 ```
 
 ![NavigationBar]({{ site.url }}{{ site.baseurl }}/images/2022/nuxt/mutations.png)
-<span>내가 정의한 commit의 타입이 잘 읽어지고 있습니다..</span>
+<span>내가 정의한 commit의 타입이 잘 읽어지고 있습니다..이런식으로 나머지 타입도 타입 정의를 시켜줍니다.</span>
 
 
 ### 3. actions에 타입을 씌우기 & store의 타입추론이 잘 이루어지게 프로젝트 레벨의 \*.d.ts 정의하기
@@ -298,7 +298,7 @@ declare module "vue/types/options" {
 타입정의파일을 만들어
 tsconfig.json에 내가 정의한 타입정의파일을 포함시켜 type intelligence가 읽어들이게 해줍니다.
 
-![NavigationBar]({{ site.url }}{{ site.baseurl }}/images/2022/nuxt/tsconfig-capture.png)
+![NavigationBar]({{ site.url }}{{ site.baseurl }}/images/2022/nuxt/store-type.png)
 
 node_modules/vuex/type/vue.d.ts 파일을 삭제시켜주면 내가 정의한 project.d.ts로 $store의 타입 추론이 이루어지는걸 알수있습니다.
 

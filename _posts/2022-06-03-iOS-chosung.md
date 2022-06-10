@@ -2,7 +2,7 @@
 layout: post
 title: "iOS searchBar에 초성검색 기능 추가해보기"
 description: "iOS searchBar에 초성검색 기능 추가하는 방법에 대해 설명합니다. "
-date: 2022-06.03
+date: 2022-06-03
 tags: [Swift, iOS, Docstep, searchBar]
 writer: zehye
 category: iOS

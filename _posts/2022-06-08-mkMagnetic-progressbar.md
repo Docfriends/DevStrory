@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS MKMagneticProgress를 사용해 circleProgressBar 만들어보기 "
+title: "iOS MKMagneticProgress를 사용해 circleProgressBar 만들어보기"
 description: "iOS MKMagneticProgress 사용 방법에 대해 설명합니다."
 date: 2022-06-08
 tags: [Swift, iOS, Docstep, MKMagneticProgress]
@@ -12,6 +12,9 @@ share: true
 
 반원 짜리 모양을 가진 프로그래스 뷰를 만들고 싶었습니다.<br>
 앞서 헀던 방식(UIBezierPath)으로 직접 뷰를 그릴수도 있지만, 이번에는 라이브러리를 통해서 만들어보려고 합니다.
+
+
+<br/>
 
 
 ## MKMagneticProgress를 사용해 circleProgressBar 만들어보기 
@@ -45,6 +48,10 @@ class HomeTableViewCell: UITableViewCell {
     }
 }
 ```
+
+
+<br/>
+
 
 무척 간단합니다.<br>
 여기서 중요한 점은 setProgress에서 progress로 받는 숫자는 0~1사이의 숫자입니다.

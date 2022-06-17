@@ -42,7 +42,7 @@ func initUI() {
 ### 문제발견
 
 그런데 문제를 하나 발견했습니다.<br>
-위에서 제시한 방법은 뷰컨에 바로 컬렉션뷰와 셀이 놓여져 있을떄만 적용이 되는 것 같았습니ㄴ다.
+위에서 제시한 방법은 뷰컨에 바로 컬렉션뷰와 셀이 놓여져 있을떄만 적용이 되는 것 같았습니다.
 
 예로 들자면 컬렉션뷰 셀을 재사용하기 위해 셀을 nib로 따로 만들어놓고 이를 불러와서 사용해야한다면?
 
@@ -65,7 +65,7 @@ func initUI() {
 
 
 
-#### tableviewCell file
+#### tableviewCell
 
 ```swift
 class DataTableViewCell: UITableViewCell {

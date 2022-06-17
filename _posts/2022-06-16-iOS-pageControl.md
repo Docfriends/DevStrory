@@ -57,4 +57,4 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
 일반적으로 생각해보면 페이지컨트롤이 컬렉션뷰 안에 존재할것같다고 생각할수도 있습니다. <br>
 그렇지만 그렇지 않습니다. 컬렉션뷰 바깥에 같은 동일선상에 존재하고 있어야 합니다. 
 
-![SCPageControl]({{ site.url }}{{ site.baseurl }}/images/2022/iOS/docstep8.png)
+![UIPageControl]({{ site.url }}{{ site.baseurl }}/images/2022/iOS/docstep8.png)

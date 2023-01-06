@@ -4,7 +4,7 @@ title: "HikariCP? Connection Pool?"
 description: "HikariCP 를 조사하면서 정확히 어떤 역할을 하는지 조사해 봤습니다."
 date: 2023-01-06
 tags: [db-connection, connection-pool, hikariCP]
-writer: ohjeung
+writer: xxxx-jeung
 category: iOS
 comments: true
 share: true

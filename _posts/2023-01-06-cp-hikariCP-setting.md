@@ -1,4 +1,4 @@
----
+
 layout: post
 title: "HikariCP? Connection Pool?"
 description: "HikariCP 를 조사하면서 정확히 어떤 역할을 하는지 조사해 봤습니다."
@@ -7,12 +7,9 @@ tags: [db-connection, connection-pool, hikariCP]
 writer: xxxx-jeung
 category: iOS
 comments: true
-share: true
----
+share: tru
 <br>
 <br>
-
-# HikariCP? Connection Pool?
 
 HikariCP 를 조사하면서 정확히 어떤 역할을 하는지 조사해 봤습니다. 
 먼저 HikariCP 를 알기 전에 DB Connection 과 CP 가 무엇인지 알아야 합니다.
@@ -21,8 +18,6 @@ HikariCP 를 조사하면서 정확히 어떤 역할을 하는지 조사해 봤�
 <br>
 
 ## DB Connection
-
----
 
 사용자가 자신의 이름과 자기소개, 사진을 보기 위해 ‘내 프로필’ 버튼을 클릭합니다. 
 클릭하게 되면 내 정보가 서버로 넘어가게 되는데, 서버는 넘어온 내 정보를 가지고 이름과 자기소개, 사진을 찾아야 합니다.
@@ -41,8 +36,6 @@ Connection 비용이 비싼 만큼 서버와 DB 는 점차 힘겨워 할 겁니�
 <br>
 
 ## Connection 은 왜 비싼거지?
-
----
 
 CP 로 넘어가기전에 Connection 은 왜 비싼걸까? 라는 의문이 생기실 겁니다. 저도 왜 비싼지에 대해 의문을 가졌기에 한 번 찾아봤습니다.
 이유는 서버와 DB 가 Connection 을 가져오기 위해 TCP 통신을 한다는 겁니다. TCP 통신은 이렇습니다. 
@@ -75,8 +68,6 @@ CP 로 넘어가기전에 Connection 은 왜 비싼걸까? 라는 의문이 생�
 
 ## CP (Connection Pool)
 
----
-
 CP(Connection Pool) 는 서버와 DB가 연결하면서 생긴 Connection 을 저장하는 공간입니다.
 조금 더 풀어서 설명하자면, 미리 만들어 놓은 Connection 이 존재합니다. Connection 을 저장해 놓는 공간을 Connection Pool 이라고 합니다.
 사용자가 내 정보를 조회하기 위해 서버에 요청하면 서버는 내 정보를 갖고 DB 에 접근해야 하는 상황입니다.
@@ -97,8 +88,6 @@ Pool 안에 만들어진 Connection 이 있으므로 가져다 사용하기만 �
 
 ## HikariCP 가 뭐지?
 
----
-
 위에 작성한 내용을 이해했다면 한 문장으로 설명이 가능할 것 입니다.
 말 그대로 DB Connection 을 Connection Pool 로 관리해주는 역할입니다.
 
@@ -106,8 +95,6 @@ Pool 안에 만들어진 Connection 이 있으므로 가져다 사용하기만 �
 <br>
 
 ## HikariCP 는 왜 사용하는 거지?
-
----
 
 이미 여러 훌륭한 Connection Pool 이 존재합니다. 
 굳이 HikariCP 만이 아니라 환경과 상황에 따라 CP 의 선택 기준이 달라질 수 있다는 점 꼭 참고하시고 ‘꼭 HikariCP 를 사용해야한다!’ 내용은 아닙니다.
@@ -132,8 +119,6 @@ Pool 안에 만들어진 Connection 이 있으므로 가져다 사용하기만 �
 <br>
 
 ## HikariCP 는 어떻게 사용하는 거지?
-
----
 
 Spring Boot 2.x 버전 이상부터 HikariCP 가 기본으로 설정 돼 Spring Boot 프로젝트를 생성하면 자동으로 구성되어 있는걸 볼 수 있습니다.
 아래 이미지는 프로젝트를 직접 만들어 라이브러리를 확인한 이미지 입니다.
@@ -174,8 +159,6 @@ application.properties 해당 파일을 설정해줍니다. HikariCP 환경을 �
 
 ## 왜 안되지..?
 
----
-
 ![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_6.png)
 HikariCP 를 적용했지만 보이지 않는 HikariCP….
 
@@ -205,8 +188,6 @@ HikariCP 를 구성하게 되면 기본 설정이 존재하기 때문에 각 서
 
 ## 게으른 초기화?
 
----
-
 게으른 초기화는 객체를 사용하기 전 까지 준비나 실행을 하지 않겠다. 즉 사용해야지만 준비와 실행을 진행시킨다고 보시면 됩니다. 갑자기 이런 개념이 등장한 이유는 바로 HikariCP 가 게으른 초기화 (Lazy initialization) 를 보여주고 있습니다. 그 이유는 서버 재 시작할 때 느려지기도 하고 메모리 또한 절약하기 할 수 있기 때문입니다.
 
 정상적으로 작동되는지는 Mybatis 를 설정하고 나서 알게 됐습니다. Mybatis 는 DB 에 저장된 데이터를 더 편리하게 조회하도록 라이브러리로 build.gradle 를 추가하고 Mapper 를 만들어야 사용이 가능합니다. 중점은 HikariCP 이니 Mybatis 는 추후에 다시 다루는 걸로…
@@ -227,8 +208,6 @@ DB Connection 이 한번이라도 발생해야지 비로소 HikariCP 가 확인�
 <br>
 
 ## Pool Size 는 어느정도가 적합하지?
-
----
 
 Pool Size 를 통해 Connection 개수를 미리 만들어놓수 있습니다. HikariCP 에서 기본적으로 설정된 개수를 개발자 마음대로 수정할 수 있습니다. 하지만 의미 없이 많이 만들어 놓으면 그 만큼 리소스를 사용하기 때문에 메모리 낭비가 생깁니다.
 
@@ -259,8 +238,6 @@ maxinum-pool-size 설정
 <br>
 
 ## 총평
-
----
 
 이렇게 Connection Pool 과 HikariCP 에 대해 알아봤습니다. 이렇게 공부한 내용을 정리하면서 블로깅 하는게 쉽지않네요. 다른 분들이 읽을 수 있도록 잘 풀어서 설명하는 것과 가독성을 높이기 위해 단어 선택과 적절한 그림을 섞는 방법… 쉽지 않군요.
 

@@ -5,7 +5,7 @@ description: "이번 글에서는 AWS를 사용하기 전 클라우드 컴퓨팅
 date: 2023-01-06
 tags: [AWS, 가상화 기초, 클라우드]
 writer: xxxx-jeung
-category: Cloud
+category: BackEnd
 comments: true
 share: true
 ---

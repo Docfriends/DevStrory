@@ -36,7 +36,7 @@ share: true
 ### 클라우드 생태계에서 헷갈리는 용어들이 있어요
 
 ![aws_3]({{ site.url }}{{ site.baseurl }}/images/2023/AWS/aws_3.png) 
-[https://www.google.com/search?q=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&tbm=isch&ved=2ahUKEwilw-_g0rL8AhWsyYsBHTL2DWYQ2-cCegQIABAA&oq=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&gs_lcp=CgNpbWcQA1CXBVjbB2DsCGgAcAB4AIAB1AGIAYoFkgEFMC4zLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=8-u3Y-X9PKyTr7wPsuy3sAY&bih=666&biw=1209#imgrc=6Rdfjii1iy8UAM](https://www.google.com/search?q=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&tbm=isch&ved=2ahUKEwilw-_g0rL8AhWsyYsBHTL2DWYQ2-cCegQIABAA&oq=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&gs_lcp=CgNpbWcQA1CXBVjbB2DsCGgAcAB4AIAB1AGIAYoFkgEFMC4zLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=8-u3Y-X9PKyTr7wPsuy3sAY&bih=666&biw=1209#imgrc=6Rdfjii1iy8UAM)
+[](https://www.google.com/search?q=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&tbm=isch&ved=2ahUKEwilw-_g0rL8AhWsyYsBHTL2DWYQ2-cCegQIABAA&oq=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&gs_lcp=CgNpbWcQA1CXBVjbB2DsCGgAcAB4AIAB1AGIAYoFkgEFMC4zLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=8-u3Y-X9PKyTr7wPsuy3sAY&bih=666&biw=1209#imgrc=6Rdfjii1iy8UAM)
 
 “온프레미스 환경에서 클라우드로!” 많이들 들어보셨을 수도 있는 말입니다. 
 
@@ -68,7 +68,7 @@ share: true
 
 **분산처리** : 수많은 요청을 여러대의 서버에 분산시켜 서버 한대에 가해지는 부하를 줄인다.
 
-![클라우드와온프레미스]({{ site.url }}{{ site.baseurl }}/images/2023/AWS/가상화.png) 
+![aws_2]({{ site.url }}{{ site.baseurl }}/images/2023/AWS/aws_2.png) 
 
 [https://brunch.co.kr/@ka3211/8](https://brunch.co.kr/@ka3211/8)
 
@@ -105,6 +105,6 @@ share: true
 
 아예 만들어진 서비스를 클라우드로 제공하는 것을 말합니다. 사용자들이 “인터넷”을 이용해서 바로 이요할 수 있는 서비스의 형태를 말합니다. 대표적으로 유투브, 드롭박스, OTT 등이 있습니다. 
 
-![클라우드와온프레미스]({{ site.url }}{{ site.baseurl }}/images/2023/AWS/클라우드온프레미스.png) 
+![aws_1]({{ site.url }}{{ site.baseurl }}/images/2023/AWS/aws_1.png) 
 
 [https://watermelon-sugar.tistory.com/19](https://watermelon-sugar.tistory.com/19)

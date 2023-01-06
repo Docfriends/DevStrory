@@ -9,7 +9,7 @@ category: BackEnd
 comments: true
 share: true
 ---
-
+이번 글에서는 AWS를 사용하기 전 클라우드 컴퓨팅 시스템의 이해를 위해 기초적인 컴퓨팅 및 네트워크 지식을 다룹니다.  
 이번 글을 정독하시면 아래와 같은 것들을 얻어가실 수 있습니다.
 
 <aside>
@@ -35,7 +35,7 @@ share: true
 
 ### 클라우드 생태계에서 헷갈리는 용어들이 있어요
 
-![클라우드와온프레미스]({{ site.url }}{{ site.baseurl }}/images/2023/AWS/클라우드온프레미스.png) 
+![aws_3]({{ site.url }}{{ site.baseurl }}/images/2023/AWS/aws_3.png) 
 [https://www.google.com/search?q=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&tbm=isch&ved=2ahUKEwilw-_g0rL8AhWsyYsBHTL2DWYQ2-cCegQIABAA&oq=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&gs_lcp=CgNpbWcQA1CXBVjbB2DsCGgAcAB4AIAB1AGIAYoFkgEFMC4zLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=8-u3Y-X9PKyTr7wPsuy3sAY&bih=666&biw=1209#imgrc=6Rdfjii1iy8UAM](https://www.google.com/search?q=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&tbm=isch&ved=2ahUKEwilw-_g0rL8AhWsyYsBHTL2DWYQ2-cCegQIABAA&oq=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%EC%99%80+%EC%98%A8%ED%94%84%EB%A0%88%EB%AF%B8%EC%8A%A4&gs_lcp=CgNpbWcQA1CXBVjbB2DsCGgAcAB4AIAB1AGIAYoFkgEFMC4zLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=8-u3Y-X9PKyTr7wPsuy3sAY&bih=666&biw=1209#imgrc=6Rdfjii1iy8UAM)
 
 “온프레미스 환경에서 클라우드로!” 많이들 들어보셨을 수도 있는 말입니다. 

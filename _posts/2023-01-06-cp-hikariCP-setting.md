@@ -1,7 +1,24 @@
+---
+layout: post
+title: "HikariCP? Connection Pool?"
+description: "HikariCP 를 조사하면서 정확히 어떤 역할을 하는지 조사해 봤습니다."
+date: 2023-01-06
+tags: [db-connection, connection-pool, hikariCP]
+writer: xxxx-jeung
+category: iOS
+comments: true
+share: true
+---
+<br>
+<br>
+
 # HikariCP? Connection Pool?
 
 HikariCP 를 조사하면서 정확히 어떤 역할을 하는지 조사해 봤습니다. 
 먼저 HikariCP 를 알기 전에 DB Connection 과 CP 가 무엇인지 알아야 합니다.
+
+<br>
+<br>
 
 ## DB Connection
 
@@ -19,6 +36,9 @@ DB Connection 은 서버와 DB 를 연결해주는 개념이라고 보면 됩니
 Connection 비용이 비싼 만큼 서버와 DB 는 점차 힘겨워 할 겁니다.
 
 이 같은 문제를 해결하기 위해 CP (Connection Pool) 가 나옵니다.
+
+<br>
+<br>
 
 ## Connection 은 왜 비싼거지?
 
@@ -50,6 +70,9 @@ CP 로 넘어가기전에 Connection 은 왜 비싼걸까? 라는 의문이 생�
 괄호 안에 들어있는 숫자가 작업 비용의 비율이라고 볼 때 Connecting 이 가장 높은걸 볼 수 있습니다.
 이렇게 비용이 높은 작업을 사용자가 요청 할 때 마다 실행한다면 과연 비용이 얼마나 소비되고 있을까요?
 
+<br>
+<br>
+
 ## CP (Connection Pool)
 
 ---
@@ -69,12 +92,18 @@ Pool 안에 만들어진 Connection 이 있으므로 가져다 사용하기만 �
 - Spring Boot 1.x 기본 Connection Pool [  *tomcat-jdbc-pool*  ]
 - Spring Boot 2.x 기본 Connection Pool [  *HikariCP*  ]
 
+<br>
+<br>
+
 ## HikariCP 가 뭐지?
 
 ---
 
 위에 작성한 내용을 이해했다면 한 문장으로 설명이 가능할 것 입니다.
 말 그대로 DB Connection 을 Connection Pool 로 관리해주는 역할입니다.
+
+<br>
+<br>
 
 ## HikariCP 는 왜 사용하는 거지?
 
@@ -98,6 +127,9 @@ Pool 안에 만들어진 Connection 이 있으므로 가져다 사용하기만 �
 
 서버와 DB 가 연결이 하면서 발생하는 성능이 각 벤더사 별로 극명한 차이가 나는걸 볼 수 있습니다. 
 또한 쿼리 정의, 실행, 종료 까지 포함한 성능 또한 극명한 차이가 있음을 확인 할 수 있습니다.
+
+<br>
+<br>
 
 ## HikariCP 는 어떻게 사용하는 거지?
 
@@ -137,6 +169,9 @@ spring.datasource.hikari.connectionTimeout=30000
 
 application.properties 해당 파일을 설정해줍니다. HikariCP 환경을 설정해주는 부분이라고 보시면 됩니다.
 
+<br>
+<br>
+
 ## 왜 안되지..?
 
 ---
@@ -165,6 +200,9 @@ HikariConfig.java 에서 설정된 기본값
 
 HikariCP 를 구성하게 되면 기본 설정이 존재하기 때문에 각 서버 환경에 따라 설정을 변경하며 사용합니다. 이어서 기본 Pool Size 가 존재하기 때문에 서버가 실행되면 Connection 수 가 10 개 이상이어야 합니다. 하지만 여전히 1개 보이는 건 ‘내가 뭔가 모르는 부분이 있구나.’ 직감했습니다.
 
+<br>
+<br>
+
 ## 게으른 초기화?
 
 ---
@@ -184,6 +222,9 @@ DB Connection 이 한번이라도 발생해야지 비로소 HikariCP 가 확인�
 그렇다면 분명 서비스를 재 시작 할 때 누군가 DB Connection 을 한 번 이라도 시도해야 생성 될 겁니다. 앞서 말씀드렸다시피 Connection 이 느린 이유를 말씀 드렸는데 이런 현상을 어떻게 개선 할 것인지는 추가적인 학습이 필요하겠군요.
 
 추가) 확인해보니 JPA 의존성을 추가해주면 Hikari Start 라는 문구가 나옵니다. 무엇 때문에 가능한지 이 부분을 더 학습해봐야겠습니다.
+
+<br>
+<br>
 
 ## Pool Size 는 어느정도가 적합하지?
 
@@ -213,6 +254,9 @@ maxinum-pool-size 설정
 - effective_spindle_count : 하드 디스크 개수(?)
 
 따라서 만약 코어가 2개이고 DB 가 1개 일 경우 (2 * 2) + 1 = 5 이며 Connection Pool Size 는 5개가 되겠네요.
+
+<br>
+<br>
 
 ## 총평
 

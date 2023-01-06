@@ -27,8 +27,7 @@ Connection 비용이 비싼 만큼 서버와 DB 는 점차 힘겨워 할 겁니�
 CP 로 넘어가기전에 Connection 은 왜 비싼걸까? 라는 의문이 생기실 겁니다. 저도 왜 비싼지에 대해 의문을 가졌기에 한 번 찾아봤습니다.
 이유는 서버와 DB 가 Connection 을 가져오기 위해 TCP 통신을 한다는 겁니다. TCP 통신은 이렇습니다. 
 
-![출처 : [https://www.baeldung.com/cs/tcp-active-vs-passive](https://www.baeldung.com/cs/tcp-active-vs-passive)]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_0.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_0.png)
 출처 : [https://www.baeldung.com/cs/tcp-active-vs-passive](https://www.baeldung.com/cs/tcp-active-vs-passive)
 
 개념 이해를 이해 이미지가 필요합니다. Client 는 **서버**, Server 는 **DB** 라 생각하고 읽으시면 더욱 편합니다.
@@ -45,8 +44,7 @@ CP 로 넘어가기전에 Connection 은 왜 비싼걸까? 라는 의문이 생�
 
 이게 오래 걸리는 작업인가? 라는 의문이 생길 수 있습니다. 공신력을 얻기 위해 MySql 공식 홈페이지를 참고한 결과.
 
-![출처 : [https://dev.mysql.com/doc/refman/8.0/en/insert-optimization.html](https://dev.mysql.com/doc/refman/8.0/en/insert-optimization.html)]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_1.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_1.png)
 출처 : [https://dev.mysql.com/doc/refman/8.0/en/insert-optimization.html](https://dev.mysql.com/doc/refman/8.0/en/insert-optimization.html)
 
 괄호 안에 들어있는 숫자가 작업 비용의 비율이라고 볼 때 Connecting 이 가장 높은걸 볼 수 있습니다.
@@ -89,8 +87,7 @@ Pool 안에 만들어진 Connection 이 있으므로 가져다 사용하기만 �
 첫 번째로 앞서 말씀드렸다시피 결론적으론 Spring Boot 에서 기본적으로 제공하는 Connection Pool 이기 때문입니다. 
 두 번째로 각 벤더사 별로 Connection Pool 의 성능 지표가 존재하는데 HikariCP 가 월등히 높았습니다. 
 
-![출처 : [https://github.com/brettwooldridge/HikariCP-benchmark](https://github.com/brettwooldridge/HikariCP-benchmark)]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_2.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_2.png)
 출처 : [https://github.com/brettwooldridge/HikariCP-benchmark](https://github.com/brettwooldridge/HikariCP-benchmark)
 
 이미지 그래프 아래 내용에 따르면 
@@ -109,11 +106,11 @@ Pool 안에 만들어진 Connection 이 있으므로 가져다 사용하기만 �
 Spring Boot 2.x 버전 이상부터 HikariCP 가 기본으로 설정 돼 Spring Boot 프로젝트를 생성하면 자동으로 구성되어 있는걸 볼 수 있습니다.
 아래 이미지는 프로젝트를 직접 만들어 라이브러리를 확인한 이미지 입니다.
 
-![Spring Boot 라이브러리 목록에 존재하는 HikariCP]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_3.png))
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_3.png)
 
 Spring Boot 라이브러리 목록에 존재하는 HikariCP
 
-![application.properties 에서 HikariCP 설정]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_4.png))
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_4.png)
 
 application.properties 에서 HikariCP 설정
 
@@ -123,7 +120,7 @@ application.properties 에서 HikariCP 설정
 
 저는 로컬 환경에 MySql 을 설치한 상태이므로 MySql JDBC 의존성을 추가할 겁니다.
 
-![Untitled]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_5.png))
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_5.png)
 
 해당 라이브러리를 추가하면 오른쪽 창에 `com.mysql:mysql-connector-j:8.0.31` 확인 할 수 있습니다.
 
@@ -144,20 +141,18 @@ application.properties 해당 파일을 설정해줍니다. HikariCP 환경을 �
 
 ---
 
-![HikariCP 를 적용했지만 보이지 않는 HikariCP….]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_6.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_6.png)
 HikariCP 를 적용했지만 보이지 않는 HikariCP….
 
 분명 서버를 실행하면 로그에 Hikari Pool Start 라는 로그가 나타나야 합니다. 하지만 서버를 실행할 때 반응이 없어보입니다. 
 검색해서 찾아봤지만 다른 블로그와 차이점은 application.propertse 와 application.yml 의 차이만 보일 뿐이군요. 
 물론 build.gradle 에도 차이가 있지만, 이미 Spring Boot 서 기본적으로 제공해주는 것으로 충분하기 때문에 문제 될 게 없어 보입니다.
 
-![Untitled]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_7.png))
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_7.png)
 
 프로젝트에 문제가 생긴게 아닐까 하고 새로 생성했습니다. 확장자를 yml 로 변경하고, DB 에 스키마와 계정까지 새로 생성해서 환경설정 까지 했지만, 동일하게도 Pool Start 라는 log 는 보이지 않았습니다. 
 
-![DB 조회로 연결되어 있는 Connection 개수 확인]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_8.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_8.png)
 DB 조회로 연결되어 있는 Connection 개수 확인
 
 혹시 서버가 실행되면서 log 에 표출 안 할 뿐이지 사실 Connection Pool 에 생성 된 게 아닐까? 라는 희망을 갖고 DB 로 직접 조회 해 봤습니다.
@@ -165,8 +160,7 @@ DB 조회로 연결되어 있는 Connection 개수 확인
 
 연결이 되어있는지 안되어있는지 어떻게 알지? 그건 HikariCP 기본 설정값을 통해 확인할 수 있습니다. `HikariConfig.java` 파일을 열어보면 기본값으로 설정된 걸 확인할 수 있습니다.
 
-![HikariConfig.java 에서 설정된 기본값]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_9.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_9.png)
 HikariConfig.java 에서 설정된 기본값
 
 HikariCP 를 구성하게 되면 기본 설정이 존재하기 때문에 각 서버 환경에 따라 설정을 변경하며 사용합니다. 이어서 기본 Pool Size 가 존재하기 때문에 서버가 실행되면 Connection 수 가 10 개 이상이어야 합니다. 하지만 여전히 1개 보이는 건 ‘내가 뭔가 모르는 부분이 있구나.’ 직감했습니다.
@@ -179,14 +173,12 @@ HikariCP 를 구성하게 되면 기본 설정이 존재하기 때문에 각 서
 
 정상적으로 작동되는지는 Mybatis 를 설정하고 나서 알게 됐습니다. Mybatis 는 DB 에 저장된 데이터를 더 편리하게 조회하도록 라이브러리로 build.gradle 를 추가하고 Mapper 를 만들어야 사용이 가능합니다. 중점은 HikariCP 이니 Mybatis 는 추후에 다시 다루는 걸로…
 
-![비로소 나온 Hikari Start]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_10.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_10.png)
 비로소 나온 Hikari Start
 
 DB Connection 이 한번이라도 발생해야지 비로소 HikariCP 가 확인이 됐습니다. 
 
-![조회 결과 Connection 10 개 이상 확인]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_11.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_11.png)
 조회 결과 Connection 10 개 이상 확인
 
 그렇다면 분명 서비스를 재 시작 할 때 누군가 DB Connection 을 한 번 이라도 시도해야 생성 될 겁니다. 앞서 말씀드렸다시피 Connection 이 느린 이유를 말씀 드렸는데 이런 현상을 어떻게 개선 할 것인지는 추가적인 학습이 필요하겠군요.
@@ -201,8 +193,7 @@ Pool Size 를 통해 Connection 개수를 미리 만들어놓수 있습니다. H
 
 HikariCP 공식 문서에선 Pool Size 를 계산하는 방법을 제공해주고 있습니다. 
 
-![출처 : [https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula)]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_12.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_12.png)
 출처 : [https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing#the-formula)
 
 출처에 들어가보면 `1 Connection = ((core_count) * 2) + effective_spindle_count` 계산식이 존재합니다. 번역기를 돌려보면 이렀습니다.
@@ -215,8 +206,7 @@ HikariCP 공식 문서에선 Pool Size 를 계산하는 방법을 제공해주�
 
 요약하자면 이렇습니다. `core_count` 는 서버에 장착된 CPU 코어 수를 뜻하고 `effective_spindle_count` 하드 디스크의 개수를 의미합니다. `core_count` 이 부분은 정확히 이해가 되지만 `effective_spindle_count` 이 부분이 확실치 않습니다. 이해한 바로는 하드 디스크 하나 당 처리할 수 있는 요청은 1개 라고 합니다. 기본적으로 DB 가 처리할 수 있는 동시 I/O (Input / Output) 요청 수를 말한다고 합니다. 따라서 16개 가 있다면 동시에 16개 의 I/O 요청을 처리할 수 있다는 의미죠. 이 부분은 조금 더 공부가 필요할 것 같습니다…
 
-![maxinum-pool-size 설정]((![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_13.png))
-
+![cpHikariCPSetting]({{ site.url }}{{ site.baseurl }}/images/2023/hikariCP/hikariCP_13.png)
 maxinum-pool-size 설정
 
 - core_count : CPU 코어 개수

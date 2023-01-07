@@ -39,6 +39,11 @@ writers:
       url: "https://github.com/unseoJang"
       image: "/assets/images/member/unseoJang.png"
       name: "장운서"
+  - member:
+      id: "xxxx-jeung"
+      url: "https://github.com/xxxx-jeung"
+      image: "/assets/images/member/xxxx-jeung.png"
+      name: "오제웅"
       
 author:
   facebook:         groups/docfriends/

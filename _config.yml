@@ -44,7 +44,11 @@ writers:
       url: "https://github.com/xxxx-jeung"
       image: "/assets/images/member/xxxx-jeung.png"
       name: "오제웅"
-      
+  - member:
+      id: "jhd7130"
+      url: "https://github.com/jhd7130"
+      image: "/assets/images/member/atom.png"
+      name: "정희두"
 author:
   facebook:         groups/docfriends/
   youtubeUser:      Docairs

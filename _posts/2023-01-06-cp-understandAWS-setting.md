@@ -4,7 +4,7 @@ title: "AWS를 잘 사용하기 위한 기초지식 이해하기."
 description: "이번 글에서는 AWS를 사용하기 전 클라우드 컴퓨팅 시스템의 이해를 위해 기초적인 컴퓨팅 및 네트워크 지식을 다룹니다."
 date: 2023-01-06
 tags: [AWS, 가상화 기초, 클라우드]
-writer: xxxx-jeung
+writer: jhd7130
 category: BackEnd
 comments: true
 share: true

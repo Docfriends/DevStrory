@@ -15,21 +15,6 @@ writers:
       image: "/assets/images/member/leaf9016.png"
       name: "박준걸"
   - member:
-      id: "pikachu987"
-      url: "https://github.com/pikachu987"
-      image: "/assets/images/member/pikachu987.png"
-      name: "김관호"
-  - member:
-      id: "ddalam"
-      url: "https://github.com/ddalam"
-      image: "/assets/images/member/ddalam.png"
-      name: "최다영"
-  - member:
-      id: "zehye"
-      url: "https://github.com/zehye"
-      image: "/assets/images/member/zehye.jpeg"
-      name: "박지혜"
-  - member:
       id: "syh8088"
       url: "https://github.com/syh8088"
       image: "/assets/images/member/syh8088.png"
@@ -49,6 +34,21 @@ writers:
       url: "https://github.com/jhd7130"
       image: "/assets/images/member/atom.png"
       name: "정희두"
+  - member:
+      id: "pikachu987"
+      url: "https://github.com/pikachu987"
+      image: "/assets/images/member/pikachu987.png"
+      name: "김관호"
+  - member:
+      id: "ddalam"
+      url: "https://github.com/ddalam"
+      image: "/assets/images/member/ddalam.png"
+      name: "최다영"
+  - member:
+      id: "zehye"
+      url: "https://github.com/zehye"
+      image: "/assets/images/member/zehye.jpeg"
+      name: "박지혜"
 author:
   facebook:         groups/docfriends/
   youtubeUser:      Docairs
